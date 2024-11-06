@@ -1,0 +1,11 @@
+{
+  "name": "my-web-app",
+  "version": "1.0.0",
+  "description": "A simple static web app hosted on Azure.",
+  "main": "index.html",
+  "scripts": {
+    "start": "echo 'Nothing to build, just serving static files.'"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
