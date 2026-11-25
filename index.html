@@ -3,22 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashish Yadav</title>
+    <title>Ashish Yadav — Full-Stack &amp; AI Engineer</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mediaqueries.css">
 </head>
 <body>
+
+    <!-- ===== SCROLL PROGRESS BAR ===== -->
+    <div class="scroll-progress-track" aria-hidden="true">
+        <div class="scroll-progress-bar" id="scroll-progress"></div>
+    </div>
+
+    <!-- ===== DESKTOP NAV ===== -->
     <nav id="desktop-nav">
         <div class="logo">Ashish Yadav</div>
-        <div>
+        <div class="nav-right">
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
+                <li><a href="#skills">Tech Stack</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#recommendations">Reviews</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button class="theme-switch" id="theme-toggle" role="switch" aria-checked="false" aria-label="Toggle dark mode" title="Switch light / dark theme">
+                <span class="switch-track">
+                    <span class="switch-icon switch-sun" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                    </span>
+                    <span class="switch-icon switch-moon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    </span>
+                    <span class="switch-thumb"></span>
+                </span>
+            </button>
         </div>
     </nav>
+
+    <!-- ===== HAMBURGER NAV ===== -->
     <nav id="hamburger-nav">
         <div class="logo">Ashish Yadav</div>
         <div class="hamburger-menu">
@@ -27,242 +50,895 @@
                 <span></span>
                 <span></span>
             </div>
-        <div class="menu-links">
-            <li><a href="#about" onclick="toggleMenu()">About</a></li>
-            <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-            <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
-        
+            <div class="menu-links">
+                <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="#skills" onclick="toggleMenu()">Tech Stack</a></li>
+                <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+                <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+                <li><a href="#journey" onclick="toggleMenu()">Journey</a></li>
+                <li><a href="#recommendations" onclick="toggleMenu()">Reviews</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+                <li class="mobile-theme-row">
+                    <span>Theme</span>
+                    <button class="theme-switch" id="theme-toggle-mobile" role="switch" aria-checked="false" aria-label="Toggle dark mode" onclick="toggleTheme()">
+                        <span class="switch-track">
+                            <span class="switch-icon switch-sun" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                            </span>
+                            <span class="switch-icon switch-moon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                            </span>
+                            <span class="switch-thumb"></span>
+                        </span>
+                    </button>
+                </li>
+            </div>
         </div>
     </nav>
+
+    <!-- ===== HERO / PROFILE ===== -->
     <section id="profile">
         <div class="section__pic-container">
-            <img src="./assets/profile-pic.jpg" alt="Ashish Yadav Profile Picture">
+            <div class="profile-ring">
+                <img src="./assets/profile-pic.jpg" alt="Ashish Yadav Profile Picture">
+            </div>
         </div>
         <div class="section__text">
-            <p class="section_text__p1">
-                Hello, I'm
-            </p>
+            <p class="section_text__p1">Hello, I'm</p>
             <h1 class="title">Ashish Yadav</h1>
             <p class="section__text__p2">
-                Full Stack Developer
+                <span id="typing-text"></span><span class="cursor">|</span>
             </p>
             <div class="btn-container">
-                <button class="btn btn-color-2" onclick="window.open('./assets/resume.pdf')">Download CV</button>
-                <button class="btn btn-color-1" onclick="location.href='/#contact'">Contact Info</button>
+                <button class="btn btn-color-2" onclick="window.open('./assets/Ashish_Yadav_EPAM_8557.pdf')">Download CV</button>
+                <button class="btn btn-color-1" onclick="location.href='#contact'">Contact Info</button>
             </div>
             <div id="socials-container">
-                <img src="./assets/linkedin.png" alt="LinkedIn Profile" class="icon" onclick="window.open('https://linkedin.com/in/avickyadav', '_blank')">
-                <img src="./assets/github.png" alt="GitHub Profile" class="icon" onclick="window.open('https://github.com/avickyadav/vigilant-succotash', '_blank')">
+                <button class="social-icon-btn" aria-label="LinkedIn Profile" onclick="window.open('https://linkedin.com/in/avickyadav', '_blank')">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                </button>
+                <button class="social-icon-btn" aria-label="GitHub Profile" onclick="window.open('https://github.com/avickyadav', '_blank')">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                </button>
             </div>
         </div>
     </section>
-    <section id="about">
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="reveal">
         <p class="section__text__p1">Get To Know More</p>
         <h1 class="title">About Me</h1>
         <div class="section-container">
             <div class="section__pic-container">
-                <img src="./assets/about-pic2.jpg" 
-                class="about-pic"
-                alt="Profile Picture Icon">
+                <img src="./assets/about-pic2.jpg" class="about-pic" alt="Ashish Yadav">
             </div>
             <div class="about-details-container">
                 <div class="about-containers">
                     <div class="details-container">
-                        <img src="./assets/experience.png" 
-                        class="icon"
-                        alt="Experience Icon">
+                        <div class="about-card-icon chip-indigo">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+                        </div>
                         <h3>Experience</h3>
-                        <p>3+ years <br> Full Stack Development</p>
+                        <p>5+ years<br>Full-Stack &amp; AI Engineering</p>
                     </div>
                     <div class="details-container">
-                        <img src="./assets/education.png" 
-                        class="icon"
-                        alt="Education Icon">
+                        <div class="about-card-icon chip-sky">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                        </div>
                         <h3>Education</h3>
-                        <p>Bachelors of Technology (B.Tech) <br>Electronics and Communication Engineering</p>
+                        <p>B.Tech — Electronics &amp;<br>Communication Engineering</p>
+                    </div>
+                    <div class="details-container">
+                        <div class="about-card-icon chip-emerald">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 15l-2 5 2-1 2 1-2-5z"/><circle cx="12" cy="9" r="6"/></svg>
+                        </div>
+                        <h3>Certified</h3>
+                        <p>Microsoft AI-102<br>Azure AI Engineer Associate</p>
                     </div>
                 </div>
                 <div class="text-container">
-                    <p>Hello There! I am a Dynamic Full-Stack Engineer with proficiency in Python and Javascript Frameworks. I have expertise in
-                        building and optimizing web applications with an additional skill set of DevOps tools such as
-                        Docker, Kubernetes , Jenkins and Cloud Tech (AWS, Azure and GCP).Also known for strong
-                        problem-solving skills and effective communication with clients and that too in fast-paced working
-                        environments.</p>
+                    <p>Full-Stack / AI-driven Software Engineer with 5+ years building production web applications and, most recently, GenAI-native systems — agentic workflows, RAG pipelines, and LLM-powered products using Claude, OpenAI, and Google Gemini. Comfortable moving across the stack, from React &amp; FastAPI services to designing multi-agent architectures with MCP-style tool integrations. Experienced working directly with enterprise clients globally to develop, prototype, and ship AI-first MVPs.</p>
                 </div>
             </div>
         </div>
-        <img 
-        src="./assets/arrow.png" 
-        class = 'icon arrow'
-        onclick="location.href='./#experience'"
-        alt="Arrow Icon">
+        <button class="arrow-btn" onclick="location.href='#skills'" aria-label="Scroll to Tech Stack">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </button>
     </section>
-    <section id="experience">
+
+    <!-- ===== TECH STACK ===== -->
+    <section id="skills" class="reveal">
         <p class="section__text__p1">Explore My</p>
-        <h1 class="title">Experience</h1>
-        <div class="experience-details-container">
-            <div class="about-containers">
-                <div class="details-container">
-                    <h2 class="experience-sub-title">Frontend Development</h2>
-                    <div class="article-container">
-                        <article>
-                            <img src="./assets/checkmark.png" 
-                            class="icon"
-                            alt="experience icon">
-                            <div>
-                                <h3>HTML</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" 
-                            class="icon"
-                            alt="experience icon">
-                            <div>
-                                <h3>CSS</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" 
-                            class="icon"
-                            alt="experience icon">
-                            <div>
-                                <h3>Javascript</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" 
-                            class="icon"
-                            alt="experience icon">
-                            <div>
-                                <h3>React.JS</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" 
-                            class="icon"
-                            alt="experience icon">
-                            <div>
-                                <h3>TypeScript</h3>
-                                <p>Basic</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" 
-                            class="icon"
-                            alt="experience icon">
-                            <div>
-                                <h3>Material UI</h3>
-                                <p>Intermediate</p>
-                            </div>
-                        </article>
-                    </div>
+        <h1 class="title">Tech Stack</h1>
+        <div class="skills-grid">
 
+            <!-- AI / GenAI -->
+            <div class="skill-panel highlight-panel">
+                <div class="skill-panel-header">
+                    <span class="panel-badge chip-violet">Core Focus</span>
+                    <h2 class="skill-panel-title">AI &amp; GenAI</h2>
                 </div>
-                <div class="details-container">
-                    <h2 class="experience-sub-title">Backend Development</h2>
-                    <div class="article-container">
-                        <article>
-                            <img src="./assets/checkmark.png" 
-                            class="icon"
-                            alt="experience icon">
-                            <div>
-                                <h3>FastAPI (Python)</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" 
-                            class="icon"
-                            alt="experience icon">
-                            <div>
-                                <h3>Django (Python)</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" 
-                            class="icon"
-                            alt="experience icon">
-                            <div>
-                                <h3>Express JS</h3>
-                                <p>Intermediate</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" 
-                            class="icon"
-                            alt="experience icon">
-                            <div>
-                                <h3>MongoDB</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" 
-                            class="icon"
-                            alt="experience icon">
-                            <div>
-                                <h3>PostgreSQL</h3>
-                                <p>Experienced</p>
-                            </div>
-                        </article>
-                        <article>
-                            <img src="./assets/checkmark.png" 
-                            class="icon"
-                            alt="experience icon">
-                            <div>
-                                <h3>Docker</h3>
-                                <p>Intermediate</p>
-                            </div>
-                        </article>
+                <div class="tech-items-grid">
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/claude.svg" alt="Claude" class="tech-logo">
+                        <span>Claude</span>
                     </div>
-
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/openai.svg" alt="OpenAI" class="tech-logo dark-invert">
+                        <span>OpenAI GPT</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/gemini.svg" alt="Gemini" class="tech-logo">
+                        <span>Google Gemini</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/mcp.svg" alt="MCP" class="tech-logo">
+                        <span>MCP &amp; Agents</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/langchain.svg" alt="LangChain" class="tech-logo dark-invert">
+                        <span>LangChain</span>
+                    </div>
+                    <div class="tech-item">
+                        <svg class="tech-logo" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                        <span>RAG Pipelines</span>
+                    </div>
+                    <div class="tech-item">
+                        <svg class="tech-logo" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                        <span>Vector DBs</span>
+                    </div>
                 </div>
             </div>
+
+            <!-- Frontend -->
+            <div class="skill-panel">
+                <div class="skill-panel-header">
+                    <span class="panel-badge chip-sky">UI &amp; Web</span>
+                    <h2 class="skill-panel-title">Frontend</h2>
+                </div>
+                <div class="tech-items-grid">
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/react.svg" alt="React" class="tech-logo">
+                        <span>React.js</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/typescript.svg" alt="TypeScript" class="tech-logo">
+                        <span>TypeScript</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/javascript.svg" alt="JavaScript" class="tech-logo">
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/redux.svg" alt="Redux" class="tech-logo">
+                        <span>Redux</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/mui.svg" alt="Material UI" class="tech-logo">
+                        <span>Material UI</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/html5.svg" alt="HTML5" class="tech-logo">
+                        <span>HTML5</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/css3.svg" alt="CSS3" class="tech-logo">
+                        <span>CSS3</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Backend & Databases -->
+            <div class="skill-panel">
+                <div class="skill-panel-header">
+                    <span class="panel-badge chip-emerald">APIs &amp; Data</span>
+                    <h2 class="skill-panel-title">Backend &amp; Databases</h2>
+                </div>
+                <div class="tech-items-grid">
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/python.svg" alt="Python" class="tech-logo">
+                        <span>Python</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/fastapi.svg" alt="FastAPI" class="tech-logo">
+                        <span>FastAPI</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/django.svg" alt="Django" class="tech-logo dark-invert">
+                        <span>Django</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/express.svg" alt="Express" class="tech-logo dark-invert">
+                        <span>Express.js</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/postgresql.svg" alt="PostgreSQL" class="tech-logo">
+                        <span>PostgreSQL</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/mongodb.svg" alt="MongoDB" class="tech-logo">
+                        <span>MongoDB</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/graphql.svg" alt="GraphQL" class="tech-logo">
+                        <span>GraphQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DevOps & Cloud -->
+            <div class="skill-panel">
+                <div class="skill-panel-header">
+                    <span class="panel-badge chip-amber">Infra &amp; Scale</span>
+                    <h2 class="skill-panel-title">DevOps &amp; Cloud</h2>
+                </div>
+                <div class="tech-items-grid">
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/docker.svg" alt="Docker" class="tech-logo">
+                        <span>Docker</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/kubernetes.svg" alt="Kubernetes" class="tech-logo">
+                        <span>Kubernetes</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/jenkins.svg" alt="Jenkins" class="tech-logo">
+                        <span>Jenkins CI/CD</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/aws.svg" alt="AWS" class="tech-logo">
+                        <span>AWS</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/azure.svg" alt="Azure" class="tech-logo">
+                        <span>Azure</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/gcp.svg" alt="GCP" class="tech-logo">
+                        <span>GCP</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/rabbitmq.svg" alt="RabbitMQ" class="tech-logo">
+                        <span>RabbitMQ</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <img 
-        src="./assets/arrow.png" 
-        class = 'icon arrow'
-        onclick="location.href='./#contact'"
-        alt="Arrow Icon">
+        <button class="arrow-btn" onclick="location.href='#experience'" aria-label="Scroll to Experience">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </button>
     </section>
-    <section id="contact">
+
+    <!-- ===== WORK EXPERIENCE ===== -->
+    <section id="experience" class="reveal">
+        <p class="section__text__p1">Where I've Worked</p>
+        <h1 class="title">Experience</h1>
+        <div class="work-timeline">
+
+            <!-- Pratham -->
+            <div class="work-card">
+                <div class="work-card-header">
+                    <div class="work-logo-wrap">
+                        <img src="./assets/logos/pratham_software_inc_logo.jpeg" alt="Pratham Software" class="company-logo">
+                    </div>
+                    <div class="work-meta">
+                        <h2 class="company-name">Pratham Software Pvt. Ltd.</h2>
+                        <p class="work-role">Software Engineer <span class="client-badge">Client: Global Top-3 Management Consulting Firm</span></p>
+                        <span class="work-date">Oct 2025 — Present</span>
+                    </div>
+                </div>
+                <div class="focus-chips">
+                    <span class="focus-chip chip-violet">🤖 Agentic GenAI</span>
+                    <span class="focus-chip chip-sky">🔍 RAG Pipelines · -35%</span>
+                    <span class="focus-chip chip-indigo">🔌 MCP Integrations</span>
+                    <span class="focus-chip chip-emerald">⚡ 40% Faster Reports</span>
+                    <span class="focus-chip chip-amber">🚀 Enterprise MVPs</span>
+                    <span class="focus-chip chip-rose">📊 LLM Observability</span>
+                </div>
+                <ul class="work-bullets">
+                    <li>Building agentic GenAI applications for a global top-three management consulting firm using Claude and OpenAI models orchestrated through a custom agent framework — delivered multiple MVPs from concept to client demo.</li>
+                    <li>Designed and implemented RAG pipelines over internal knowledge bases and structured client data, improving retrieval accuracy and cutting analyst research time by ~35%.</li>
+                    <li>Architected multi-agent workflows (planner / executor / tool-calling agents) with MCP-style tool integrations and function calling, enabling agents to autonomously query internal tools, synthesise findings, and generate client-ready reports.</li>
+                    <li>Integrated LLM APIs (Claude, ChatGPT, Gemini) into a FastAPI backend with a React frontend, reducing manual analyst turnaround time by ~40% on recurring research and reporting workflows.</li>
+                    <li>Partnered directly with enterprise client stakeholders to gather requirements and iterate on prototypes in fast feedback loops — Forward-Deploy-Engineering style: discovery → prototyping → production handoff.</li>
+                    <li>Built lightweight evaluation and observability tooling around LLM outputs (prompt versioning, response quality checks) to catch regressions before client demos.</li>
+                </ul>
+            </div>
+
+            <!-- Metacube -->
+            <div class="work-card">
+                <div class="work-card-header">
+                    <div class="work-logo-wrap">
+                        <img src="./assets/logos/metacube_logo.jpeg" alt="Metacube Software" class="company-logo">
+                    </div>
+                    <div class="work-meta">
+                        <h2 class="company-name">Metacube Software Pvt. Ltd.</h2>
+                        <p class="work-role">Software Engineer</p>
+                        <span class="work-date">Oct 2021 — Sep 2025</span>
+                    </div>
+                </div>
+                <div class="focus-chips">
+                    <span class="focus-chip chip-violet">🧠 GraphDB + RAG</span>
+                    <span class="focus-chip chip-emerald">⚡ 80% Faster AI</span>
+                    <span class="focus-chip chip-sky">✨ GPT-4.5 &amp; Gemini</span>
+                    <span class="focus-chip chip-amber">📈 RGM · +30% Engagement</span>
+                    <span class="focus-chip chip-indigo">⚙️ Jenkins CI/CD · -50%</span>
+                    <span class="focus-chip chip-rose">🐇 RabbitMQ Async</span>
+                </div>
+                <ul class="work-bullets">
+                    <li>Built a React-based UI for an agentic document-extraction and RAG framework, integrating GraphDB (Ontotext) for semantic search and knowledge-graph management; implemented streaming / parallel multi-agent responses that improved response time by 80%.</li>
+                    <li>Deployed OpenAI GPT-4.5 and Google Gemini within a scalable microservices inference framework exposed via a GraphQL API for cross-service and graph-data interaction.</li>
+                    <li>Developed an AI-powered Revenue Growth Management (RGM) tool (React, MUI, Redux, FastAPI, PostgreSQL) for a global consumer-goods client — boosting user engagement by 30% and data-retrieval speed by 40% through indexing and schema refinement.</li>
+                    <li>Set up Jenkins CI/CD pipelines and RabbitMQ-based async messaging, cutting deployment time by 50% and reducing downtime by 20%.</li>
+                </ul>
+            </div>
+
+        </div>
+        <button class="arrow-btn" onclick="location.href='#projects'" aria-label="Scroll to Projects">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </button>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" class="reveal">
+        <p class="section__text__p1">Things I've Built</p>
+        <h1 class="title">Projects</h1>
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-year">2026</span>
+                    <div class="project-tags">
+                        <span class="ptag chip-violet">Claude</span>
+                        <span class="ptag chip-sky">Python</span>
+                        <span class="ptag chip-indigo">MCP</span>
+                        <span class="ptag chip-emerald">Vector DB</span>
+                    </div>
+                </div>
+                <h3 class="project-title">Personal MCP Server for Developer Workflows</h3>
+                <p class="project-desc">Built a custom MCP server exposing personal productivity and codebase-search tools to Claude, letting an agent autonomously look up context, run scripts, and draft code changes. Implemented a lightweight RAG layer (embeddings + vector store) over project documentation to ground agent responses and reduce hallucinated references.</p>
+                <div class="project-impact">⚡ Fully autonomous agentic code lookup &amp; drafting</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-year">2023–24</span>
+                    <div class="project-tags">
+                        <span class="ptag chip-sky">React</span>
+                        <span class="ptag chip-emerald">FastAPI</span>
+                        <span class="ptag chip-indigo">MUI</span>
+                        <span class="ptag chip-violet">Redux</span>
+                        <span class="ptag chip-amber">PostgreSQL</span>
+                    </div>
+                </div>
+                <h3 class="project-title">AI-Powered Revenue Growth Management Tool</h3>
+                <p class="project-desc">Designed and built an AI-powered business intelligence tool for a global consumer-goods client, enabling data-driven revenue optimisation decisions. Improved query performance through indexing strategies and schema refinement on a large-scale PostgreSQL database.</p>
+                <div class="project-impact">📈 +30% user engagement · +40% data retrieval speed</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-year">2021</span>
+                    <div class="project-tags">
+                        <span class="ptag chip-sky">Python</span>
+                        <span class="ptag chip-emerald">OpenCV</span>
+                        <span class="ptag chip-amber">Django</span>
+                    </div>
+                </div>
+                <h3 class="project-title">Face Recognition System</h3>
+                <p class="project-desc">Developed a full-stack face recognition system with a Django backend, using OpenCV for real-time video stream processing and a custom ML pipeline for feature extraction and matching.</p>
+                <div class="project-impact">🎯 95% recognition accuracy</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-year">2021</span>
+                    <div class="project-tags">
+                        <span class="ptag chip-sky">Python</span>
+                        <span class="ptag chip-rose">IoT</span>
+                        <span class="ptag chip-indigo">Web</span>
+                    </div>
+                </div>
+                <h3 class="project-title">IoT Home Automation Web App</h3>
+                <p class="project-desc">Built an IoT-powered web application for remote home-appliance control, featuring a real-time dashboard with device state management and scheduling. Connected hardware sensors to a Python backend over MQTT.</p>
+                <div class="project-impact">🏠 30% reduction in energy consumption</div>
+            </div>
+
+        </div>
+        <button class="arrow-btn" onclick="location.href='#journey'" aria-label="Scroll to Career Journey">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </button>
+    </section>
+
+    <!-- ===== CAREER JOURNEY / STAIRCASE ===== -->
+    <section id="journey" class="reveal">
+        <p class="section__text__p1">How I Got Here</p>
+        <h1 class="title">Career Journey</h1>
+
+        <div class="staircase-wrapper" id="staircase-wrapper">
+
+            <!-- Step 1 (lowest) — College -->
+            <div class="stair-step stair-1" data-index="0">
+                <div class="stair-card">
+                    <div class="stair-card-head">
+                        <span class="stair-emoji" aria-hidden="true">🎓</span>
+                        <span class="node-year">2018 – 2022</span>
+                    </div>
+                    <h3 class="node-title">Jaipur Engineering College</h3>
+                    <p class="node-role">B.Tech — Electronics &amp; Communication</p>
+                    <div class="node-chips">
+                        <span class="node-chip chip-sky">🎓 8.5 GPA</span>
+                        <span class="node-chip chip-emerald">🤖 Face Rec · 95%</span>
+                        <span class="node-chip chip-indigo">🏠 IoT Systems</span>
+                    </div>
+                    <p class="node-detail">Jaipur, Rajasthan · Built IoT and computer-vision projects during coursework that sparked my passion for applied software engineering.</p>
+                </div>
+                <div class="stair-block" aria-hidden="true">
+                    <div class="stair-tread"></div>
+                    <div class="stair-riser"></div>
+                </div>
+            </div>
+
+            <!-- Step 2 (middle) — Metacube -->
+            <div class="stair-step stair-2" data-index="1">
+                <div class="stair-card">
+                    <div class="stair-card-head">
+                        <span class="stair-emoji" aria-hidden="true">🏢</span>
+                        <span class="node-year">Oct 2021 – Sep 2025</span>
+                    </div>
+                    <h3 class="node-title">Metacube Software</h3>
+                    <p class="node-role">Software Engineer · 4 Years</p>
+                    <div class="node-chips">
+                        <span class="node-chip chip-indigo">💻 Full-Stack → AI</span>
+                        <span class="node-chip chip-emerald">⚡ 80% Latency Drop</span>
+                        <span class="node-chip chip-violet">🧠 GraphDB + RAG</span>
+                    </div>
+                    <p class="node-detail">Grew from graduate engineer to GenAI builder — React, FastAPI, RAG, GraphDB, GPT-4.5 &amp; Gemini integrations across global enterprise clients.</p>
+                </div>
+                <div class="stair-block" aria-hidden="true">
+                    <div class="stair-tread"></div>
+                    <div class="stair-riser"></div>
+                </div>
+            </div>
+
+            <!-- Step 3 (highest) — Pratham + sitting person figurine -->
+            <div class="stair-step stair-3" data-index="2">
+                <div class="stair-card stair-card-gold">
+                    <!-- Small person sitting on top of the highest step -->
+                    <div class="stair-figurine" aria-hidden="true">
+                        <svg viewBox="0 0 64 76" width="50" height="60" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Shadow on card edge -->
+                            <ellipse cx="32" cy="72" rx="14" ry="3" fill="currentColor" opacity="0.12"/>
+                            <!-- Legs dangling/sitting comfortably -->
+                            <path d="M24 54 Q21 65 17 69" stroke="#475569" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+                            <path d="M38 54 Q41 65 45 69" stroke="#475569" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+                            <!-- Sneakers -->
+                            <ellipse cx="16" cy="70" rx="4.2" ry="2.4" fill="#1e293b"/>
+                            <ellipse cx="46" cy="70" rx="4.2" ry="2.4" fill="#1e293b"/>
+                            <!-- Torso (casual hoodie/sweater) -->
+                            <rect x="21" y="36" width="22" height="21" rx="7" fill="#6366f1"/>
+                            <path d="M26 38 L32 42 L38 38" stroke="#c7d2fe" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+                            <!-- Mini laptop on lap -->
+                            <rect x="18" y="51" width="28" height="3.5" rx="1.5" fill="#334155"/>
+                            <rect x="20" y="45" width="24" height="6.5" rx="1.5" fill="#0f172a"/>
+                            <rect x="22" y="46.5" width="20" height="3.5" rx="1" fill="#38bdf8" opacity="0.55"/>
+                            <!-- Arms -->
+                            <path d="M21 41 Q14 47 19 52" stroke="#818cf8" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+                            <path d="M43 41 Q50 47 45 52" stroke="#818cf8" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+                            <!-- Neck -->
+                            <rect x="28.5" y="31" width="7" height="6" rx="2.5" fill="#f5c6a0"/>
+                            <!-- Head -->
+                            <ellipse cx="32" cy="23" rx="11.5" ry="12" fill="#f5c6a0"/>
+                            <!-- Hair -->
+                            <path d="M20 20 Q23 8 32 10 Q41 8 44 20 Q40 16 32 17 Q24 16 20 20 Z" fill="#1e293b"/>
+                            <!-- Eyes -->
+                            <circle cx="27.5" cy="24" r="1.7" fill="#1e293b"/>
+                            <circle cx="36.5" cy="24" r="1.7" fill="#1e293b"/>
+                            <circle cx="28" cy="23.5" r="0.6" fill="#ffffff"/>
+                            <circle cx="37" cy="23.5" r="0.6" fill="#ffffff"/>
+                            <!-- Glasses -->
+                            <rect x="23.5" y="21" width="7.5" height="5.5" rx="2.2" fill="none" stroke="#475569" stroke-width="1.1"/>
+                            <rect x="33" y="21" width="7.5" height="5.5" rx="2.2" fill="none" stroke="#475569" stroke-width="1.1"/>
+                            <line x1="31" y1="23.8" x2="33" y2="23.8" stroke="#475569" stroke-width="1"/>
+                            <!-- Smile -->
+                            <path d="M28.5 29 Q32 32 35.5 29" stroke="#b45309" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+                            <!-- Gold star -->
+                            <text x="45" y="12" font-size="10" fill="#fbbf24">★</text>
+                        </svg>
+                    </div>
+
+                    <div class="stair-card-head">
+                        <span class="stair-emoji" aria-hidden="true">🚀</span>
+                        <span class="node-year">Oct 2025 – Present</span>
+                    </div>
+                    <h3 class="node-title">Pratham Software</h3>
+                    <p class="node-role">Software Engineer · AI Focus</p>
+                    <div class="node-chips">
+                        <span class="node-chip chip-gold">🏆 Emerging Employee of the Year 2026</span>
+                        <span class="node-chip chip-violet">🤖 Claude &amp; OpenAI</span>
+                        <span class="node-chip chip-sky">🔌 MCP &amp; Multi-Agent</span>
+                        <span class="node-chip chip-emerald">🏢 Top-3 Consulting</span>
+                    </div>
+                    <p class="node-detail">Building agentic AI systems for a global top-3 management consulting firm — multi-agent orchestration, RAG, and production MVPs.</p>
+                </div>
+                <div class="stair-block" aria-hidden="true">
+                    <div class="stair-tread"></div>
+                    <div class="stair-riser"></div>
+                </div>
+            </div>
+
+        </div>
+        <button class="arrow-btn" onclick="location.href='#certifications'" aria-label="Scroll to Certifications">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </button>
+    </section>
+
+    <!-- ===== CERTIFICATIONS ===== -->
+    <section id="certifications" class="reveal">
+        <p class="section__text__p1">Credentials</p>
+        <h1 class="title">Certifications &amp; Awards</h1>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <div class="cert-icon">🎖️</div>
+                <h3 class="cert-title">Microsoft Certified</h3>
+                <p class="cert-sub">Azure AI Engineer Associate</p>
+                <span class="cert-badge chip-sky">AI-102</span>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">🏆</div>
+                <h3 class="cert-title">Emerging Employee of the Year</h3>
+                <p class="cert-sub">Pratham Software Pvt. Ltd.</p>
+                <span class="cert-badge chip-gold">2026</span>
+            </div>
+        </div>
+        <button class="arrow-btn" onclick="location.href='#recommendations'" aria-label="Scroll to Recommendations">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </button>
+    </section>
+
+    <!-- ===== LINKEDIN RECOMMENDATIONS ===== -->
+    <section id="recommendations" class="reveal">
+        <p class="section__text__p1">What People Say</p>
+        <h1 class="title">LinkedIn Recommendations</h1>
+        <div class="rec-carousel-wrapper">
+            <button class="rec-arrow rec-arrow-left" onclick="moveRec(-1)" aria-label="Previous recommendation">&#8249;</button>
+            <div class="rec-carousel">
+
+                <!-- Slide 1: Shahnaz Chaudhary -->
+                <div class="rec-slide active">
+                    <div class="li-rec-card">
+                        <div class="li-rec-header">
+                            <img src="./assets/rec-avatars/shahnaz.png" alt="Shahnaz Chaudhary" class="li-avatar">
+                            <div class="li-person">
+                                <div class="li-name-row">
+                                    <span class="li-name">Shahnaz Chaudhary</span>
+                                    <span class="li-verified" title="Verified LinkedIn Profile">✓</span>
+                                    <span class="li-degree">· 1st</span>
+                                </div>
+                                <p class="li-headline">AI Delivery Senior Manager | Boston Consulting Group (BCGX)</p>
+                                <p class="li-date">November 22, 2026 · Shahnaz managed Ashish directly</p>
+                            </div>
+                            <span class="li-in-badge" title="LinkedIn Recommendation">in</span>
+                        </div>
+                        <div class="li-rec-body">
+                            <span class="li-quote-mark">“</span>
+                            <p>I worked with Ashish on two major products at BCG, and he's someone I'd pick again for any build. He pays real attention to detail and he's dedicated, but what stood out to me was how he starts a project. Before we got deep into development, he'd already thought through the process flow and the architecture, and security was part of that conversation from the beginning. It was never something we had to go back and fix later.</p>
+                            <p>He's strong on both the front end and the back end. He can build the logic and the plumbing behind a product, then turn around and make the interface clean and easy to use. He also has a knack for finding creative ways to present things, so even complex material ends up looking clear and engaging to the people using it.</p>
+                            <p>Both products went over well with the key stakeholders, and they're already being used across several client case deliveries. A lot of that comes down to how solid Ashish's groundwork was and how well he presented the end result.</p>
+                            <span class="li-quote-mark-end">”</span>
+                        </div>
+                        <div class="li-rec-footer">
+                            <span class="li-tag chip-indigo">BCGX · Product Architecture &amp; Full-Stack</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2: Aurelije Zovko -->
+                <div class="rec-slide">
+                    <div class="li-rec-card">
+                        <div class="li-rec-header">
+                            <img src="./assets/rec-avatars/aurelije.png" alt="Aurelije Zovko" class="li-avatar">
+                            <div class="li-person">
+                                <div class="li-name-row">
+                                    <span class="li-name">Aurelije Zovko</span>
+                                    <span class="li-degree">· 1st</span>
+                                </div>
+                                <p class="li-headline">CTO | Chief Architect | Knowledge Graphs | GenAI | ML | IPA Automation</p>
+                                <p class="li-date">November 19, 2026 · Aurelije managed Ashish directly</p>
+                            </div>
+                            <span class="li-in-badge" title="LinkedIn Recommendation">in</span>
+                        </div>
+                        <div class="li-rec-body">
+                            <span class="li-quote-mark">“</span>
+                            <p>I had the pleasure of working with Ashish on the Zenia Graph projects, and I cannot recommend him highly enough.</p>
+                            <p>Over our project engagement, Ashish proved to be an exceptional Full Stack Engineer. As the sole UI developer on the team, he took complete ownership of our frontend experience while seamlessly contributing across backend development, APIs, and the WSO2 Choreo platform. His work on our early prototypes was especially impactful, directly helping shape our presentations and pitches to Bessemer. Ashish is proactive, versatile, and a great collaborator. Any engineering team would be lucky to have him.</p>
+                            <span class="li-quote-mark-end">”</span>
+                        </div>
+                        <div class="li-rec-footer">
+                            <span class="li-tag chip-violet">Zenia Graph · Knowledge Graphs &amp; GenAI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3: Manish Jain -->
+                <div class="rec-slide">
+                    <div class="li-rec-card">
+                        <div class="li-rec-header">
+                            <img src="./assets/rec-avatars/manish.png" alt="Manish Jain" class="li-avatar">
+                            <div class="li-person">
+                                <div class="li-name-row">
+                                    <span class="li-name">Manish Jain</span>
+                                    <span class="li-degree">· 1st</span>
+                                </div>
+                                <p class="li-headline">Delivery Manager at MetaCube Software</p>
+                                <p class="li-date">October 14, 2026 · Manish managed Ashish directly</p>
+                            </div>
+                            <span class="li-in-badge" title="LinkedIn Recommendation">in</span>
+                        </div>
+                        <div class="li-rec-body">
+                            <span class="li-quote-mark">“</span>
+                            <p>I had the opportunity to work with Ashish during his time at Metacube, where he grew from a graduate engineer into a capable software developer.</p>
+                            <p>He demonstrated good technical skills, a willingness to learn, and the ability to adapt to different technologies and project requirements. Over time, he took on greater responsibilities and contributed positively to his teams and client engagements.</p>
+                            <p>I appreciate his commitment to his work and wish him continued success in his career.</p>
+                            <span class="li-quote-mark-end">”</span>
+                        </div>
+                        <div class="li-rec-footer">
+                            <span class="li-tag chip-emerald">Metacube · Ownership &amp; Growth</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 4: Pulkit Mehta -->
+                <div class="rec-slide">
+                    <div class="li-rec-card">
+                        <div class="li-rec-header">
+                            <img src="./assets/rec-avatars/pulkit.png" alt="Pulkit Mehta" class="li-avatar">
+                            <div class="li-person">
+                                <div class="li-name-row">
+                                    <span class="li-name">Pulkit Mehta</span>
+                                    <span class="li-verified" title="Verified LinkedIn Profile">✓</span>
+                                    <span class="li-degree">· 1st</span>
+                                </div>
+                                <p class="li-headline">Senior ML Engineer | ML, NLP &amp; Generative AI Specialist | LLM &amp; RAG Expert | Ex-Oracle</p>
+                                <p class="li-date">May 19, 2025 · Pulkit was senior to Ashish</p>
+                            </div>
+                            <span class="li-in-badge" title="LinkedIn Recommendation">in</span>
+                        </div>
+                        <div class="li-rec-body">
+                            <span class="li-quote-mark">“</span>
+                            <p>Ashish is a dream resource for any company, any project. He is a full stack engineer with experience in backend, front end and also ML deployment. Of late, he is working on Gen AI use cases like graph RAG and prompt engineering as well. Not only is he very technically sound and a great problem solver, but he thinks through his design choices and contributes in each and every stage of the project. He is very sincere, has great work ethics and has clarity in all his communications. Highly recommended.</p>
+                            <span class="li-quote-mark-end">”</span>
+                        </div>
+                        <div class="li-rec-footer">
+                            <span class="li-tag chip-sky">Graph RAG &amp; ML Deployment</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <button class="rec-arrow rec-arrow-right" onclick="moveRec(1)" aria-label="Next recommendation">&#8250;</button>
+        </div>
+        <div class="rec-dots" id="rec-dots">
+            <span class="rec-dot active" onclick="goToRec(0)"></span>
+            <span class="rec-dot" onclick="goToRec(1)"></span>
+            <span class="rec-dot" onclick="goToRec(2)"></span>
+            <span class="rec-dot" onclick="goToRec(3)"></span>
+        </div>
+        <button class="arrow-btn" onclick="location.href='#posts'" aria-label="Scroll to LinkedIn Posts">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </button>
+    </section>
+
+    <!-- ===== LINKEDIN POSTS ===== -->
+    <section id="posts" class="reveal">
+        <p class="section__text__p1">From My Feed</p>
+        <h1 class="title">LinkedIn Posts</h1>
+        <div class="posts-grid">
+            <div class="linkedin-embed-wrap">
+                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7497647211963621377" height="500" width="100%" frameborder="0" allowfullscreen title="Embedded post"></iframe>
+            </div>
+            <div class="linkedin-embed-wrap">
+                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7419021064090906624?collapsed=1" height="500" width="100%" frameborder="0" allowfullscreen title="Embedded post"></iframe>
+            </div>
+        </div>
+        <button class="arrow-btn" onclick="location.href='#contact'" aria-label="Scroll to Contact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </button>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="reveal">
         <p class="section__text__p1">Get in Touch</p>
         <h1 class="title">Contact Me</h1>
         <div class="contact-info-upper-container">
             <div class="contact-info-container">
-                <img src="./assets/email.png" 
-                class="icon contact-icon email-icon"
-                alt="Email Icon">
+                <span class="contact-svg-icon chip-indigo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+                </span>
                 <p><a href="mailto:ashishvickyadav@gmail.com">ashishvickyadav@gmail.com</a></p>
             </div>
             <div class="contact-info-container">
-                <img src="./assets/linkedin.png" 
-                class="icon contact-icon"
-                alt="LinkedIn Icon">
-                <p><a href="https://linkedin.com/in/avickyadav" target="_blank">LinkedIn</a></p>
+                <span class="contact-svg-icon chip-sky">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                </span>
+                <p><a href="https://linkedin.com/in/avickyadav" target="_blank">linkedin.com/in/avickyadav</a></p>
             </div>
         </div>
     </section>
+
+    <!-- ===== FOOTER ===== -->
     <footer>
         <nav>
             <div class="nav-links-container">
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Tech Stack</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#projects">Projects</a></li>
+                    <li><a href="#journey">Journey</a></li>
+                    <li><a href="#recommendations">Reviews</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
         </nav>
-        <p>Copyright &#169 2024 Ashish Yadav. All Rights Reserved</p>
+        <p>Copyright &#169; 2026 Ashish Yadav. All Rights Reserved.</p>
     </footer>
+
+    <!-- ===== PIKO AI PET CHATBOT ===== -->
+    <div class="piko-widget" id="piko-widget">
+        <div class="piko-window" id="piko-window" aria-hidden="true">
+            <div class="piko-header">
+                <div class="piko-header-left">
+                    <div class="piko-avatar-sm" aria-hidden="true">
+                        <!-- Piko mini 3D robot header avatar -->
+                        <svg viewBox="0 0 48 48" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <radialGradient id="ph" cx="45%" cy="35%" r="58%">
+                                    <stop offset="0%" stop-color="#c7d2fe"/>
+                                    <stop offset="100%" stop-color="#6366f1"/>
+                                </radialGradient>
+                                <radialGradient id="pv" cx="40%" cy="35%" r="60%">
+                                    <stop offset="0%" stop-color="#7dd3fc"/>
+                                    <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0.7"/>
+                                </radialGradient>
+                            </defs>
+                            <!-- Antenna -->
+                            <line x1="24" y1="3" x2="24" y2="9" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="24" cy="3" r="2" fill="#38bdf8"/>
+                            <!-- Head -->
+                            <rect x="9" y="9" width="30" height="22" rx="10" fill="url(#ph)"/>
+                            <!-- Highlight -->
+                            <ellipse cx="19" cy="13" rx="8" ry="3.5" fill="#ffffff" opacity="0.22"/>
+                            <!-- Ear nubs -->
+                            <rect x="5" y="16" width="5" height="8" rx="2.5" fill="#6366f1"/>
+                            <rect x="38" y="16" width="5" height="8" rx="2.5" fill="#6366f1"/>
+                            <!-- Visor -->
+                            <rect x="11" y="17" width="26" height="10" rx="5" fill="url(#pv)" opacity="0.88"/>
+                            <!-- Eyes -->
+                            <ellipse cx="19" cy="22" rx="4" ry="3.5" fill="#ffffff" opacity="0.9"/>
+                            <ellipse cx="29" cy="22" rx="4" ry="3.5" fill="#ffffff" opacity="0.9"/>
+                            <circle cx="19.5" cy="22.5" r="2" fill="#1d4ed8"/>
+                            <circle cx="29.5" cy="22.5" r="2" fill="#1d4ed8"/>
+                            <!-- Cheeks -->
+                            <circle cx="12" cy="27" r="2.5" fill="#fb7185" opacity="0.5"/>
+                            <circle cx="36" cy="27" r="2.5" fill="#fb7185" opacity="0.5"/>
+                            <!-- Smile -->
+                            <path d="M20 30 Q24 34 28 30" stroke="#6366f1" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+                            <!-- Body stub -->
+                            <rect x="15" y="34" width="18" height="11" rx="6" fill="#818cf8" opacity="0.8"/>
+                            <!-- Chest dot -->
+                            <circle cx="24" cy="40" r="2" fill="#38bdf8" opacity="0.9"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="piko-title">Piko <span class="piko-badge">AI Buddy</span></div>
+                        <div class="piko-status"><span class="piko-dot"></span> Online · Ask about Ashish</div>
+                    </div>
+                </div>
+                <button class="piko-close" id="piko-close" aria-label="Close chat">✕</button>
+            </div>
+
+            <div class="piko-messages" id="piko-messages"></div>
+
+            <div class="piko-quick-chips" id="piko-quick-chips">
+                <button class="piko-qchip" data-q="Who is Ashish?">👋 Who is Ashish?</button>
+                <button class="piko-qchip" data-q="What is his AI &amp; GenAI stack?">🤖 AI Stack</button>
+                <button class="piko-qchip" data-q="Tell me about Pratham &amp; BCGX">🏢 Pratham &amp; BCGX</button>
+                <button class="piko-qchip" data-q="What awards and certifications does he have?">🏆 Awards &amp; Certs</button>
+                <button class="piko-qchip" data-q="How can I contact Ashish?">📬 Contact</button>
+            </div>
+
+            <form class="piko-input-row" id="piko-form">
+                <input type="text" id="piko-input" placeholder="Say hi or ask about Ashish..." autocomplete="off" />
+                <button type="submit" class="piko-send" aria-label="Send message">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="16" height="16"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                </button>
+            </form>
+        </div>
+
+        <button class="piko-fab" id="piko-fab" aria-label="Chat with Piko, Ashish's AI pet">
+            <span class="piko-tooltip">Hi! I'm Piko 🤖</span>
+            <!-- Piko 3D humanoid robot FAB -->
+            <svg class="piko-pet-svg" viewBox="0 0 60 72" width="44" height="52" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <radialGradient id="fabHead" cx="45%" cy="32%" r="58%">
+                        <stop offset="0%" stop-color="#e0e7ff"/>
+                        <stop offset="100%" stop-color="#818cf8"/>
+                    </radialGradient>
+                    <radialGradient id="fabBody" cx="50%" cy="38%" r="55%">
+                        <stop offset="0%" stop-color="#c7d2fe"/>
+                        <stop offset="100%" stop-color="#6366f1"/>
+                    </radialGradient>
+                    <radialGradient id="fabVisor" cx="40%" cy="35%" r="58%">
+                        <stop offset="0%" stop-color="#7dd3fc"/>
+                        <stop offset="100%" stop-color="#0284c7" stop-opacity="0.75"/>
+                    </radialGradient>
+                    <filter id="fabGlow">
+                        <feGaussianBlur stdDeviation="1.8" result="blur"/>
+                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                </defs>
+
+                <!-- Antenna -->
+                <line x1="30" y1="1" x2="30" y2="8" stroke="#818cf8" stroke-width="1.8" stroke-linecap="round"/>
+                <circle cx="30" cy="1.5" r="2.5" fill="#38bdf8" filter="url(#fabGlow)"/>
+
+                <!-- Head -->
+                <rect x="9" y="8" width="42" height="30" rx="14" fill="url(#fabHead)"/>
+                <!-- 3D highlight on head -->
+                <ellipse cx="23" cy="14" rx="11" ry="4.5" fill="#ffffff" opacity="0.28"/>
+
+                <!-- Ear nubs -->
+                <rect x="3" y="17" width="7" height="12" rx="3.5" fill="#6366f1"/>
+                <circle cx="6.5" cy="16" r="3" fill="#38bdf8" filter="url(#fabGlow)"/>
+                <rect x="50" y="17" width="7" height="12" rx="3.5" fill="#6366f1"/>
+                <circle cx="53.5" cy="16" r="3" fill="#38bdf8" filter="url(#fabGlow)"/>
+
+                <!-- Visor band -->
+                <rect x="12" y="21" width="36" height="13" rx="6.5" fill="url(#fabVisor)" opacity="0.9"/>
+                <!-- Visor sheen -->
+                <rect x="14" y="23" width="18" height="4" rx="2" fill="#ffffff" opacity="0.28"/>
+
+                <!-- Eyes (glowing) -->
+                <ellipse cx="23" cy="27.5" rx="5.5" ry="4.5" fill="#ffffff" opacity="0.95"/>
+                <ellipse cx="37" cy="27.5" rx="5.5" ry="4.5" fill="#ffffff" opacity="0.95"/>
+                <circle cx="23.8" cy="28" r="2.8" fill="#1d4ed8"/>
+                <circle cx="37.8" cy="28" r="2.8" fill="#1d4ed8"/>
+                <circle cx="24.6" cy="27.2" r="1" fill="#ffffff"/>
+                <circle cx="38.6" cy="27.2" r="1" fill="#ffffff"/>
+
+                <!-- Cheek blush -->
+                <circle cx="13" cy="34" r="4" fill="#fb7185" opacity="0.4"/>
+                <circle cx="47" cy="34" r="4" fill="#fb7185" opacity="0.4"/>
+
+                <!-- Smile -->
+                <path d="M23 37 Q30 43 37 37" stroke="#6366f1" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+
+                <!-- Neck -->
+                <rect x="22" y="40" width="16" height="7" rx="4" fill="#818cf8"/>
+
+                <!-- Body -->
+                <rect x="10" y="47" width="40" height="22" rx="10" fill="url(#fabBody)"/>
+                <!-- Chest panel -->
+                <rect x="17" y="52" width="26" height="12" rx="5" fill="#e0e7ff" opacity="0.3"/>
+                <circle cx="24" cy="58" r="2.5" fill="#38bdf8" filter="url(#fabGlow)"/>
+                <circle cx="30" cy="58" r="2.5" fill="#a78bfa" filter="url(#fabGlow)"/>
+                <circle cx="36" cy="58" r="2.5" fill="#34d399" filter="url(#fabGlow)"/>
+
+                <!-- Arms (little stubs) -->
+                <rect x="2" y="50" width="10" height="6" rx="3" fill="#818cf8"/>
+                <circle cx="4" cy="58" r="4.5" fill="#6366f1"/>
+                <rect x="48" y="50" width="10" height="6" rx="3" fill="#818cf8"/>
+                <circle cx="56" cy="58" r="4.5" fill="#6366f1"/>
+
+                <!-- Legs stubs -->
+                <rect x="17" y="68" width="10" height="4" rx="2" fill="#6366f1" opacity="0.9"/>
+                <rect x="33" y="68" width="10" height="4" rx="2" fill="#6366f1" opacity="0.9"/>
+            </svg>
+        </button>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
