@@ -17,6 +17,7 @@ Personal portfolio website for **Ashish Yadav** (Full-Stack & AI-Driven Software
 - **Recommendations wall** — Compact cards with verbatim pull quotes (no auto-advance), plus a keyboard-friendly reader dialog / mobile bottom sheet.
 - **Contact** — Compose panel that opens a prefilled `mailto:` (nothing is sent from the page) and brand-aware channel cards.
 - **Writing row** — LinkedIn posts at the end of Contact (`#posts`); each loads its iframe only on click.
+- **Performance & a11y** — Resized JPEGs with explicit `width`/`height`, lazy images, fonts via preconnected `<link>`, pre-paint theme script (no dark-mode flash), skip link, landmarks, single `<h1>`, AA contrast tokens, full reduced-motion support, meta description, Open Graph / Twitter tags and an SVG favicon (mini Piko).
 - **Piko AI Pet Chatbot (`#piko-widget`)** — Cute floating SVG mascot with curated quick-question chips and regex-based intent matching.
 
 ---
@@ -33,7 +34,8 @@ vigilant-succotash/
 ├── README.md                   # Project overview & maintenance guide
 └── assets/
     ├── Ashish_Yadav_CV.pdf   # Active CV linked from "Download CV"
-    ├── profile-pic.jpg / about-pic2.jpg
+    ├── profile-pic.jpg / about-pic2.jpg   # resized (1080px / 640px wide), JPEG q80
+    ├── favicon.svg / apple-touch-icon.png # mini Piko icons
     ├── logos/                  # Company logos (Pratham Software, Metacube)
     ├── tech-logos/             # Local SVG logos for Tech Stack items
     ├── rec-avatars/            # Cropped circular avatars for recommendation cards

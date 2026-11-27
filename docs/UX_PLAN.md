@@ -276,7 +276,7 @@ Each phase ends with the AGENTS.md verification checklist (asset paths, 1280×80
 | **P2 The Trail** | `NEXT_CHAPTER` config, new `#journey` markup, SVG path builder, scroll-linked draw, Piko marker clamped at Now, expandable stops, year mini-map; remove staircase + certifications section | index.html, style.css, script.js | Flip `status` to `announced`/`joined` and every dependent UI updates; works at 390px |
 | **P3 Navigation** | `SECTIONS` array; sliding active indicator; section rail; ⌘K palette; mobile bottom tab bar + full-screen menu sheet; sticky section labels; reorder sections per §2 | all | Keyboard-only user can reach everything; palette fully operable |
 | **P4 Sections** | Hero rewrite, About, Experience disclosure, Projects bento/snap, Tech filter, Recommendations swipe, Contact + Writing row, footer | all | Content matches §3.1, §3.5 |
-| **P5 QA & perf** | Lighthouse (target ≥95 perf/a11y on mobile), lazy images (`loading="lazy"`, width/height attrs), compress `profile-pic.jpg`/`about-pic2.jpg` to WebP, meta description + Open Graph tags + favicon (mini Piko), README update | all | Checklist green |
+| **P5 QA & perf** (DONE: images resized to JPEG q80, meta/OG/favicon, head theme script, a11y pass, perf hygiene; Lighthouse unavailable offline) | Lighthouse (target ≥95 perf/a11y on mobile), lazy images (`loading="lazy"`, width/height attrs), compress `profile-pic.jpg`/`about-pic2.jpg` to WebP, meta description + Open Graph tags + favicon (mini Piko), README update | all | Checklist green |
 
 Suggested prompt for each implementation session:
 > "Implement **Phase Pn** of `docs/UX_PLAN.md`. Follow `DESIGN.md` and AGENTS.md. Don't touch other phases' scope. Verify with the checklist, then summarise what changed and anything you couldn't verify."
@@ -306,3 +306,18 @@ Suggested prompt for each implementation session:
 - **Recommendations → no autoplay, ever.** Desktop shows a 2×2 wall of compact cards with highlighted pull quotes. "Read full" opens a reader (a dialog on desktop, a bottom sheet on mobile) with user-controlled prev/next and a "View on LinkedIn" link. Mobile uses a swipe-only scroll-snap row.
 - **Contact → compose + channels:** a mailto composer with reason chips (no backend), plus channel cards for LinkedIn (official "in" mark and a mini profile preview), GitHub, Email (copy) and CV. Each card's border turns that channel's colour on hover.
 - Headings use Poppins; the serif was dropped (see §5.6).
+
+### 6.1 Hero refinement (owner request, queued after P5)
+- **Portrait back in a circle**, sized about 340px on desktop and 160px on mobile, cropped on the face. It gets a thin ring with a slowly rotating accent arc (conic gradient, about 20s per turn) and a faint radial glow behind it.
+- **Orbiting badges (desktop only):** 3–4 small tech badges (Claude, OpenAI, React, Python) sit on an orbit around the portrait and bob gently, each on its own delay.
+- **Moving role line, refined:** a line reading "I build ___". The word cycles through *agentic AI products → RAG pipelines → MCP integrations → full-stack web apps*. Each change is a vertical slide with a blur/fade. The word is accent-coloured and its width animates smoothly. It cycles every ~2.6s and pauses on hover or when the tab is hidden. Screen readers get a static sentence listing all of them.
+- **Structure, left column:**
+  1. status pill
+  2. name
+  3. rotating role line
+  4. a one-line description
+  5. buttons
+  6. proof strip as 4 stat items with dividers
+  7. ⌘K hint
+- **Entrance:** the left column fades up line by line, 60ms apart, and the portrait scales in. A subtle "scroll" cue sits at the bottom.
+- **Reduced motion:** the first phrase stays fixed, and there is no orbit, rotation or entrance animation.

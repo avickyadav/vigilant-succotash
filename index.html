@@ -4,16 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ashish Yadav — Full-Stack &amp; AI Engineer</title>
+    <meta name="description" content="Full-stack engineer building agentic AI products for enterprise teams, from React to RAG to MCP.">
+    <meta name="theme-color" content="#FAFAF7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1F1E1D" media="(prefers-color-scheme: dark)">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ashish Yadav — Full-Stack &amp; AI Engineer">
+    <meta property="og:description" content="Full-stack engineer building agentic AI products for enterprise teams, from React to RAG to MCP.">
+    <meta property="og:image" content="./assets/profile-pic.jpg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Ashish Yadav — Full-Stack &amp; AI Engineer">
+    <meta name="twitter:description" content="Full-stack engineer building agentic AI products for enterprise teams, from React to RAG to MCP.">
+    <meta name="twitter:image" content="./assets/profile-pic.jpg">
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+    <script>
+        /* Apply saved / preferred theme before first paint (no light-to-dark flash). Mirrors applyTheme() in script.js. */
+        (function () {
+            var t = null;
+            try { t = localStorage.getItem('ay-theme'); } catch (e) {}
+            if (!t) { try { t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; } catch (e) {} }
+            if (t === 'dark') document.documentElement.classList.add('dark');
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mediaqueries.css">
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
 
     <!-- ===== SCROLL PROGRESS BAR ===== -->
     <div class="scroll-progress-track" aria-hidden="true">
         <div class="scroll-progress-bar" id="scroll-progress"></div>
     </div>
 
+    <header>
     <!-- ===== DESKTOP NAV (links mirror SECTIONS in script.js) ===== -->
     <nav id="desktop-nav" class="topbar" aria-label="Primary">
         <a class="logo" href="#profile">Ashish Yadav</a>
@@ -70,14 +98,21 @@
             </button>
         </div>
     </nav>
+    </header>
 
+    <main id="main" tabindex="-1">
     <!-- ===== HERO / PROFILE ===== -->
     <section id="profile">
         <div class="hero-text">
-            <p class="status-pill" data-nc="hero-pill"><span class="status-dot" aria-hidden="true"></span><span data-nc="hero-pill-text">Serving notice · next chapter starts 7 Dec</span></p>
-            <h1 class="title">Ashish Yadav</h1>
-            <p class="hero-statement">Full-stack engineer building <strong class="accent">agentic AI</strong> products for enterprise teams — from React to RAG to MCP.</p>
-            <div class="hero-actions">
+            <p class="status-pill" data-hero-item data-nc="hero-pill"><span class="status-dot" aria-hidden="true"></span><span data-nc="hero-pill-text">Serving notice · next chapter starts 7 Dec</span></p>
+            <h1 class="title" data-hero-item>Ashish Yadav</h1>
+            <p class="hero-role" data-hero-item>
+                <span class="hero-role-lead" aria-hidden="true">I build</span>
+                <span class="hero-rotor" id="hero-rotor" aria-hidden="true"><span class="hero-rotor-sizer"></span><span class="hero-rotor-word accent">agentic AI products</span></span>
+                <span class="hero-sr">I build agentic AI products, RAG pipelines, MCP integrations and full-stack web apps.</span>
+            </p>
+            <p class="hero-statement" data-hero-item>Full-stack engineer shipping AI products for enterprise teams, from React to RAG to MCP.</p>
+            <div class="hero-actions" data-hero-item>
                 <a class="btn btn-color-1" href="./assets/Ashish_Yadav_CV.pdf" download>
                     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M5 21h14"/></svg>
                     Download CV
@@ -95,49 +130,61 @@
                     </a>
                 </div>
             </div>
-            <ul class="proof-strip" aria-label="Highlights">
-                <li>5+ yrs</li>
-                <li>Emerging Employee of the Year '26</li>
-                <li>Microsoft AI-102</li>
-                <li>4 LinkedIn recommendations</li>
+            <ul class="proof-strip" aria-label="Highlights" data-hero-item>
+                <li><strong>5+</strong><span>Years</span></li>
+                <li><strong>'26</strong><span>Employee of the Year</span></li>
+                <li><strong>AI-102</strong><span>Microsoft certified</span></li>
+                <li><strong>4</strong><span>LinkedIn recommendations</span></li>
             </ul>
-            <p class="cmdk-hint">Press <kbd data-cmdk-key>&#8984;K</kbd> to navigate</p>
+            <p class="cmdk-hint" data-hero-item>Press <kbd data-cmdk-key>&#8984;K</kbd> to navigate</p>
         </div>
-        <figure class="hero-portrait">
-            <img src="./assets/profile-pic.jpg" alt="Portrait of Ashish Yadav" width="600" height="750">
-        </figure>
+        <div class="hero-visual" data-hero-visual>
+            <div class="hero-glow" aria-hidden="true"></div>
+            <figure class="hero-portrait">
+                <span class="hero-arc" aria-hidden="true"></span>
+                <span class="hero-ring" aria-hidden="true"></span>
+                <img src="./assets/profile-pic.jpg" alt="Portrait of Ashish Yadav" width="1080" height="1080" fetchpriority="high" decoding="async">
+            </figure>
+            <div class="hero-orbit" aria-hidden="true">
+                <span class="orb orb-1"><img src="./assets/tech-logos/claude.svg" alt="" width="22" height="22"></span>
+                <span class="orb orb-2"><img class="dark-invert" src="./assets/tech-logos/openai.svg" alt="" width="22" height="22"></span>
+                <span class="orb orb-3"><img src="./assets/tech-logos/react.svg" alt="" width="22" height="22"></span>
+                <span class="orb orb-4"><img src="./assets/tech-logos/python.svg" alt="" width="22" height="22"></span>
+            </div>
+        </div>
+        <a class="scroll-cue" href="#about" aria-label="Scroll to About"><span>Scroll</span><i aria-hidden="true"></i></a>
     </section>
 
     <!-- ===== ABOUT ===== -->
     <section id="about" class="reveal">
         <p class="section__text__p1">Get To Know More</p>
-        <h1 class="title">About Me</h1>
+        <h2 class="title">About Me</h2>
         <div class="about-grid">
             <figure class="about-photo">
-                <img src="./assets/about-pic2.jpg" class="about-pic" alt="Ashish Yadav" width="640" height="800" loading="lazy">
+                <img src="./assets/about-pic2.jpg" class="about-pic" alt="Ashish Yadav" width="640" height="768" loading="lazy" decoding="async">
             </figure>
             <div class="about-body">
                 <p class="about-lead">Full-stack engineer with 5+ years building production web apps and, lately, GenAI-native systems: agentic workflows, RAG pipelines and LLM products on Claude, OpenAI and Gemini. I move across the stack, from React and FastAPI to multi-agent designs with MCP-style tools, and I work directly with enterprise clients to take AI-first MVPs from prototype to demo.</p>
-                <h2 class="about-sub">How I work</h2>
+                <h3 class="about-sub">How I work</h3>
                 <ul class="principles">
                     <li class="principle">
                         <span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/></svg></span>
                         <div>
-                            <h3>Architecture before code</h3>
+                            <h4>Architecture before code</h4>
                             <p>Process flow and design choices get thought through before development gets deep.</p>
                         </div>
                     </li>
                     <li class="principle">
                         <span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span>
                         <div>
-                            <h3>Security from day one</h3>
+                            <h4>Security from day one</h4>
                             <p>Security is part of the first architecture conversation, never a fix added later.</p>
                         </div>
                     </li>
                     <li class="principle">
                         <span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M3 7h18"/><path d="M7 21l-4-4 4-4"/><path d="M21 17H3"/></svg></span>
                         <div>
-                            <h3>Front-to-back ownership</h3>
+                            <h4>Front-to-back ownership</h4>
                             <p>Backend logic, APIs and a clean, usable interface, all owned end to end.</p>
                         </div>
                     </li>
@@ -149,7 +196,7 @@
     <!-- ===== CAREER JOURNEY / THE TRAIL ===== -->
     <section id="journey" class="reveal">
         <p class="section__text__p1">How I Got Here</p>
-        <h1 class="title">Career Journey</h1>
+        <h2 class="title">Career Journey</h2>
 
         <div class="trail-map" id="trail-map" role="navigation" aria-label="Career timeline"></div>
 
@@ -182,10 +229,10 @@
                 </li>
 
                 <li class="stop stop--role" id="stop-2" data-state="past" data-map="2021 Metacube" data-type="role">
-                    <span class="stop-dot" aria-hidden="true"><img src="./assets/logos/metacube_logo.jpeg" alt=""></span>
+                    <span class="stop-dot" aria-hidden="true"><img decoding="async" loading="lazy" width="200" height="200" src="./assets/logos/metacube_logo.jpeg" alt=""></span>
                     <div class="stop-card">
                         <div class="role-head">
-                            <span class="logo-tile"><img src="./assets/logos/metacube_logo.jpeg" alt="Metacube Software logo"></span>
+                            <span class="logo-tile"><img decoding="async" loading="lazy" width="200" height="200" src="./assets/logos/metacube_logo.jpeg" alt=""></span>
                             <div class="role-id">
                                 <h3 class="stop-title">Metacube Software</h3>
                                 <p class="role-line">Software Engineer · Full-stack → GenAI</p>
@@ -209,12 +256,12 @@
                             <li><b>2025</b><span>GPT-4.5 &amp; Gemini services</span></li>
                         </ol>
                         <div class="stop-tech" aria-label="Tech used">
-                            <img src="./assets/tech-logos/react.svg" alt="React" title="React">
-                            <img src="./assets/tech-logos/fastapi.svg" alt="FastAPI" title="FastAPI">
-                            <img src="./assets/tech-logos/postgresql.svg" alt="PostgreSQL" title="PostgreSQL">
-                            <img src="./assets/tech-logos/graphql.svg" alt="GraphQL" title="GraphQL">
-                            <img src="./assets/tech-logos/openai.svg" alt="OpenAI" title="OpenAI" class="dark-invert">
-                            <img src="./assets/tech-logos/jenkins.svg" alt="Jenkins" title="Jenkins">
+                            <img decoding="async" loading="lazy" width="20" height="20" src="./assets/tech-logos/react.svg" alt="React" title="React">
+                            <img decoding="async" loading="lazy" width="20" height="20" src="./assets/tech-logos/fastapi.svg" alt="FastAPI" title="FastAPI">
+                            <img decoding="async" loading="lazy" width="20" height="20" src="./assets/tech-logos/postgresql.svg" alt="PostgreSQL" title="PostgreSQL">
+                            <img decoding="async" loading="lazy" width="20" height="20" src="./assets/tech-logos/graphql.svg" alt="GraphQL" title="GraphQL">
+                            <img decoding="async" loading="lazy" width="20" height="20" src="./assets/tech-logos/openai.svg" alt="OpenAI" title="OpenAI" class="dark-invert">
+                            <img decoding="async" loading="lazy" width="20" height="20" src="./assets/tech-logos/jenkins.svg" alt="Jenkins" title="Jenkins">
                         </div>
                         <button class="stop-toggle" type="button" aria-expanded="false" aria-controls="stop-2-more"><span>Details</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
                         <div class="stop-more" id="stop-2-more" hidden>
@@ -234,7 +281,7 @@
                     <div class="stop-card">
                         <div class="award-row">
                             <span class="stop-badge stop-badge--cert" aria-hidden="true">
-                                <img src="./assets/tech-logos/azure.svg" alt="" width="26" height="26">
+                                <img decoding="async" loading="lazy" src="./assets/tech-logos/azure.svg" alt="" width="26" height="26">
                                 <svg class="badge-check" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="m7.5 12.5 3 3 6-6.5" fill="none" stroke="var(--card-bg)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                             </span>
                             <div class="award-body">
@@ -248,10 +295,10 @@
                 </li>
 
                 <li class="stop stop--role" id="stop-4" data-state="past" data-map="2025 Pratham" data-type="role">
-                    <span class="stop-dot" aria-hidden="true"><img src="./assets/logos/pratham_software_inc_logo.jpeg" alt=""></span>
+                    <span class="stop-dot" aria-hidden="true"><img decoding="async" loading="lazy" width="200" height="200" src="./assets/logos/pratham_software_inc_logo.jpeg" alt=""></span>
                     <div class="stop-card">
                         <div class="role-head">
-                            <span class="logo-tile"><img src="./assets/logos/pratham_software_inc_logo.jpeg" alt="Pratham Software logo"></span>
+                            <span class="logo-tile"><img decoding="async" loading="lazy" width="200" height="200" src="./assets/logos/pratham_software_inc_logo.jpeg" alt=""></span>
                             <div class="role-id">
                                 <h3 class="stop-title">Pratham Software</h3>
                                 <p class="role-line">Software Engineer · Agentic GenAI</p>
@@ -270,12 +317,12 @@
                             <li>Multi-agent workflows with MCP-style tools that draft client-ready reports.</li>
                         </ul>
                         <div class="stop-tech" aria-label="Tech used">
-                            <img src="./assets/tech-logos/claude.svg" alt="Claude" title="Claude">
-                            <img src="./assets/tech-logos/openai.svg" alt="OpenAI" title="OpenAI" class="dark-invert">
-                            <img src="./assets/tech-logos/mcp.svg" alt="MCP" title="MCP">
-                            <img src="./assets/tech-logos/python.svg" alt="Python" title="Python">
-                            <img src="./assets/tech-logos/fastapi.svg" alt="FastAPI" title="FastAPI">
-                            <img src="./assets/tech-logos/react.svg" alt="React" title="React">
+                            <img decoding="async" loading="lazy" width="20" height="20" src="./assets/tech-logos/claude.svg" alt="Claude" title="Claude">
+                            <img decoding="async" loading="lazy" width="20" height="20" src="./assets/tech-logos/openai.svg" alt="OpenAI" title="OpenAI" class="dark-invert">
+                            <img decoding="async" loading="lazy" width="20" height="20" src="./assets/tech-logos/mcp.svg" alt="MCP" title="MCP">
+                            <img decoding="async" loading="lazy" width="20" height="20" src="./assets/tech-logos/python.svg" alt="Python" title="Python">
+                            <img decoding="async" loading="lazy" width="20" height="20" src="./assets/tech-logos/fastapi.svg" alt="FastAPI" title="FastAPI">
+                            <img decoding="async" loading="lazy" width="20" height="20" src="./assets/tech-logos/react.svg" alt="React" title="React">
                         </div>
                         <button class="stop-toggle" type="button" aria-expanded="false" aria-controls="stop-4-more"><span>Details</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
                         <div class="stop-more" id="stop-4-more" hidden>
@@ -321,19 +368,19 @@
     <!-- ===== WORK EXPERIENCE ===== -->
     <section id="experience" class="reveal">
         <p class="section__text__p1">Where I've Worked</p>
-        <h1 class="title">Experience</h1>
+        <h2 class="title">Experience</h2>
         <div class="xp-list">
 
             <!-- Pratham -->
             <article class="xp-card">
-                <header class="xp-head">
-                    <span class="logo-tile"><img src="./assets/logos/pratham_software_inc_logo.jpeg" alt="Pratham Software logo"></span>
+                <div class="xp-head">
+                    <span class="logo-tile"><img decoding="async" loading="lazy" width="200" height="200" src="./assets/logos/pratham_software_inc_logo.jpeg" alt=""></span>
                     <div class="xp-id">
-                        <h2 class="xp-company">Pratham Software Pvt. Ltd.</h2>
+                        <h3 class="xp-company">Pratham Software Pvt. Ltd.</h3>
                         <p class="xp-role">Software Engineer · Agentic GenAI</p>
                     </div>
                     <p class="xp-date" data-nc="exp-pratham-date">Oct 2025 — Present</p>
-                </header>
+                </div>
                 <p class="xp-sum">Agentic apps on Claude and OpenAI for a top-3 management consulting firm, from concept to client demo.</p>
                 <div class="stop-metrics xp-metrics">
                     <div class="metric"><span class="metric-num">−35%</span><span class="metric-label">analyst research time</span></div>
@@ -360,14 +407,14 @@
 
             <!-- Metacube -->
             <article class="xp-card">
-                <header class="xp-head">
-                    <span class="logo-tile"><img src="./assets/logos/metacube_logo.jpeg" alt="Metacube Software logo"></span>
+                <div class="xp-head">
+                    <span class="logo-tile"><img decoding="async" loading="lazy" width="200" height="200" src="./assets/logos/metacube_logo.jpeg" alt=""></span>
                     <div class="xp-id">
-                        <h2 class="xp-company">Metacube Software Pvt. Ltd.</h2>
+                        <h3 class="xp-company">Metacube Software Pvt. Ltd.</h3>
                         <p class="xp-role">Software Engineer · Full-stack to GenAI</p>
                     </div>
                     <p class="xp-date">Oct 2021 — Sep 2025</p>
-                </header>
+                </div>
                 <p class="xp-sum">Full-stack work that grew into GenAI: a streaming multi-agent RAG UI, LLM microservices and CI/CD.</p>
                 <div class="stop-metrics xp-metrics">
                     <div class="metric"><span class="metric-num">−80%</span><span class="metric-label">response time</span></div>
@@ -396,7 +443,7 @@
     <!-- ===== PROJECTS ===== -->
     <section id="projects" class="reveal">
         <p class="section__text__p1">Things I've Built</p>
-        <h1 class="title">Projects</h1>
+        <h2 class="title">Projects</h2>
         <div class="projects-grid" id="projects-track" role="list" aria-label="Projects">
 
             <article id="proj-mcp" class="project-card project-card--feature" role="listitem">
@@ -455,7 +502,7 @@
     <!-- ===== TECH STACK ===== -->
     <section id="skills" class="reveal">
         <p class="section__text__p1">Explore My</p>
-        <h1 class="title">Tech Stack</h1>
+        <h2 class="title">Tech Stack</h2>
         <div class="stack-filter" id="stack-filter" role="group" aria-label="Filter tech stack by area">
             <button type="button" class="stack-tab" data-filter="all" aria-pressed="true">All <span class="stack-count">28</span></button>
             <button type="button" class="stack-tab" data-filter="ai" aria-pressed="false">AI <span class="stack-count">7</span></button>
@@ -468,37 +515,37 @@
             <div class="stack-core-wrap" id="stack-core-wrap">
                 <p class="stack-label">Core</p>
                 <ul class="stack-core" aria-label="Core AI tools">
-                <li class="tech-item tech-item--core" data-cat="ai" data-tech="claude"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/claude.svg" alt="" class="tech-logo"><span class="tech-label">Claude</span></button></li>
-                <li class="tech-item tech-item--core" data-cat="ai" data-tech="openai"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/openai.svg" alt="" class="tech-logo dark-invert"><span class="tech-label">OpenAI GPT</span></button></li>
-                <li class="tech-item tech-item--core" data-cat="ai" data-tech="mcp"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/mcp.svg" alt="" class="tech-logo"><span class="tech-label">MCP &amp; Agents</span></button></li>
+                <li class="tech-item tech-item--core" data-cat="ai" data-tech="claude"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/claude.svg" alt="" class="tech-logo"><span class="tech-label">Claude</span></button></li>
+                <li class="tech-item tech-item--core" data-cat="ai" data-tech="openai"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/openai.svg" alt="" class="tech-logo dark-invert"><span class="tech-label">OpenAI GPT</span></button></li>
+                <li class="tech-item tech-item--core" data-cat="ai" data-tech="mcp"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/mcp.svg" alt="" class="tech-logo"><span class="tech-label">MCP &amp; Agents</span></button></li>
                 <li class="tech-item tech-item--core" data-cat="ai" data-tech="rag"><button class="tech-btn" type="button" aria-describedby="tech-pop"><svg class="tech-logo" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span class="tech-label">RAG Pipelines</span></button></li>
                 </ul>
             </div>
             <ul class="stack-grid" id="stack-grid" aria-label="Technologies">
-                <li class="tech-item" data-cat="ai" data-tech="gemini"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/gemini.svg" alt="" class="tech-logo"><span class="tech-label">Google Gemini</span></button></li>
-                <li class="tech-item" data-cat="ai" data-tech="langchain"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/langchain.svg" alt="" class="tech-logo dark-invert"><span class="tech-label">LangChain</span></button></li>
+                <li class="tech-item" data-cat="ai" data-tech="gemini"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/gemini.svg" alt="" class="tech-logo"><span class="tech-label">Google Gemini</span></button></li>
+                <li class="tech-item" data-cat="ai" data-tech="langchain"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/langchain.svg" alt="" class="tech-logo dark-invert"><span class="tech-label">LangChain</span></button></li>
                 <li class="tech-item" data-cat="ai" data-tech="vector"><button class="tech-btn" type="button" aria-describedby="tech-pop"><svg class="tech-logo" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg><span class="tech-label">Vector DBs</span></button></li>
-                <li class="tech-item" data-cat="frontend" data-tech="react"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/react.svg" alt="" class="tech-logo"><span class="tech-label">React.js</span></button></li>
-                <li class="tech-item" data-cat="frontend" data-tech="typescript"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/typescript.svg" alt="" class="tech-logo"><span class="tech-label">TypeScript</span></button></li>
-                <li class="tech-item" data-cat="frontend" data-tech="javascript"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/javascript.svg" alt="" class="tech-logo"><span class="tech-label">JavaScript</span></button></li>
-                <li class="tech-item" data-cat="frontend" data-tech="redux"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/redux.svg" alt="" class="tech-logo"><span class="tech-label">Redux</span></button></li>
-                <li class="tech-item" data-cat="frontend" data-tech="mui"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/mui.svg" alt="" class="tech-logo"><span class="tech-label">Material UI</span></button></li>
-                <li class="tech-item" data-cat="frontend" data-tech="html5"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/html5.svg" alt="" class="tech-logo"><span class="tech-label">HTML5</span></button></li>
-                <li class="tech-item" data-cat="frontend" data-tech="css3"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/css3.svg" alt="" class="tech-logo"><span class="tech-label">CSS3</span></button></li>
-                <li class="tech-item" data-cat="backend" data-tech="python"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/python.svg" alt="" class="tech-logo"><span class="tech-label">Python</span></button></li>
-                <li class="tech-item" data-cat="backend" data-tech="fastapi"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/fastapi.svg" alt="" class="tech-logo"><span class="tech-label">FastAPI</span></button></li>
-                <li class="tech-item" data-cat="backend" data-tech="django"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/django.svg" alt="" class="tech-logo dark-invert"><span class="tech-label">Django</span></button></li>
-                <li class="tech-item" data-cat="backend" data-tech="express"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/express.svg" alt="" class="tech-logo dark-invert"><span class="tech-label">Express.js</span></button></li>
-                <li class="tech-item" data-cat="backend" data-tech="postgresql"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/postgresql.svg" alt="" class="tech-logo"><span class="tech-label">PostgreSQL</span></button></li>
-                <li class="tech-item" data-cat="backend" data-tech="mongodb"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/mongodb.svg" alt="" class="tech-logo"><span class="tech-label">MongoDB</span></button></li>
-                <li class="tech-item" data-cat="backend" data-tech="graphql"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/graphql.svg" alt="" class="tech-logo"><span class="tech-label">GraphQL</span></button></li>
-                <li class="tech-item" data-cat="cloud" data-tech="docker"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/docker.svg" alt="" class="tech-logo"><span class="tech-label">Docker</span></button></li>
-                <li class="tech-item" data-cat="cloud" data-tech="kubernetes"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/kubernetes.svg" alt="" class="tech-logo"><span class="tech-label">Kubernetes</span></button></li>
-                <li class="tech-item" data-cat="cloud" data-tech="jenkins"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/jenkins.svg" alt="" class="tech-logo"><span class="tech-label">Jenkins CI/CD</span></button></li>
-                <li class="tech-item" data-cat="cloud" data-tech="aws"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/aws.svg" alt="" class="tech-logo"><span class="tech-label">AWS</span></button></li>
-                <li class="tech-item" data-cat="cloud" data-tech="azure"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/azure.svg" alt="" class="tech-logo"><span class="tech-label">Azure</span></button></li>
-                <li class="tech-item" data-cat="cloud" data-tech="gcp"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/gcp.svg" alt="" class="tech-logo"><span class="tech-label">GCP</span></button></li>
-                <li class="tech-item" data-cat="cloud" data-tech="rabbitmq"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/rabbitmq.svg" alt="" class="tech-logo"><span class="tech-label">RabbitMQ</span></button></li>
+                <li class="tech-item" data-cat="frontend" data-tech="react"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/react.svg" alt="" class="tech-logo"><span class="tech-label">React.js</span></button></li>
+                <li class="tech-item" data-cat="frontend" data-tech="typescript"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/typescript.svg" alt="" class="tech-logo"><span class="tech-label">TypeScript</span></button></li>
+                <li class="tech-item" data-cat="frontend" data-tech="javascript"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/javascript.svg" alt="" class="tech-logo"><span class="tech-label">JavaScript</span></button></li>
+                <li class="tech-item" data-cat="frontend" data-tech="redux"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/redux.svg" alt="" class="tech-logo"><span class="tech-label">Redux</span></button></li>
+                <li class="tech-item" data-cat="frontend" data-tech="mui"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/mui.svg" alt="" class="tech-logo"><span class="tech-label">Material UI</span></button></li>
+                <li class="tech-item" data-cat="frontend" data-tech="html5"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/html5.svg" alt="" class="tech-logo"><span class="tech-label">HTML5</span></button></li>
+                <li class="tech-item" data-cat="frontend" data-tech="css3"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/css3.svg" alt="" class="tech-logo"><span class="tech-label">CSS3</span></button></li>
+                <li class="tech-item" data-cat="backend" data-tech="python"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/python.svg" alt="" class="tech-logo"><span class="tech-label">Python</span></button></li>
+                <li class="tech-item" data-cat="backend" data-tech="fastapi"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/fastapi.svg" alt="" class="tech-logo"><span class="tech-label">FastAPI</span></button></li>
+                <li class="tech-item" data-cat="backend" data-tech="django"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/django.svg" alt="" class="tech-logo dark-invert"><span class="tech-label">Django</span></button></li>
+                <li class="tech-item" data-cat="backend" data-tech="express"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/express.svg" alt="" class="tech-logo dark-invert"><span class="tech-label">Express.js</span></button></li>
+                <li class="tech-item" data-cat="backend" data-tech="postgresql"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/postgresql.svg" alt="" class="tech-logo"><span class="tech-label">PostgreSQL</span></button></li>
+                <li class="tech-item" data-cat="backend" data-tech="mongodb"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/mongodb.svg" alt="" class="tech-logo"><span class="tech-label">MongoDB</span></button></li>
+                <li class="tech-item" data-cat="backend" data-tech="graphql"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/graphql.svg" alt="" class="tech-logo"><span class="tech-label">GraphQL</span></button></li>
+                <li class="tech-item" data-cat="cloud" data-tech="docker"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/docker.svg" alt="" class="tech-logo"><span class="tech-label">Docker</span></button></li>
+                <li class="tech-item" data-cat="cloud" data-tech="kubernetes"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/kubernetes.svg" alt="" class="tech-logo"><span class="tech-label">Kubernetes</span></button></li>
+                <li class="tech-item" data-cat="cloud" data-tech="jenkins"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/jenkins.svg" alt="" class="tech-logo"><span class="tech-label">Jenkins CI/CD</span></button></li>
+                <li class="tech-item" data-cat="cloud" data-tech="aws"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/aws.svg" alt="" class="tech-logo"><span class="tech-label">AWS</span></button></li>
+                <li class="tech-item" data-cat="cloud" data-tech="azure"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/azure.svg" alt="" class="tech-logo"><span class="tech-label">Azure</span></button></li>
+                <li class="tech-item" data-cat="cloud" data-tech="gcp"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/gcp.svg" alt="" class="tech-logo"><span class="tech-label">GCP</span></button></li>
+                <li class="tech-item" data-cat="cloud" data-tech="rabbitmq"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img decoding="async" loading="lazy" width="32" height="32" src="./assets/tech-logos/rabbitmq.svg" alt="" class="tech-logo"><span class="tech-label">RabbitMQ</span></button></li>
             </ul>
         </div>
     </section>
@@ -506,12 +553,12 @@
     <!-- ===== LINKEDIN RECOMMENDATIONS ===== -->
     <section id="recommendations" class="reveal">
         <p class="section__text__p1">What People Say</p>
-        <h1 class="title">LinkedIn Recommendations</h1>
+        <h2 class="title">LinkedIn Recommendations</h2>
         <p class="rec-summary" id="rec-summary">4 recommendations · 3 managed Ashish directly</p>
         <div class="rec-wall" id="rec-wall" role="list" aria-label="LinkedIn recommendations">
             <article class="rec-card" role="listitem" data-rel="managed">
                 <div class="li-rec-header">
-                    <img src="./assets/rec-avatars/shahnaz.png" alt="Shahnaz Chaudhary" class="li-avatar" width="48" height="48" loading="lazy">
+                    <img decoding="async" src="./assets/rec-avatars/shahnaz.png" alt="Shahnaz Chaudhary" class="li-avatar" width="48" height="48" loading="lazy">
                     <div class="li-person">
                         <div class="li-name-row"><span class="li-name">Shahnaz Chaudhary</span><span class="li-verified" title="Verified LinkedIn Profile">✓</span><span class="li-degree">· 1st</span></div>
                         <p class="li-headline">AI Delivery Senior Manager | Boston Consulting Group (BCGX)</p>
@@ -530,7 +577,7 @@
             </article>
             <article class="rec-card" role="listitem" data-rel="managed">
                 <div class="li-rec-header">
-                    <img src="./assets/rec-avatars/aurelije.png" alt="Aurelije Zovko" class="li-avatar" width="48" height="48" loading="lazy">
+                    <img decoding="async" src="./assets/rec-avatars/aurelije.png" alt="Aurelije Zovko" class="li-avatar" width="48" height="48" loading="lazy">
                     <div class="li-person">
                         <div class="li-name-row"><span class="li-name">Aurelije Zovko</span><span class="li-degree">· 1st</span></div>
                         <p class="li-headline">CTO | Chief Architect | Knowledge Graphs | GenAI | ML | IPA Automation</p>
@@ -548,7 +595,7 @@
             </article>
             <article class="rec-card" role="listitem" data-rel="managed">
                 <div class="li-rec-header">
-                    <img src="./assets/rec-avatars/manish.png" alt="Manish Jain" class="li-avatar" width="48" height="48" loading="lazy">
+                    <img decoding="async" src="./assets/rec-avatars/manish.png" alt="Manish Jain" class="li-avatar" width="48" height="48" loading="lazy">
                     <div class="li-person">
                         <div class="li-name-row"><span class="li-name">Manish Jain</span><span class="li-degree">· 1st</span></div>
                         <p class="li-headline">Delivery Manager at MetaCube Software</p>
@@ -567,7 +614,7 @@
             </article>
             <article class="rec-card" role="listitem" data-rel="senior">
                 <div class="li-rec-header">
-                    <img src="./assets/rec-avatars/pulkit.png" alt="Pulkit Mehta" class="li-avatar" width="48" height="48" loading="lazy">
+                    <img decoding="async" src="./assets/rec-avatars/pulkit.png" alt="Pulkit Mehta" class="li-avatar" width="48" height="48" loading="lazy">
                     <div class="li-person">
                         <div class="li-name-row"><span class="li-name">Pulkit Mehta</span><span class="li-verified" title="Verified LinkedIn Profile">✓</span><span class="li-degree">· 1st</span></div>
                         <p class="li-headline">Senior ML Engineer | ML, NLP &amp; Generative AI Specialist | LLM &amp; RAG Expert | Ex-Oracle</p>
@@ -596,7 +643,7 @@
         <p class="section__text__p1">Get in Touch</p>
         <div class="contact-head">
             <p class="status-pill" data-nc="contact-pill"><span class="status-dot" aria-hidden="true"></span><span data-nc="contact-pill-text">Serving notice · next chapter starts 7 Dec</span></p>
-            <h1 class="title contact-title">Let's build something <span class="accent">useful</span>.</h1>
+            <h2 class="title contact-title">Let's build something <span class="accent">useful</span>.</h2>
         </div>
         <div class="contact-grid">
             <form class="compose" id="compose" novalidate>
@@ -630,7 +677,7 @@
                     <svg class="channel-mark" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
                     <span class="channel-body li-preview">
                         <span class="li-preview-row">
-                            <img class="li-preview-avatar" src="./assets/profile-pic.jpg" alt="" width="44" height="44" loading="lazy">
+                            <img decoding="async" class="li-preview-avatar" src="./assets/profile-pic.jpg" alt="" width="44" height="44" loading="lazy">
                             <span class="li-preview-text">
                                 <span class="channel-title">Ashish Yadav</span>
                                 <span class="channel-sub">Full-stack engineer building agentic AI products for enterprise teams</span>
@@ -668,11 +715,11 @@
 
         <div class="writing">
             <span id="posts"></span>
-            <h2 class="writing-label">Writing</h2>
+            <h3 class="writing-label">Writing</h3>
             <div class="writing-grid">
                 <article class="post-card" data-embed="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7497647211963621377">
                     <p class="post-meta"><svg class="li-mark" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>LinkedIn &middot; Post 01</p>
-                    <h3 class="post-title">A post from my feed</h3>
+                    <h4 class="post-title">A post from my feed</h4>
                     <div class="post-actions">
                         <button class="btn btn-color-2 post-load" type="button">Load post</button>
                         <a class="post-open" href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7497647211963621377/" target="_blank" rel="noopener">Open on LinkedIn</a>
@@ -680,7 +727,7 @@
                 </article>
                 <article class="post-card" data-embed="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7419021064090906624?collapsed=1">
                     <p class="post-meta"><svg class="li-mark" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>LinkedIn &middot; Post 02</p>
-                    <h3 class="post-title">A post from my feed</h3>
+                    <h4 class="post-title">A post from my feed</h4>
                     <div class="post-actions">
                         <button class="btn btn-color-2 post-load" type="button">Load post</button>
                         <a class="post-open" href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7419021064090906624/" target="_blank" rel="noopener">Open on LinkedIn</a>
@@ -689,6 +736,8 @@
             </div>
         </div>
     </section>
+
+    </main>
 
     <!-- ===== FOOTER ===== -->
     <footer>

@@ -100,7 +100,7 @@ const THEME_KEY = 'ay-theme';
 
 function applyTheme(theme) {
     const isDark = theme === 'dark';
-    document.body.classList.toggle('dark', isDark);
+    document.documentElement.classList.toggle('dark', isDark);
     const desktopBtn = document.getElementById('theme-toggle');
     const mobileBtn  = document.getElementById('theme-toggle-mobile');
     if (desktopBtn) desktopBtn.setAttribute('aria-checked', String(isDark));
@@ -108,7 +108,7 @@ function applyTheme(theme) {
 }
 
 function toggleTheme() {
-    const isDark = document.body.classList.contains('dark');
+    const isDark = document.documentElement.classList.contains('dark');
     const next = isDark ? 'light' : 'dark';
     localStorage.setItem(THEME_KEY, next);
     applyTheme(next);
@@ -135,11 +135,13 @@ if (mobileToggle) mobileToggle.addEventListener('click', toggleTheme);
 (function initReveal() {
     const els = document.querySelectorAll('.reveal');
     if (!els.length) return;
+    let left = els.length;
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(e => {
             if (e.isIntersecting) {
                 e.target.classList.add('visible');
                 observer.unobserve(e.target);
+                if (--left <= 0) observer.disconnect();
             }
         });
     }, { threshold: 0.08 });
@@ -535,7 +537,8 @@ const navSpy = {
         bar.style.width = pct.toFixed(1) + '%';
     }
 
-    window.addEventListener('scroll', updateProgress, { passive: true });
+    let progRaf = 0;
+    window.addEventListener('scroll', () => { if (!progRaf) progRaf = requestAnimationFrame(() => { progRaf = 0; updateProgress(); }); }, { passive: true });
     updateProgress();
 })();
 
@@ -801,13 +804,19 @@ const navSpy = {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
     const hover = window.matchMedia('(hover: hover)');
 
+    let fxRaf = 0, fxEv = null;
     ol.addEventListener('pointermove', (e) => {
         if (!hover.matches || reduced.matches || e.pointerType === 'touch') return;
         const card = e.target.closest && e.target.closest('.stop-card');
         if (!card) return;
-        const r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', (e.clientX - r.left).toFixed(0) + 'px');
-        card.style.setProperty('--my', (e.clientY - r.top).toFixed(0) + 'px');
+        fxEv = { card, x: e.clientX, y: e.clientY };
+        if (fxRaf) return;
+        fxRaf = requestAnimationFrame(() => {
+            fxRaf = 0;
+            const r = fxEv.card.getBoundingClientRect();
+            fxEv.card.style.setProperty('--mx', (fxEv.x - r.left).toFixed(0) + 'px');
+            fxEv.card.style.setProperty('--my', (fxEv.y - r.top).toFixed(0) + 'px');
+        });
     }, { passive: true });
 
     // Final numbers live in the HTML; JS only replays them from 0 once, when allowed.
@@ -818,11 +827,14 @@ const navSpy = {
         return (el.dataset.prefix || '') + v.toFixed(dec) + (el.dataset.suffix || '');
     };
     nums.forEach(el => { el.textContent = fmt(el, 0); });
+    const cards = new Set(nums.map(n => n.closest('.stop-card')).filter(Boolean));
+    let cardsLeft = cards.size;
     const io = new IntersectionObserver((entries) => {
         entries.forEach((en) => {
             if (!en.isIntersecting) return;
             const card = en.target;
             io.unobserve(card);
+            if (--cardsLeft <= 0) io.disconnect();
             card.querySelectorAll('.metric-num[data-count]').forEach((el) => {
                 const to = parseFloat(el.dataset.count), t0 = performance.now(), dur = 900;
                 (function tick(now) {
@@ -833,7 +845,7 @@ const navSpy = {
             });
         });
     }, { threshold: 0.35 });
-    new Set(nums.map(n => n.closest('.stop-card'))).forEach(c => c && io.observe(c));
+    cards.forEach(c => io.observe(c));
 })();
 
 
@@ -1042,7 +1054,6 @@ const navSpy = {
 
     // ----- Open / close, focus, scroll lock -----
     let lastActivity = Date.now();
-    let opener = null;
     function isOpen() { return win.classList.contains('open'); }
 
     function openChat() {
@@ -1147,6 +1158,61 @@ const navSpy = {
 
 // ===== SECTION POLISH (P4) =====
 
+// Hero: entrance, rotating role phrase, scroll cue
+(function initHero() {
+    const hero = document.getElementById('profile');
+    const rotor = document.getElementById('hero-rotor');
+    if (!hero) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    // Entrance (once). The class is added by JS so content is never hidden if JS fails.
+    if (!reduce.matches) {
+        hero.querySelectorAll('[data-hero-item]').forEach((el, i) => el.style.setProperty('--i', i));
+        hero.classList.add('hero-anim');
+        requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add('hero-in')));
+        setTimeout(() => hero.classList.remove('hero-anim', 'hero-in'), 2600);
+    }
+
+    // Rotating phrase
+    if (rotor) {
+        const PHRASES = ['agentic AI products', 'RAG pipelines', 'MCP integrations', 'full-stack web apps'];
+        const sizer = rotor.querySelector('.hero-rotor-sizer');
+        const role = rotor.closest('.hero-role');
+        let idx = 0, timer = null, paused = false;
+        const measure = (text) => { sizer.textContent = text; return sizer.getBoundingClientRect().width; };
+        const fit = () => { rotor.style.width = Math.ceil(measure(PHRASES[idx])) + 'px'; };
+        fit();
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { rotor.style.transition = 'none'; fit(); void rotor.offsetWidth; rotor.style.transition = ''; });
+        window.addEventListener('resize', fit);
+
+        const step = () => {
+            const old = rotor.querySelector('.hero-rotor-word:not(.is-out)');
+            idx = (idx + 1) % PHRASES.length;
+            const next = document.createElement('span');
+            next.className = 'hero-rotor-word accent is-in';
+            next.textContent = PHRASES[idx];
+            old.classList.add('is-out');
+            rotor.appendChild(next);
+            rotor.style.width = Math.ceil(measure(PHRASES[idx])) + 'px';
+            setTimeout(() => { old.remove(); next.classList.remove('is-in'); }, 520);
+        };
+        const stop = () => { clearInterval(timer); timer = null; };
+        const start = () => { if (!timer && !paused && !document.hidden && !reduce.matches) timer = setInterval(step, 2600); };
+        const setPaused = (v) => { paused = v; v ? stop() : start(); };
+        role.addEventListener('mouseenter', () => setPaused(true));
+        role.addEventListener('mouseleave', () => setPaused(false));
+        hero.addEventListener('focusin', (e) => { if (role.contains(e.target)) setPaused(true); });
+        hero.addEventListener('focusout', () => setPaused(false));
+        document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+        reduce.addEventListener && reduce.addEventListener('change', () => (reduce.matches ? stop() : start()));
+        start();
+    }
+
+    // Scroll cue
+    const cue = hero.querySelector('.scroll-cue');
+    if (cue) cue.addEventListener('click', (e) => { e.preventDefault(); scrollToSection('about'); });
+})();
+
 // Hero + contact: copy email, back to top
 (function initQuickActions() {
     ['hero-copy-email', 'contact-copy-email', 'channel-copy-email'].forEach((id) => {
@@ -1160,13 +1226,19 @@ const navSpy = {
 // Cursor spotlight on cards (pointer devices only)
 (function initCardFx() {
     const hover = window.matchMedia('(hover: hover)');
+    let raf = 0, ev = null;
     document.addEventListener('pointermove', (e) => {
         if (!hover.matches || prefersReducedMotion() || e.pointerType === 'touch') return;
         const card = e.target.closest && e.target.closest('.xp-card, .project-card, .rec-card');
         if (!card) return;
-        const r = card.getBoundingClientRect();
-        card.style.setProperty('--mx', (e.clientX - r.left).toFixed(0) + 'px');
-        card.style.setProperty('--my', (e.clientY - r.top).toFixed(0) + 'px');
+        ev = { card, x: e.clientX, y: e.clientY };
+        if (raf) return;
+        raf = requestAnimationFrame(() => {
+            raf = 0;
+            const r = ev.card.getBoundingClientRect();
+            ev.card.style.setProperty('--mx', (ev.x - r.left).toFixed(0) + 'px');
+            ev.card.style.setProperty('--my', (ev.y - r.top).toFixed(0) + 'px');
+        });
     }, { passive: true });
 })();
 
@@ -1510,7 +1582,7 @@ function renderNextChapter() {
     const hasCo = !!n.company;
     const $ = (sel) => document.querySelector(sel);
     const dot = '<span class="stop-dot" aria-hidden="true"></span>';
-    const logo = n.logo ? `<img class="stop-logo" src="${esc(n.logo)}" alt="${esc(n.company)} logo">` : '';
+    const logo = n.logo ? `<img class="stop-logo" src="${esc(n.logo)}" alt="" width="28" height="28" loading="lazy" decoding="async">` : '';
 
     // Hero pill
     const pillText = joined ? `Now at ${n.company}`
