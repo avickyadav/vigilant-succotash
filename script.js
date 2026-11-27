@@ -1629,3 +1629,25 @@ function renderNextChapter() {
 // Handy for testing: window.__setNextChapter({ status: 'joined', company: 'Acme', role: 'Engineer', start: '7 Dec 2026' })
 window.__setNextChapter = (obj) => { Object.assign(NEXT_CHAPTER, obj); renderNextChapter(); };
 renderNextChapter();
+
+// ===== VISITOR COUNT — Netlify Function + Blobs (/api/visits). Each browser counts once;
+// hidden entirely if the endpoint is missing (local python server) or fails. =====
+(function initVisitCount() {
+    const el = document.getElementById('visit-count');
+    const out = el && el.querySelector('[data-visits]');
+    if (!el || !out) return;
+    const KEY = 'ay-visited';
+    let seen = false;
+    try { seen = localStorage.getItem(KEY) === '1'; } catch (e) { seen = true; }
+    fetch('/api/visits', { method: seen ? 'GET' : 'POST', cache: 'no-store' })
+        .then(r => (r.ok ? r.json() : Promise.reject(r.status)))
+        .then(d => {
+            const n = Number(d && d.count);
+            if (!Number.isFinite(n) || n < 1) return;
+            if (!seen) { try { localStorage.setItem(KEY, '1'); } catch (e) {} }
+            const num = n.toLocaleString('en-IN');
+            out.textContent = seen ? num + (n === 1 ? ' visitor' : ' visitors') + ' so far' : "You're visitor #" + num;
+            el.hidden = false;
+        })
+        .catch(() => {});
+})();

@@ -1,11 +1,13 @@
 {
-  "name": "my-web-app",
+  "name": "ashish-yadav-portfolio",
   "version": "1.0.0",
-  "description": "A simple static web app hosted on Azure.",
-  "main": "index.html",
+  "private": true,
+  "description": "Zero-build static portfolio. The only dependency is for the Netlify visitor-counter function.",
+  "type": "module",
   "scripts": {
     "start": "echo 'Nothing to build, just serving static files.'"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "@netlify/blobs": "^11.1.12"
+  }
 }
