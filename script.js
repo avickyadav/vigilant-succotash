@@ -5,6 +5,96 @@
 // Next-chapter config: flip status/company/role to update Piko (and later the Journey/hero).
 const NEXT_CHAPTER = { status: 'notice', company: '', role: '', start: '7 Dec 2026', logo: '' };
 
+// ===== SECTIONS — single source for the rail, tab bar and command palette =====
+// `tab`: label if this section has its own mobile tab; `tabOf`: which tab it highlights otherwise.
+const SECTIONS = [
+    { id: 'profile',         label: 'Home',            short: 'Home',     icon: 'home',      tab: 'Home' },
+    { id: 'about',           label: 'About',           short: 'About',    icon: 'user',      tabOf: 'profile' },
+    { id: 'journey',         label: 'Journey',         short: 'Journey',  icon: 'route',     tab: 'Journey' },
+    { id: 'experience',      label: 'Experience',      short: 'Work',     icon: 'briefcase', tab: 'Work' },
+    { id: 'projects',        label: 'Projects',        short: 'Projects', icon: 'folder',    tabOf: 'experience' },
+    { id: 'skills',          label: 'Tech Stack',      short: 'Stack',    icon: 'layers',    tabOf: 'experience' },
+    { id: 'recommendations', label: 'Recommendations', short: 'Reviews',  icon: 'quote',     tab: 'Reviews' },
+    { id: 'contact',         label: 'Contact',         short: 'Contact',  icon: 'mail',      tab: 'Contact' }
+];
+
+const ICONS = {
+    home: '<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>',
+    user: '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/>',
+    route: '<circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h7a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h7"/>',
+    briefcase: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>',
+    folder: '<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+    layers: '<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>',
+    quote: '<path d="M4 5h16v11H9l-5 4z"/>',
+    mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/>',
+    download: '<path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M5 21h14"/>',
+    copy: '<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/>',
+    link: '<path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/>',
+    theme: '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>',
+    up: '<path d="M12 19V5"/><path d="M5 12l7-7 7 7"/>',
+    sparkle: '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17v4M17 19h4"/>',
+    arrow: '<path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>'
+};
+const icon = (key, size = 20) =>
+    `<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICONS[key] || ''}</svg>`;
+
+const CONTACT_EMAIL = 'ashishvickyadav@gmail.com';
+const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ===== TOAST + clipboard helpers =====
+let _toastTimer = null;
+function showToast(msg) {
+    const el = document.getElementById('toast');
+    if (!el) return;
+    clearTimeout(_toastTimer);
+    el.classList.remove('show');
+    el.textContent = '';
+    // Re-set text on the next frame so repeated identical messages are re-announced
+    requestAnimationFrame(() => {
+        el.textContent = msg;
+        el.classList.add('show');
+        _toastTimer = setTimeout(() => el.classList.remove('show'), 3000);
+    });
+}
+function copyText(text) {
+    return new Promise((resolve) => {
+        const fallback = () => {
+            const ta = document.createElement('textarea');
+            ta.value = text; ta.setAttribute('readonly', '');
+            ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+            document.body.appendChild(ta); ta.select();
+            let ok = false;
+            try { ok = document.execCommand('copy'); } catch (e) { /* ignore */ }
+            ta.remove(); resolve(ok);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(() => resolve(true), fallback);
+        } else fallback();
+    });
+}
+function copyEmail() {
+    return copyText(CONTACT_EMAIL).then(ok => showToast(ok ? 'Email copied' : 'Copy failed. ' + CONTACT_EMAIL));
+}
+function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (id === 'profile') window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+    else el.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' });
+    try { history.replaceState(null, '', '#' + id); } catch (e) { /* ignore */ }
+}
+function focusableIn(root) {
+    return Array.from(root.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'))
+        .filter(el => el.offsetParent !== null || el === document.activeElement);
+}
+function trapTab(e, root) {
+    const f = focusableIn(root);
+    if (!f.length) { e.preventDefault(); return; }
+    const first = f[0], last = f[f.length - 1];
+    if (!root.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+}
+
 // ===== THEME TOGGLE =====
 const THEME_KEY = 'ay-theme';
 
@@ -27,6 +117,8 @@ function toggleTheme() {
 // Desktop toggle button
 const desktopToggle = document.getElementById('theme-toggle');
 if (desktopToggle) desktopToggle.addEventListener('click', toggleTheme);
+const mobileToggle = document.getElementById('theme-toggle-mobile');
+if (mobileToggle) mobileToggle.addEventListener('click', toggleTheme);
 
 // Apply saved / preferred theme on load
 (function initTheme() {
@@ -37,15 +129,6 @@ if (desktopToggle) desktopToggle.addEventListener('click', toggleTheme);
         applyTheme('dark');
     }
 })();
-
-
-// ===== HAMBURGER MENU =====
-function toggleMenu() {
-    const menu = document.querySelector('.menu-links');
-    const icon = document.querySelector('.hamburger-icon');
-    menu.classList.toggle('open');
-    icon.classList.toggle('open');
-}
 
 
 // ===== TYPING ANIMATION =====
@@ -180,23 +263,379 @@ function toggleMenu() {
 })();
 
 
-// ===== ACTIVE NAV HIGHLIGHT ON SCROLL =====
-(function initActiveNav() {
-    const sections = document.querySelectorAll('section[id]');
-    const links    = document.querySelectorAll('#desktop-nav .nav-links a');
-    if (!links.length) return;
+// ===== SCROLLSPY — one IntersectionObserver drives top bar, rail, tab bar and menu sheet =====
+const navSpy = {
+    active: null,
+    subs: [],
+    onChange(fn) { this.subs.push(fn); if (this.active) fn(this.active); },
+    set(id) { if (id && id !== this.active) { this.active = id; this.subs.forEach(fn => fn(id)); } }
+};
+(function initScrollspy() {
+    const els = SECTIONS.map(s => document.getElementById(s.id)).filter(Boolean);
+    if (!els.length) return;
+    let inBand = 'profile';
+    let raf = 0;
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                links.forEach(l => l.style.fontWeight = '');
-                const active = document.querySelector(`#desktop-nav .nav-links a[href="#${e.target.id}"]`);
-                if (active) active.style.fontWeight = '700';
-            }
-        });
+    function resolve() {
+        raf = 0;
+        const doc = document.documentElement;
+        const atBottom = window.innerHeight + window.scrollY >= doc.scrollHeight - 4;
+        navSpy.set(atBottom ? SECTIONS[SECTIONS.length - 1].id : inBand);
+    }
+    const schedule = () => { if (!raf) raf = requestAnimationFrame(resolve); };
+
+    // A thin band across the viewport (40% from top); whichever section crosses it is "current"
+    const io = new IntersectionObserver((entries) => {
+        const hit = entries.filter(e => e.isIntersecting).pop();
+        if (hit) { inBand = hit.target.id; schedule(); }
     }, { rootMargin: '-40% 0px -55% 0px' });
+    els.forEach(el => io.observe(el));
 
-    sections.forEach(s => observer.observe(s));
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    schedule();
+})();
+
+
+// ===== TOP BAR — sliding underline indicator, scrolled hairline, shortcut label =====
+(function initTopbar() {
+    const wrap = document.getElementById('nav-links-wrap');
+    const ind  = document.getElementById('nav-indicator');
+    const links = wrap ? Array.from(wrap.querySelectorAll('a')) : [];
+    const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent || '');
+    document.querySelectorAll('[data-cmdk-key]').forEach(el => { el.textContent = isMac ? '⌘K' : 'Ctrl K'; });
+
+    const cmdk = document.getElementById('cmdk-btn');
+    if (cmdk) cmdk.addEventListener('click', () => window.commandPalette && window.commandPalette.open());
+
+    if (wrap && ind) {
+        let placed = false;
+        const place = (instant) => {
+            const a = links.find(l => l.classList.contains('active'));
+            if (!a || !wrap.offsetWidth) { ind.style.opacity = '0'; return; }
+            const wr = wrap.getBoundingClientRect(), r = a.getBoundingClientRect();
+            if (instant || !placed || prefersReducedMotion()) ind.classList.add('no-anim');
+            ind.style.width = r.width + 'px';
+            ind.style.transform = `translateX(${(r.left - wr.left).toFixed(1)}px)`;
+            ind.style.opacity = '1';
+            if (ind.classList.contains('no-anim')) { void ind.offsetWidth; ind.classList.remove('no-anim'); }
+            placed = true;
+        };
+        navSpy.onChange((id) => {
+            links.forEach(l => {
+                const on = l.getAttribute('href') === '#' + id;
+                l.classList.toggle('active', on);
+                if (on) l.setAttribute('aria-current', 'true'); else l.removeAttribute('aria-current');
+            });
+            place(false);
+        });
+        window.addEventListener('resize', () => place(true));
+        if ('ResizeObserver' in window) new ResizeObserver(() => place(true)).observe(wrap);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => place(true));
+    }
+
+    // Hairline under the bars only after scrolling 8px
+    let raf = 0;
+    const onScroll = () => {
+        if (raf) return;
+        raf = requestAnimationFrame(() => { raf = 0; document.body.classList.toggle('is-scrolled', window.scrollY > 8); });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+})();
+
+
+// ===== SECTION RAIL (>= 1200px) — rendered from SECTIONS =====
+(function initRail() {
+    const ol = document.querySelector('#rail ol');
+    if (!ol) return;
+    ol.innerHTML = SECTIONS.map((s, i) =>
+        `<li><a href="#${s.id}" data-id="${s.id}"><span class="rail-label">${s.label}</span><span class="rail-num">${String(i).padStart(2, '0')}</span><span class="rail-line" aria-hidden="true"></span></a></li>`
+    ).join('');
+    const links = Array.from(ol.querySelectorAll('a'));
+    links.forEach(a => a.setAttribute('aria-label', a.querySelector('.rail-label').textContent));
+    navSpy.onChange((id) => links.forEach(a => {
+        const on = a.dataset.id === id;
+        a.classList.toggle('active', on);
+        if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    }));
+})();
+
+
+// ===== MOBILE TAB BAR (<= 768px) — rendered from SECTIONS, hides on scroll-down =====
+(function initTabbar() {
+    const bar = document.getElementById('tabbar');
+    if (!bar) return;
+    const tabs = SECTIONS.filter(s => s.tab);
+    bar.innerHTML = tabs.map(s =>
+        `<a class="tab" href="#${s.id}" data-id="${s.id}">${icon(s.icon, 20)}<span>${s.tab}</span></a>`
+    ).join('');
+    const links = Array.from(bar.querySelectorAll('a'));
+    navSpy.onChange((id) => {
+        const sec = SECTIONS.find(s => s.id === id);
+        const tabId = sec ? (sec.tab ? sec.id : sec.tabOf) : null;
+        links.forEach(a => {
+            const on = a.dataset.id === tabId;
+            a.classList.toggle('active', on);
+            if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+        });
+    });
+
+    let lastY = window.scrollY, raf = 0, holdUntil = 0;
+    const show = () => bar.classList.remove('is-hidden');
+    function update() {
+        raf = 0;
+        const y = window.scrollY;
+        const dy = y - lastY;
+        if (y < 64 || Date.now() < holdUntil) { show(); lastY = y; return; }
+        if (Math.abs(dy) < 8) return;
+        bar.classList.toggle('is-hidden', dy > 0);
+        lastY = y;
+    }
+    window.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+    // Tapping a tab smooth-scrolls; keep the bar visible during that scroll
+    bar.addEventListener('click', () => { holdUntil = Date.now() + 1000; show(); });
+})();
+
+
+// ===== MOBILE MENU SHEET (replaces the old dropdown hamburger) =====
+(function initMenuSheet() {
+    const btn = document.getElementById('menu-btn');
+    const sheet = document.getElementById('menu-sheet');
+    const closeBtn = document.getElementById('menu-close');
+    if (!btn || !sheet) return;
+    const mq = window.matchMedia('(max-width: 768px)');
+    let lastFocus = null;
+    const isOpen = () => sheet.classList.contains('open');
+
+    function open() {
+        lastFocus = document.activeElement;
+        sheet.classList.add('open');
+        document.body.classList.add('menu-open');
+        btn.setAttribute('aria-expanded', 'true');
+        closeBtn.focus({ preventScroll: true });
+    }
+    function close(restore = true) {
+        if (!isOpen()) return;
+        sheet.classList.remove('open');
+        document.body.classList.remove('menu-open');
+        btn.setAttribute('aria-expanded', 'false');
+        if (restore) (lastFocus && lastFocus.focus ? lastFocus : btn).focus({ preventScroll: true });
+    }
+    btn.addEventListener('click', () => (isOpen() ? close() : open()));
+    closeBtn.addEventListener('click', () => close());
+    sheet.querySelectorAll('.menu-sheet-links a').forEach(a => a.addEventListener('click', () => close(false)));
+    sheet.querySelectorAll('.menu-sheet-actions a').forEach(a => a.addEventListener('click', () => close(false)));
+    const copyBtn = document.getElementById('menu-copy-email');
+    if (copyBtn) copyBtn.addEventListener('click', () => { copyEmail(); close(); });
+    document.addEventListener('keydown', (e) => {
+        if (!isOpen()) return;
+        if (e.key === 'Escape') { e.preventDefault(); close(); }
+        else if (e.key === 'Tab') trapTab(e, sheet);
+    });
+    const links = Array.from(sheet.querySelectorAll('.menu-sheet-links a'));
+    navSpy.onChange((id) => links.forEach(a => {
+        if (a.getAttribute('href') === '#' + id) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    }));
+    if (mq.addEventListener) mq.addEventListener('change', () => { if (!mq.matches) close(false); });
+})();
+
+
+// ===== COMMAND PALETTE — Ctrl/Cmd+K or "/" =====
+(function initPalette() {
+    const root = document.getElementById('palette');
+    const input = document.getElementById('palette-input');
+    const list = document.getElementById('palette-list');
+    const backdrop = document.getElementById('palette-backdrop');
+    if (!root || !input || !list) return;
+
+    const escHtml = (s) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const askPiko = (q) => { if (window.pikoChat) window.pikoChat.ask(q); };
+    const openUrl = (url) => window.open(url, '_blank', 'noopener');
+
+    const NAVIGATE = SECTIONS.map((s, i) => ({
+        group: 'Navigate', label: s.label, kw: s.short + ' ' + s.id, hint: String(i).padStart(2, '0'), icon: s.icon,
+        run: () => scrollToSection(s.id)
+    }));
+    const ACTIONS = [
+        { group: 'Actions', label: 'Download CV', kw: 'resume pdf', icon: 'download', run: () => openUrl('./assets/Ashish_Yadav_CV.pdf') },
+        { group: 'Actions', label: 'Copy email', kw: 'contact mail address', icon: 'copy', hint: CONTACT_EMAIL, run: () => copyEmail() },
+        { group: 'Actions', label: 'Open LinkedIn', kw: 'social profile', icon: 'link', run: () => openUrl('https://linkedin.com/in/avickyadav') },
+        { group: 'Actions', label: 'Open GitHub', kw: 'code repos social', icon: 'link', run: () => openUrl('https://github.com/avickyadav') },
+        { group: 'Actions', label: 'Toggle theme', kw: 'dark light mode', icon: 'theme', run: () => toggleTheme() },
+        { group: 'Actions', label: 'Back to top', kw: 'scroll up home', icon: 'up', run: () => scrollToSection('profile') }
+    ];
+    const PIKO = [
+        { group: 'Piko', label: "What's next for Ashish?", kw: 'ask piko notice joining new role', icon: 'sparkle', run: () => askPiko("What's next for Ashish?") }
+    ];
+    const ALL = NAVIGATE.concat(ACTIONS, PIKO);
+
+    // Simple subsequence fuzzy match: contiguous hits and word-start hits score higher
+    function fuzzy(q, text) {
+        const t = text.toLowerCase();
+        const sub = t.indexOf(q);
+        if (sub >= 0) return { score: 100 - sub + (sub === 0 ? 40 : 0), idx: Array.from({ length: q.length }, (_, k) => sub + k), good: true };
+        let ti = 0, score = 0, prev = -2;
+        const idx = [];
+        for (const ch of q) {
+            const j = t.indexOf(ch, ti);
+            if (j < 0) return null;
+            idx.push(j);
+            score += (j === prev + 1 ? 5 : 1) + ((j === 0 || t[j - 1] === ' ') ? 3 : 0);
+            prev = j; ti = j + 1;
+        }
+        return { score, idx, good: false };
+    }
+
+    let visible = [];   // flat list of rendered options
+    let active = 0;
+    let lastFocus = null;
+    const isOpen = () => root.classList.contains('open');
+
+    function build(query) {
+        const q = query.trim().toLowerCase();
+        if (!q) {
+            return [
+                { name: 'Navigate', items: NAVIGATE },
+                { name: 'Actions', items: ACTIONS },
+                { name: 'Piko', items: PIKO.concat([{ group: 'Piko', label: 'Ask Piko anything', icon: 'sparkle', hint: 'chat', run: () => window.pikoChat && window.pikoChat.open() }]) }
+            ];
+        }
+        let anyGood = false;
+        const scored = [];
+        ALL.forEach(item => {
+            const l = fuzzy(q, item.label);
+            const k = fuzzy(q, item.kw || '');
+            const best = l && (!k || l.score >= k.score) ? l : k;
+            if (!best) return;
+            if (best.good) anyGood = true;
+            scored.push({ item, score: best.score + (l ? 20 : 0), idx: l ? l.idx : [] });
+        });
+        scored.sort((a, b) => b.score - a.score);
+        const groups = ['Navigate', 'Actions', 'Piko'].map(name => ({
+            name,
+            items: scored.filter(s => s.item.group === name).map(s => Object.assign({}, s.item, { _idx: s.idx }))
+        }));
+        const ask = { group: 'Piko', label: 'Ask Piko: ' + query.trim(), icon: 'sparkle', hint: 'chat', _plain: true, run: () => askPiko(query.trim()) };
+        const pikoGroup = groups.find(g => g.name === 'Piko');
+        pikoGroup.items.unshift(ask);
+        if (!anyGood) { groups.splice(groups.indexOf(pikoGroup), 1); groups.unshift(pikoGroup); }
+        return groups.filter(g => g.items.length);
+    }
+
+    function labelHtml(item) {
+        if (!item._idx || !item._idx.length) return escHtml(item.label);
+        const set = new Set(item._idx);
+        return Array.from(item.label).map((c, i) => set.has(i) ? `<mark>${escHtml(c)}</mark>` : escHtml(c)).join('');
+    }
+
+    function render() {
+        const groups = build(input.value);
+        visible = [];
+        let n = 0;
+        list.innerHTML = groups.map((g, gi) => {
+            const gid = 'pal-g' + gi;
+            const opts = g.items.map(item => {
+                const id = 'pal-opt-' + (n++);
+                visible.push(item);
+                return `<div class="palette-opt" role="option" id="${id}" aria-selected="false">${icon(item.icon, 18)}<span class="opt-text">${labelHtml(item)}</span>${item.hint ? `<span class="opt-hint">${escHtml(item.hint)}</span>` : ''}</div>`;
+            }).join('');
+            return `<div class="palette-group" role="group" aria-labelledby="${gid}"><div class="palette-group-label" id="${gid}" role="presentation">${g.name}</div>${opts}</div>`;
+        }).join('') || '<div class="palette-empty">No matches</div>';
+        setActive(0);
+    }
+
+    function setActive(i, scroll = true) {
+        const opts = list.querySelectorAll('.palette-opt');
+        if (!opts.length) { input.removeAttribute('aria-activedescendant'); return; }
+        active = (i + opts.length) % opts.length;
+        opts.forEach((o, k) => o.setAttribute('aria-selected', String(k === active)));
+        input.setAttribute('aria-activedescendant', opts[active].id);
+        if (scroll) opts[active].scrollIntoView({ block: 'nearest' });
+    }
+
+    function open() {
+        if (isOpen()) return;
+        lastFocus = document.activeElement;
+        input.value = '';
+        render();
+        root.classList.add('open');
+        document.body.classList.add('palette-open');
+        input.focus({ preventScroll: true });
+    }
+    function close(restore = true) {
+        if (!isOpen()) return;
+        root.classList.remove('open');
+        document.body.classList.remove('palette-open');
+        if (restore && lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+    }
+    function choose(i) {
+        const item = visible[i];
+        if (!item) return;
+        const toPiko = item.group === 'Piko';
+        close(!toPiko);
+        // Let focus settle (or Piko take it) before running the command
+        setTimeout(() => item.run(), 0);
+    }
+    window.commandPalette = { open, close };
+
+    input.addEventListener('input', render);
+    list.addEventListener('mousedown', (e) => e.preventDefault()); // keep focus in the input
+    list.addEventListener('click', (e) => {
+        const o = e.target.closest('.palette-opt');
+        if (o) choose(Array.from(list.querySelectorAll('.palette-opt')).indexOf(o));
+    });
+    list.addEventListener('mousemove', (e) => {
+        const o = e.target.closest('.palette-opt');
+        if (!o) return;
+        const i = Array.from(list.querySelectorAll('.palette-opt')).indexOf(o);
+        if (i !== active) setActive(i, false);
+    });
+    if (backdrop) backdrop.addEventListener('click', () => close());
+
+    // Capture phase so Esc/shortcuts here win over Piko's own document handler
+    window.addEventListener('keydown', (e) => {
+        const key = e.key;
+        if ((e.metaKey || e.ctrlKey) && !e.altKey && key.toLowerCase() === 'k') {
+            e.preventDefault(); e.stopPropagation();
+            isOpen() ? close() : open();
+            return;
+        }
+        if (!isOpen()) {
+            const t = e.target;
+            const typing = t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName));
+            if (key === '/' && !e.metaKey && !e.ctrlKey && !e.altKey && !typing) { e.preventDefault(); open(); }
+            return;
+        }
+        if (key === 'Escape') { e.preventDefault(); e.stopPropagation(); close(); }
+        else if (key === 'ArrowDown') { e.preventDefault(); setActive(active + 1); }
+        else if (key === 'ArrowUp') { e.preventDefault(); setActive(active - 1); }
+        else if (key === 'Enter') { e.preventDefault(); choose(active); }
+        else if (key === 'Tab') { e.preventDefault(); input.focus(); } // focus trap: input is the only tab stop
+    }, true);
+})();
+
+
+// ===== WRITING ROW — LinkedIn posts load only on click =====
+(function initWritingRow() {
+    document.querySelectorAll('.post-card').forEach(card => {
+        const btn = card.querySelector('.post-load');
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+            const src = card.dataset.embed;
+            if (!src || card.classList.contains('is-loaded')) return;
+            const wrap = document.createElement('div');
+            wrap.className = 'post-embed';
+            const f = document.createElement('iframe');
+            f.src = src;
+            f.title = 'Embedded LinkedIn post';
+            f.loading = 'lazy';
+            f.setAttribute('allowfullscreen', '');
+            wrap.appendChild(f);
+            card.insertBefore(wrap, card.querySelector('.post-actions'));
+            card.classList.add('is-loaded');
+        });
+    });
 })();
 
 
@@ -813,6 +1252,9 @@ function toggleMenu() {
         setTimeout(() => { if (!bubble.hidden) window.pikoState.release(); }, 2600);
         setTimeout(hideBubble, 16000);
     }, 6000);
+
+    // Programmatic API for the command palette
+    window.pikoChat = { open: openChat, ask(text) { openChat(); handleQuery(text); } };
 
     // Initial welcome
     addMsg("Hi! I'm **Piko**, Ashish's desk pet 🌱 Ask me about his work, AI stack, or tap a topic below.", 'bot');

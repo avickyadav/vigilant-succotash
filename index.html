@@ -14,20 +14,24 @@
         <div class="scroll-progress-bar" id="scroll-progress"></div>
     </div>
 
-    <!-- ===== DESKTOP NAV ===== -->
-    <nav id="desktop-nav">
-        <div class="logo">Ashish Yadav</div>
+    <!-- ===== DESKTOP NAV (links mirror SECTIONS in script.js) ===== -->
+    <nav id="desktop-nav" class="topbar" aria-label="Primary">
+        <a class="logo" href="#profile">Ashish Yadav</a>
         <div class="nav-right">
-            <ul class="nav-links">
+            <div class="nav-links-wrap" id="nav-links-wrap">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#about">About</a></li>
-                <li><a href="#skills">Tech Stack</a></li>
+                <li><a href="#journey">Journey</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#journey">Journey</a></li>
+                <li><a href="#skills">Stack</a></li>
                 <li><a href="#recommendations">Reviews</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="theme-switch" id="theme-toggle" role="switch" aria-checked="false" aria-label="Toggle dark mode" title="Switch light / dark theme">
+            <span class="nav-indicator" id="nav-indicator" aria-hidden="true"></span>
+            </div>
+            <div class="nav-tools">
+                <button class="theme-switch" id="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Toggle dark mode" title="Switch light / dark theme">
                 <span class="switch-track">
                     <span class="switch-icon switch-sun" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
@@ -38,41 +42,32 @@
                     <span class="switch-thumb"></span>
                 </span>
             </button>
+                <button class="cmdk-btn" id="cmdk-btn" type="button" aria-haspopup="dialog" aria-label="Open command palette" title="Command palette">
+                    <kbd data-cmdk-key>&#8984;K</kbd>
+                </button>
+            </div>
         </div>
     </nav>
 
-    <!-- ===== HAMBURGER NAV ===== -->
-    <nav id="hamburger-nav">
-        <div class="logo">Ashish Yadav</div>
-        <div class="hamburger-menu">
-            <div class="hamburger-icon" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="menu-links">
-                <li><a href="#about" onclick="toggleMenu()">About</a></li>
-                <li><a href="#skills" onclick="toggleMenu()">Tech Stack</a></li>
-                <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-                <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-                <li><a href="#journey" onclick="toggleMenu()">Journey</a></li>
-                <li><a href="#recommendations" onclick="toggleMenu()">Reviews</a></li>
-                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-                <li class="mobile-theme-row">
-                    <span>Theme</span>
-                    <button class="theme-switch" id="theme-toggle-mobile" role="switch" aria-checked="false" aria-label="Toggle dark mode" onclick="toggleTheme()">
-                        <span class="switch-track">
-                            <span class="switch-icon switch-sun" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-                            </span>
-                            <span class="switch-icon switch-moon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                            </span>
-                            <span class="switch-thumb"></span>
-                        </span>
-                    </button>
-                </li>
-            </div>
+    <!-- ===== MOBILE TOP BAR ===== -->
+    <nav id="mobile-nav" class="topbar" aria-label="Top bar">
+        <a class="logo" href="#profile">Ashish Yadav</a>
+        <div class="nav-tools">
+            <button class="theme-switch" id="theme-toggle-mobile" type="button" role="switch" aria-checked="false" aria-label="Toggle dark mode" title="Switch light / dark theme">
+                <span class="switch-track">
+                    <span class="switch-icon switch-sun" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                    </span>
+                    <span class="switch-icon switch-moon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    </span>
+                    <span class="switch-thumb"></span>
+                </span>
+            </button>
+            <button class="menu-btn" id="menu-btn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="menu-sheet">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+                <span>Menu</span>
+            </button>
         </div>
     </nav>
 
@@ -102,6 +97,7 @@
                     <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
                 </button>
             </div>
+            <p class="cmdk-hint">Press <kbd data-cmdk-key>&#8984;K</kbd> to navigate</p>
         </div>
     </section>
 
@@ -141,302 +137,6 @@
                     <p>Full-Stack / AI-driven Software Engineer with 5+ years building production web applications and, most recently, GenAI-native systems — agentic workflows, RAG pipelines, and LLM-powered products using Claude, OpenAI, and Google Gemini. Comfortable moving across the stack, from React &amp; FastAPI services to designing multi-agent architectures with MCP-style tool integrations. Experienced working directly with enterprise clients globally to develop, prototype, and ship AI-first MVPs.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- ===== TECH STACK ===== -->
-    <section id="skills" class="reveal">
-        <p class="section__text__p1">Explore My</p>
-        <h1 class="title">Tech Stack</h1>
-        <div class="skills-grid">
-
-            <!-- AI / GenAI -->
-            <div class="skill-panel highlight-panel">
-                <div class="skill-panel-header">
-                    <span class="panel-badge chip-violet">Core Focus</span>
-                    <h2 class="skill-panel-title">AI &amp; GenAI</h2>
-                </div>
-                <div class="tech-items-grid">
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/claude.svg" alt="Claude" class="tech-logo">
-                        <span>Claude</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/openai.svg" alt="OpenAI" class="tech-logo dark-invert">
-                        <span>OpenAI GPT</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/gemini.svg" alt="Gemini" class="tech-logo">
-                        <span>Google Gemini</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/mcp.svg" alt="MCP" class="tech-logo">
-                        <span>MCP &amp; Agents</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/langchain.svg" alt="LangChain" class="tech-logo dark-invert">
-                        <span>LangChain</span>
-                    </div>
-                    <div class="tech-item">
-                        <svg class="tech-logo" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
-                        <span>RAG Pipelines</span>
-                    </div>
-                    <div class="tech-item">
-                        <svg class="tech-logo" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-                        <span>Vector DBs</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Frontend -->
-            <div class="skill-panel">
-                <div class="skill-panel-header">
-                    <span class="panel-badge chip-sky">UI &amp; Web</span>
-                    <h2 class="skill-panel-title">Frontend</h2>
-                </div>
-                <div class="tech-items-grid">
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/react.svg" alt="React" class="tech-logo">
-                        <span>React.js</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/typescript.svg" alt="TypeScript" class="tech-logo">
-                        <span>TypeScript</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/javascript.svg" alt="JavaScript" class="tech-logo">
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/redux.svg" alt="Redux" class="tech-logo">
-                        <span>Redux</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/mui.svg" alt="Material UI" class="tech-logo">
-                        <span>Material UI</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/html5.svg" alt="HTML5" class="tech-logo">
-                        <span>HTML5</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/css3.svg" alt="CSS3" class="tech-logo">
-                        <span>CSS3</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Backend & Databases -->
-            <div class="skill-panel">
-                <div class="skill-panel-header">
-                    <span class="panel-badge chip-emerald">APIs &amp; Data</span>
-                    <h2 class="skill-panel-title">Backend &amp; Databases</h2>
-                </div>
-                <div class="tech-items-grid">
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/python.svg" alt="Python" class="tech-logo">
-                        <span>Python</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/fastapi.svg" alt="FastAPI" class="tech-logo">
-                        <span>FastAPI</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/django.svg" alt="Django" class="tech-logo dark-invert">
-                        <span>Django</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/express.svg" alt="Express" class="tech-logo dark-invert">
-                        <span>Express.js</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/postgresql.svg" alt="PostgreSQL" class="tech-logo">
-                        <span>PostgreSQL</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/mongodb.svg" alt="MongoDB" class="tech-logo">
-                        <span>MongoDB</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/graphql.svg" alt="GraphQL" class="tech-logo">
-                        <span>GraphQL</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DevOps & Cloud -->
-            <div class="skill-panel">
-                <div class="skill-panel-header">
-                    <span class="panel-badge chip-amber">Infra &amp; Scale</span>
-                    <h2 class="skill-panel-title">DevOps &amp; Cloud</h2>
-                </div>
-                <div class="tech-items-grid">
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/docker.svg" alt="Docker" class="tech-logo">
-                        <span>Docker</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/kubernetes.svg" alt="Kubernetes" class="tech-logo">
-                        <span>Kubernetes</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/jenkins.svg" alt="Jenkins" class="tech-logo">
-                        <span>Jenkins CI/CD</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/aws.svg" alt="AWS" class="tech-logo">
-                        <span>AWS</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/azure.svg" alt="Azure" class="tech-logo">
-                        <span>Azure</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/gcp.svg" alt="GCP" class="tech-logo">
-                        <span>GCP</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/rabbitmq.svg" alt="RabbitMQ" class="tech-logo">
-                        <span>RabbitMQ</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ===== WORK EXPERIENCE ===== -->
-    <section id="experience" class="reveal">
-        <p class="section__text__p1">Where I've Worked</p>
-        <h1 class="title">Experience</h1>
-        <div class="work-timeline">
-
-            <!-- Pratham -->
-            <div class="work-card">
-                <div class="work-card-header">
-                    <div class="work-logo-wrap">
-                        <img src="./assets/logos/pratham_software_inc_logo.jpeg" alt="Pratham Software" class="company-logo">
-                    </div>
-                    <div class="work-meta">
-                        <h2 class="company-name">Pratham Software Pvt. Ltd.</h2>
-                        <p class="work-role">Software Engineer <span class="client-badge">Client: Global Top-3 Management Consulting Firm</span></p>
-                        <span class="work-date" data-nc="exp-pratham-date">Oct 2025 — Present</span>
-                    </div>
-                </div>
-                <div class="focus-chips">
-                    <span class="focus-chip chip-violet">Agentic GenAI</span>
-                    <span class="focus-chip chip-sky">RAG Pipelines · -35%</span>
-                    <span class="focus-chip chip-indigo">MCP Integrations</span>
-                    <span class="focus-chip chip-emerald">40% Faster Reports</span>
-                    <span class="focus-chip chip-amber">Enterprise MVPs</span>
-                    <span class="focus-chip chip-rose">LLM Observability</span>
-                </div>
-                <ul class="work-bullets">
-                    <li>Building agentic GenAI applications for a global top-three management consulting firm using Claude and OpenAI models orchestrated through a custom agent framework — delivered multiple MVPs from concept to client demo.</li>
-                    <li>Designed and implemented RAG pipelines over internal knowledge bases and structured client data, improving retrieval accuracy and cutting analyst research time by ~35%.</li>
-                    <li>Architected multi-agent workflows (planner / executor / tool-calling agents) with MCP-style tool integrations and function calling, enabling agents to autonomously query internal tools, synthesise findings, and generate client-ready reports.</li>
-                    <li>Integrated LLM APIs (Claude, ChatGPT, Gemini) into a FastAPI backend with a React frontend, reducing manual analyst turnaround time by ~40% on recurring research and reporting workflows.</li>
-                    <li>Partnered directly with enterprise client stakeholders to gather requirements and iterate on prototypes in fast feedback loops — Forward-Deploy-Engineering style: discovery → prototyping → production handoff.</li>
-                    <li>Built lightweight evaluation and observability tooling around LLM outputs (prompt versioning, response quality checks) to catch regressions before client demos.</li>
-                </ul>
-            </div>
-
-            <!-- Metacube -->
-            <div class="work-card">
-                <div class="work-card-header">
-                    <div class="work-logo-wrap">
-                        <img src="./assets/logos/metacube_logo.jpeg" alt="Metacube Software" class="company-logo">
-                    </div>
-                    <div class="work-meta">
-                        <h2 class="company-name">Metacube Software Pvt. Ltd.</h2>
-                        <p class="work-role">Software Engineer</p>
-                        <span class="work-date">Oct 2021 — Sep 2025</span>
-                    </div>
-                </div>
-                <div class="focus-chips">
-                    <span class="focus-chip chip-violet">GraphDB + RAG</span>
-                    <span class="focus-chip chip-emerald">80% Faster AI</span>
-                    <span class="focus-chip chip-sky">GPT-4.5 &amp; Gemini</span>
-                    <span class="focus-chip chip-amber">RGM · +30% Engagement</span>
-                    <span class="focus-chip chip-indigo">Jenkins CI/CD · -50%</span>
-                    <span class="focus-chip chip-rose">RabbitMQ Async</span>
-                </div>
-                <ul class="work-bullets">
-                    <li>Built a React-based UI for an agentic document-extraction and RAG framework, integrating GraphDB (Ontotext) for semantic search and knowledge-graph management; implemented streaming / parallel multi-agent responses that improved response time by 80%.</li>
-                    <li>Deployed OpenAI GPT-4.5 and Google Gemini within a scalable microservices inference framework exposed via a GraphQL API for cross-service and graph-data interaction.</li>
-                    <li>Developed an AI-powered Revenue Growth Management (RGM) tool (React, MUI, Redux, FastAPI, PostgreSQL) for a global consumer-goods client — boosting user engagement by 30% and data-retrieval speed by 40% through indexing and schema refinement.</li>
-                    <li>Set up Jenkins CI/CD pipelines and RabbitMQ-based async messaging, cutting deployment time by 50% and reducing downtime by 20%.</li>
-                </ul>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ===== PROJECTS ===== -->
-    <section id="projects" class="reveal">
-        <p class="section__text__p1">Things I've Built</p>
-        <h1 class="title">Projects</h1>
-        <div class="projects-grid">
-
-            <div class="project-card">
-                <div class="project-header">
-                    <span class="project-year">2026</span>
-                    <div class="project-tags">
-                        <span class="ptag chip-violet">Claude</span>
-                        <span class="ptag chip-sky">Python</span>
-                        <span class="ptag chip-indigo">MCP</span>
-                        <span class="ptag chip-emerald">Vector DB</span>
-                    </div>
-                </div>
-                <h3 class="project-title">Personal MCP Server for Developer Workflows</h3>
-                <p class="project-desc">Built a custom MCP server exposing personal productivity and codebase-search tools to Claude, letting an agent autonomously look up context, run scripts, and draft code changes. Implemented a lightweight RAG layer (embeddings + vector store) over project documentation to ground agent responses and reduce hallucinated references.</p>
-                <div class="project-impact">Fully autonomous agentic code lookup &amp; drafting</div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <span class="project-year">2023–24</span>
-                    <div class="project-tags">
-                        <span class="ptag chip-sky">React</span>
-                        <span class="ptag chip-emerald">FastAPI</span>
-                        <span class="ptag chip-indigo">MUI</span>
-                        <span class="ptag chip-violet">Redux</span>
-                        <span class="ptag chip-amber">PostgreSQL</span>
-                    </div>
-                </div>
-                <h3 class="project-title">AI-Powered Revenue Growth Management Tool</h3>
-                <p class="project-desc">Designed and built an AI-powered business intelligence tool for a global consumer-goods client, enabling data-driven revenue optimisation decisions. Improved query performance through indexing strategies and schema refinement on a large-scale PostgreSQL database.</p>
-                <div class="project-impact">+30% user engagement · +40% data retrieval speed</div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <span class="project-year">2021</span>
-                    <div class="project-tags">
-                        <span class="ptag chip-sky">Python</span>
-                        <span class="ptag chip-emerald">OpenCV</span>
-                        <span class="ptag chip-amber">Django</span>
-                    </div>
-                </div>
-                <h3 class="project-title">Face Recognition System</h3>
-                <p class="project-desc">Developed a full-stack face recognition system with a Django backend, using OpenCV for real-time video stream processing and a custom ML pipeline for feature extraction and matching.</p>
-                <div class="project-impact">95% recognition accuracy</div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-header">
-                    <span class="project-year">2021</span>
-                    <div class="project-tags">
-                        <span class="ptag chip-sky">Python</span>
-                        <span class="ptag chip-rose">IoT</span>
-                        <span class="ptag chip-indigo">Web</span>
-                    </div>
-                </div>
-                <h3 class="project-title">IoT Home Automation Web App</h3>
-                <p class="project-desc">Built an IoT-powered web application for remote home-appliance control, featuring a real-time dashboard with device state management and scheduling. Connected hardware sensors to a Python backend over MQTT.</p>
-                <div class="project-impact">30% reduction in energy consumption</div>
-            </div>
-
         </div>
     </section>
 
@@ -612,6 +312,302 @@
         </div>
     </section>
 
+    <!-- ===== WORK EXPERIENCE ===== -->
+    <section id="experience" class="reveal">
+        <p class="section__text__p1">Where I've Worked</p>
+        <h1 class="title">Experience</h1>
+        <div class="work-timeline">
+
+            <!-- Pratham -->
+            <div class="work-card">
+                <div class="work-card-header">
+                    <div class="work-logo-wrap">
+                        <img src="./assets/logos/pratham_software_inc_logo.jpeg" alt="Pratham Software" class="company-logo">
+                    </div>
+                    <div class="work-meta">
+                        <h2 class="company-name">Pratham Software Pvt. Ltd.</h2>
+                        <p class="work-role">Software Engineer <span class="client-badge">Client: Global Top-3 Management Consulting Firm</span></p>
+                        <span class="work-date" data-nc="exp-pratham-date">Oct 2025 — Present</span>
+                    </div>
+                </div>
+                <div class="focus-chips">
+                    <span class="focus-chip chip-violet">Agentic GenAI</span>
+                    <span class="focus-chip chip-sky">RAG Pipelines · -35%</span>
+                    <span class="focus-chip chip-indigo">MCP Integrations</span>
+                    <span class="focus-chip chip-emerald">40% Faster Reports</span>
+                    <span class="focus-chip chip-amber">Enterprise MVPs</span>
+                    <span class="focus-chip chip-rose">LLM Observability</span>
+                </div>
+                <ul class="work-bullets">
+                    <li>Building agentic GenAI applications for a global top-three management consulting firm using Claude and OpenAI models orchestrated through a custom agent framework — delivered multiple MVPs from concept to client demo.</li>
+                    <li>Designed and implemented RAG pipelines over internal knowledge bases and structured client data, improving retrieval accuracy and cutting analyst research time by ~35%.</li>
+                    <li>Architected multi-agent workflows (planner / executor / tool-calling agents) with MCP-style tool integrations and function calling, enabling agents to autonomously query internal tools, synthesise findings, and generate client-ready reports.</li>
+                    <li>Integrated LLM APIs (Claude, ChatGPT, Gemini) into a FastAPI backend with a React frontend, reducing manual analyst turnaround time by ~40% on recurring research and reporting workflows.</li>
+                    <li>Partnered directly with enterprise client stakeholders to gather requirements and iterate on prototypes in fast feedback loops — Forward-Deploy-Engineering style: discovery → prototyping → production handoff.</li>
+                    <li>Built lightweight evaluation and observability tooling around LLM outputs (prompt versioning, response quality checks) to catch regressions before client demos.</li>
+                </ul>
+            </div>
+
+            <!-- Metacube -->
+            <div class="work-card">
+                <div class="work-card-header">
+                    <div class="work-logo-wrap">
+                        <img src="./assets/logos/metacube_logo.jpeg" alt="Metacube Software" class="company-logo">
+                    </div>
+                    <div class="work-meta">
+                        <h2 class="company-name">Metacube Software Pvt. Ltd.</h2>
+                        <p class="work-role">Software Engineer</p>
+                        <span class="work-date">Oct 2021 — Sep 2025</span>
+                    </div>
+                </div>
+                <div class="focus-chips">
+                    <span class="focus-chip chip-violet">GraphDB + RAG</span>
+                    <span class="focus-chip chip-emerald">80% Faster AI</span>
+                    <span class="focus-chip chip-sky">GPT-4.5 &amp; Gemini</span>
+                    <span class="focus-chip chip-amber">RGM · +30% Engagement</span>
+                    <span class="focus-chip chip-indigo">Jenkins CI/CD · -50%</span>
+                    <span class="focus-chip chip-rose">RabbitMQ Async</span>
+                </div>
+                <ul class="work-bullets">
+                    <li>Built a React-based UI for an agentic document-extraction and RAG framework, integrating GraphDB (Ontotext) for semantic search and knowledge-graph management; implemented streaming / parallel multi-agent responses that improved response time by 80%.</li>
+                    <li>Deployed OpenAI GPT-4.5 and Google Gemini within a scalable microservices inference framework exposed via a GraphQL API for cross-service and graph-data interaction.</li>
+                    <li>Developed an AI-powered Revenue Growth Management (RGM) tool (React, MUI, Redux, FastAPI, PostgreSQL) for a global consumer-goods client — boosting user engagement by 30% and data-retrieval speed by 40% through indexing and schema refinement.</li>
+                    <li>Set up Jenkins CI/CD pipelines and RabbitMQ-based async messaging, cutting deployment time by 50% and reducing downtime by 20%.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" class="reveal">
+        <p class="section__text__p1">Things I've Built</p>
+        <h1 class="title">Projects</h1>
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-year">2026</span>
+                    <div class="project-tags">
+                        <span class="ptag chip-violet">Claude</span>
+                        <span class="ptag chip-sky">Python</span>
+                        <span class="ptag chip-indigo">MCP</span>
+                        <span class="ptag chip-emerald">Vector DB</span>
+                    </div>
+                </div>
+                <h3 class="project-title">Personal MCP Server for Developer Workflows</h3>
+                <p class="project-desc">Built a custom MCP server exposing personal productivity and codebase-search tools to Claude, letting an agent autonomously look up context, run scripts, and draft code changes. Implemented a lightweight RAG layer (embeddings + vector store) over project documentation to ground agent responses and reduce hallucinated references.</p>
+                <div class="project-impact">Fully autonomous agentic code lookup &amp; drafting</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-year">2023–24</span>
+                    <div class="project-tags">
+                        <span class="ptag chip-sky">React</span>
+                        <span class="ptag chip-emerald">FastAPI</span>
+                        <span class="ptag chip-indigo">MUI</span>
+                        <span class="ptag chip-violet">Redux</span>
+                        <span class="ptag chip-amber">PostgreSQL</span>
+                    </div>
+                </div>
+                <h3 class="project-title">AI-Powered Revenue Growth Management Tool</h3>
+                <p class="project-desc">Designed and built an AI-powered business intelligence tool for a global consumer-goods client, enabling data-driven revenue optimisation decisions. Improved query performance through indexing strategies and schema refinement on a large-scale PostgreSQL database.</p>
+                <div class="project-impact">+30% user engagement · +40% data retrieval speed</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-year">2021</span>
+                    <div class="project-tags">
+                        <span class="ptag chip-sky">Python</span>
+                        <span class="ptag chip-emerald">OpenCV</span>
+                        <span class="ptag chip-amber">Django</span>
+                    </div>
+                </div>
+                <h3 class="project-title">Face Recognition System</h3>
+                <p class="project-desc">Developed a full-stack face recognition system with a Django backend, using OpenCV for real-time video stream processing and a custom ML pipeline for feature extraction and matching.</p>
+                <div class="project-impact">95% recognition accuracy</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-year">2021</span>
+                    <div class="project-tags">
+                        <span class="ptag chip-sky">Python</span>
+                        <span class="ptag chip-rose">IoT</span>
+                        <span class="ptag chip-indigo">Web</span>
+                    </div>
+                </div>
+                <h3 class="project-title">IoT Home Automation Web App</h3>
+                <p class="project-desc">Built an IoT-powered web application for remote home-appliance control, featuring a real-time dashboard with device state management and scheduling. Connected hardware sensors to a Python backend over MQTT.</p>
+                <div class="project-impact">30% reduction in energy consumption</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== TECH STACK ===== -->
+    <section id="skills" class="reveal">
+        <p class="section__text__p1">Explore My</p>
+        <h1 class="title">Tech Stack</h1>
+        <div class="skills-grid">
+
+            <!-- AI / GenAI -->
+            <div class="skill-panel highlight-panel">
+                <div class="skill-panel-header">
+                    <span class="panel-badge chip-violet">Core Focus</span>
+                    <h2 class="skill-panel-title">AI &amp; GenAI</h2>
+                </div>
+                <div class="tech-items-grid">
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/claude.svg" alt="Claude" class="tech-logo">
+                        <span>Claude</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/openai.svg" alt="OpenAI" class="tech-logo dark-invert">
+                        <span>OpenAI GPT</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/gemini.svg" alt="Gemini" class="tech-logo">
+                        <span>Google Gemini</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/mcp.svg" alt="MCP" class="tech-logo">
+                        <span>MCP &amp; Agents</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/langchain.svg" alt="LangChain" class="tech-logo dark-invert">
+                        <span>LangChain</span>
+                    </div>
+                    <div class="tech-item">
+                        <svg class="tech-logo" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+                        <span>RAG Pipelines</span>
+                    </div>
+                    <div class="tech-item">
+                        <svg class="tech-logo" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                        <span>Vector DBs</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frontend -->
+            <div class="skill-panel">
+                <div class="skill-panel-header">
+                    <span class="panel-badge chip-sky">UI &amp; Web</span>
+                    <h2 class="skill-panel-title">Frontend</h2>
+                </div>
+                <div class="tech-items-grid">
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/react.svg" alt="React" class="tech-logo">
+                        <span>React.js</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/typescript.svg" alt="TypeScript" class="tech-logo">
+                        <span>TypeScript</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/javascript.svg" alt="JavaScript" class="tech-logo">
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/redux.svg" alt="Redux" class="tech-logo">
+                        <span>Redux</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/mui.svg" alt="Material UI" class="tech-logo">
+                        <span>Material UI</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/html5.svg" alt="HTML5" class="tech-logo">
+                        <span>HTML5</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/css3.svg" alt="CSS3" class="tech-logo">
+                        <span>CSS3</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Backend & Databases -->
+            <div class="skill-panel">
+                <div class="skill-panel-header">
+                    <span class="panel-badge chip-emerald">APIs &amp; Data</span>
+                    <h2 class="skill-panel-title">Backend &amp; Databases</h2>
+                </div>
+                <div class="tech-items-grid">
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/python.svg" alt="Python" class="tech-logo">
+                        <span>Python</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/fastapi.svg" alt="FastAPI" class="tech-logo">
+                        <span>FastAPI</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/django.svg" alt="Django" class="tech-logo dark-invert">
+                        <span>Django</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/express.svg" alt="Express" class="tech-logo dark-invert">
+                        <span>Express.js</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/postgresql.svg" alt="PostgreSQL" class="tech-logo">
+                        <span>PostgreSQL</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/mongodb.svg" alt="MongoDB" class="tech-logo">
+                        <span>MongoDB</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/graphql.svg" alt="GraphQL" class="tech-logo">
+                        <span>GraphQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DevOps & Cloud -->
+            <div class="skill-panel">
+                <div class="skill-panel-header">
+                    <span class="panel-badge chip-amber">Infra &amp; Scale</span>
+                    <h2 class="skill-panel-title">DevOps &amp; Cloud</h2>
+                </div>
+                <div class="tech-items-grid">
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/docker.svg" alt="Docker" class="tech-logo">
+                        <span>Docker</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/kubernetes.svg" alt="Kubernetes" class="tech-logo">
+                        <span>Kubernetes</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/jenkins.svg" alt="Jenkins" class="tech-logo">
+                        <span>Jenkins CI/CD</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/aws.svg" alt="AWS" class="tech-logo">
+                        <span>AWS</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/azure.svg" alt="Azure" class="tech-logo">
+                        <span>Azure</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/gcp.svg" alt="GCP" class="tech-logo">
+                        <span>GCP</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="./assets/tech-logos/rabbitmq.svg" alt="RabbitMQ" class="tech-logo">
+                        <span>RabbitMQ</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <!-- ===== LINKEDIN RECOMMENDATIONS ===== -->
     <section id="recommendations" class="reveal">
         <p class="section__text__p1">What People Say</p>
@@ -742,20 +738,6 @@
         </div>
     </section>
 
-    <!-- ===== LINKEDIN POSTS ===== -->
-    <section id="posts" class="reveal">
-        <p class="section__text__p1">From My Feed</p>
-        <h1 class="title">LinkedIn Posts</h1>
-        <div class="posts-grid">
-            <div class="linkedin-embed-wrap">
-                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7497647211963621377" height="500" width="100%" frameborder="0" allowfullscreen title="Embedded post"></iframe>
-            </div>
-            <div class="linkedin-embed-wrap">
-                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7419021064090906624?collapsed=1" height="500" width="100%" frameborder="0" allowfullscreen title="Embedded post"></iframe>
-            </div>
-        </div>
-    </section>
-
     <!-- ===== CONTACT ===== -->
     <section id="contact" class="reveal">
         <p class="section__text__p1">Get in Touch</p>
@@ -774,18 +756,41 @@
                 <p><a href="https://linkedin.com/in/avickyadav" target="_blank">linkedin.com/in/avickyadav</a></p>
             </div>
         </div>
+
+        <div class="writing">
+            <span id="posts"></span>
+            <h2 class="writing-label">Writing</h2>
+            <div class="writing-grid">
+                <article class="post-card" data-embed="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7497647211963621377">
+                    <p class="post-meta">LinkedIn &middot; Post 01</p>
+                    <h3 class="post-title">A post from my feed</h3>
+                    <div class="post-actions">
+                        <button class="btn btn-color-2 post-load" type="button">Load post</button>
+                        <a class="post-open" href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7497647211963621377/" target="_blank" rel="noopener">Open on LinkedIn</a>
+                    </div>
+                </article>
+                <article class="post-card" data-embed="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7419021064090906624?collapsed=1">
+                    <p class="post-meta">LinkedIn &middot; Post 02</p>
+                    <h3 class="post-title">A post from my feed</h3>
+                    <div class="post-actions">
+                        <button class="btn btn-color-2 post-load" type="button">Load post</button>
+                        <a class="post-open" href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7419021064090906624/" target="_blank" rel="noopener">Open on LinkedIn</a>
+                    </div>
+                </article>
+            </div>
+        </div>
     </section>
 
     <!-- ===== FOOTER ===== -->
     <footer>
-        <nav>
+        <nav aria-label="Footer">
             <div class="nav-links-container">
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Tech Stack</a></li>
+                    <li><a href="#journey">Journey</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a href="#journey">Journey</a></li>
+                    <li><a href="#skills">Stack</a></li>
                     <li><a href="#recommendations">Reviews</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -793,6 +798,51 @@
         </nav>
         <p>Copyright &#169; 2026 Ashish Yadav. All Rights Reserved.</p>
     </footer>
+
+    <!-- ===== NAV CHROME (rail, tab bar, menu sheet, palette, toast) — items rendered from SECTIONS in script.js ===== -->
+    <nav class="rail" id="rail" aria-label="Section rail"><ol></ol></nav>
+    <nav class="tabbar" id="tabbar" aria-label="Quick navigation"></nav>
+
+    <div class="menu-sheet" id="menu-sheet" role="dialog" aria-modal="true" aria-label="Menu">
+        <div class="menu-sheet-head">
+            <span class="logo">Ashish Yadav</span>
+            <button class="menu-close" id="menu-close" type="button" aria-label="Close menu">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+        </div>
+        <nav class="menu-sheet-nav" aria-label="Sections">
+            <ol class="menu-sheet-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Stack</a></li>
+                <li><a href="#recommendations">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ol>
+        </nav>
+        <div class="menu-sheet-actions">
+            <a class="btn btn-color-1" href="./assets/Ashish_Yadav_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+            <button class="btn btn-color-2" id="menu-copy-email" type="button">Copy email</button>
+            <a class="btn btn-color-2" href="https://linkedin.com/in/avickyadav" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn btn-color-2" href="https://github.com/avickyadav" target="_blank" rel="noopener">GitHub</a>
+        </div>
+    </div>
+
+    <div class="palette" id="palette">
+        <div class="palette-backdrop" id="palette-backdrop"></div>
+        <div class="palette-box" role="dialog" aria-modal="true" aria-label="Command palette">
+            <div class="palette-search">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+                <input id="palette-input" type="text" role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" aria-label="Search commands" placeholder="Jump to a section, run an action, or ask Piko" autocomplete="off" autocapitalize="off" spellcheck="false">
+                <kbd>Esc</kbd>
+            </div>
+            <div class="palette-list" id="palette-list" role="listbox" aria-label="Commands"></div>
+            <div class="palette-foot" aria-hidden="true"><span><kbd>&uarr;</kbd><kbd>&darr;</kbd> move</span><span><kbd>&crarr;</kbd> select</span><span><kbd>Esc</kbd> close</span></div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
     <!-- ===== PIKO 2.0 — mochi desk pet ===== -->
     <template id="piko-tpl">

@@ -7,6 +7,7 @@ Personal portfolio website for **Ashish Yadav** (Full-Stack & AI-Driven Software
 ## ✨ Features
 
 - **Light & Dark Theme Switch** — Animated day/night pill toggle in the navbar with `localStorage` persistence (`ay-theme`) and `prefers-color-scheme` fallback.
+- **Navigation & wayfinding** — Sliding-underline scrollspy top bar, desktop section rail (>=1200px), `Cmd/Ctrl+K` (or `/`) command palette with fuzzy search, actions and "Ask Piko", mobile bottom tab bar, full-screen menu sheet and sticky section labels. All driven by the `SECTIONS` array in `script.js`.
 - **Scroll Progress Bar** — Fixed top reading-progress indicator (`#scroll-progress`).
 - **Hero & Typing Effect** — Animated role subtitle cycling and pulsing profile ring.
 - **Tech Stack with Real SVG Logos** — 4 categorized panels (`AI & GenAI`, `Frontend`, `Backend & Databases`, `DevOps & Cloud`) using local SVGs in `assets/tech-logos/` with automatic dark-mode inversion (`.dark-invert`) for monochrome logos.
@@ -14,7 +15,7 @@ Personal portfolio website for **Ashish Yadav** (Full-Stack & AI-Driven Software
 - **Projects Grid** — Text-focused project cards with tech tags and measurable impact metrics.
 - **Career Journey Trail** — A scroll-drawn path through eight milestones (education to *Emerging Employee of the Year 2026*), with Piko walking it and stopping at "You are here". A `NEXT_CHAPTER` config in `script.js` drives the next-chapter stop, hero status pill and Experience dates.
 - **LinkedIn-Style Recommendations Carousel** — Decorated quote cards with cropped profile avatars (`assets/rec-avatars/`), verified badges, opening/closing quotes, auto-advance, pause-on-hover, arrows, and pagination dots.
-- **LinkedIn Posts** — Embedded LinkedIn post iframes (`#posts`).
+- **Writing row** — LinkedIn posts at the end of Contact (`#posts`); each loads its iframe only on click.
 - **Piko AI Pet Chatbot (`#piko-widget`)** — Cute floating SVG mascot with curated quick-question chips and regex-based intent matching.
 
 ---
@@ -50,7 +51,7 @@ python -m http.server 7788
 
 Then open [http://localhost:7788](http://localhost:7788).
 
-> **Note on LinkedIn Embeds:** The `<iframe>` embeds in `#posts` load from `https://www.linkedin.com/embed/...` and require internet access + non-blocked third-party frames to render.
+> **Note on LinkedIn Embeds:** The `<iframe>` embeds in `#posts` (Writing row) load from `https://www.linkedin.com/embed/...` and require internet access + non-blocked third-party frames to render.
 
 ---
 

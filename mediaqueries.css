@@ -7,7 +7,7 @@
     section { padding: 4.5rem 4.5rem 3rem; }
     #profile { gap: 3rem; padding: 3rem 4.5rem; }
 
-    nav { padding: 0 2.5rem; }
+    nav.topbar { padding: 0 2.5rem; }
     .nav-links { gap: 1.15rem; font-size: 0.9rem; }
     .logo { font-size: 1.38rem; }
 
@@ -26,14 +26,14 @@
 
     .rec-carousel { width: 540px; }
 
-    nav { padding: 0 1.8rem; }
+    nav.topbar { padding: 0 1.8rem; }
     .nav-links { gap: 0.9rem; font-size: 0.86rem; }
 }
 
 /* ===== MOBILE (≤ 768px) ===== */
 @media screen and (max-width: 768px) {
-    #desktop-nav   { display: none; }
-    #hamburger-nav { display: flex; justify-content: space-between; align-items: center; padding: 0 1.5rem; height: 64px; }
+    #desktop-nav { display: none; }
+    #mobile-nav  { display: flex; justify-content: space-between; align-items: center; padding: 0 1.25rem; height: 64px; }
 
     section { padding: 3.5rem 1.4rem 2.5rem; scroll-margin-top: 68px; }
 
@@ -93,7 +93,9 @@
 
 /* ===== PIKO bottom sheet (≤ 768px) ===== */
 @media screen and (max-width: 768px) {
-    .piko-widget { right: 1rem; bottom: 1rem; }
+    .piko-widget { right: 1rem; bottom: calc(64px + 16px + env(safe-area-inset-bottom)); }
+    .piko-fab { width: 52px; height: 52px; }
+    .piko-fab .piko { width: 52px; height: 52px; }
     .piko-widget.is-open .piko-fab { visibility: hidden; }
     .piko-widget.is-open .piko-backdrop {
         display: block;
@@ -158,4 +160,58 @@
     .edu-head .role-id { flex: 1 1 calc(100% - 56px); }
     .metric--solo { margin-left: calc(40px + var(--sp-3)); text-align: left; border-left: 0; padding-left: 0; flex-direction: row; align-items: baseline; gap: var(--sp-2); }
     .award-row { gap: var(--sp-3); }
+}
+
+/* ===== MOBILE NAV: tab bar, menu sheet, sticky labels, toast (<= 768px) ===== */
+@media screen and (max-width: 768px) {
+    .tabbar {
+        display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 150;
+        height: calc(64px + env(safe-area-inset-bottom)); padding-bottom: env(safe-area-inset-bottom);
+        background: var(--nav-blur); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+        border-top: 1px solid var(--border);
+        transition: transform var(--dur-base) var(--ease-out);
+    }
+    .tabbar.is-hidden { transform: translateY(100%); }
+    .tabbar .tab {
+        flex: 1; min-width: 0; min-height: 44px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+        color: var(--muted); font: 500 0.6875rem/1 var(--font-body); letter-spacing: 0.01em;
+        transition: color var(--dur-base) var(--ease-out);
+    }
+    .tabbar .tab:hover { text-decoration: none; color: var(--text); }
+    .tabbar .tab.active { color: var(--accent); }
+    .tabbar .tab svg { width: 20px; height: 20px; }
+    .tabbar .tab:focus-visible { outline-offset: -4px; border-radius: var(--r-sm); }
+    body.menu-open .tabbar, body.palette-open .tabbar, body.piko-lock .tabbar { transform: translateY(100%); }
+
+    footer { padding-bottom: calc(1.5rem + 64px + env(safe-area-inset-bottom)); }
+    .toast { bottom: calc(64px + 16px + env(safe-area-inset-bottom)); }
+    .menu-sheet { display: flex; }
+    .rail { display: none; }
+
+    /* Sticky mono section labels under the top bar (not for the hero) */
+    section { overflow-x: hidden; }
+    @supports (overflow: clip) { section { overflow-x: clip; } }
+    section:not(#profile) > .section__text__p1 {
+        position: sticky; top: 64px; z-index: 5;
+        margin: 0 -1.4rem 0.6rem; padding: 0.55rem 1.4rem;
+        background: var(--nav-blur); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .writing-grid { grid-template-columns: 1fr; }
+    .post-embed iframe { height: 460px; }
+}
+@media screen and (max-width: 480px) {
+    section:not(#profile) > .section__text__p1 { margin-left: -1rem; margin-right: -1rem; padding-left: 1rem; padding-right: 1rem; }
+}
+
+/* ===== Tight desktop nav (769px - 1024px) ===== */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .nav-right { gap: 1rem; }
+    .nav-links { gap: 0.75rem; }
+    .nav-tools { gap: var(--sp-2); }
+}
+@media screen and (min-width: 769px) and (max-width: 880px) {
+    .cmdk-btn { display: none; }
+    .logo { font-size: 1.2rem; }
 }
