@@ -41,6 +41,10 @@ This repository is a zero-build static portfolio site (`HTML` + `CSS` + `Vanilla
    - Images: every `<img>` has `width`/`height` (intrinsic ratio) and `alt` (`""` if decorative). Below-the-fold images get `loading="lazy" decoding="async"`; the hero portrait uses `fetchpriority="high"`. Keep source files at most 2x their largest CSS size, JPEG quality ~80 (`sips -Z`/`--resampleHeightWidth` + `-s formatOptions 80`).
    - Favicon: `assets/favicon.svg` (mini Piko) + `assets/apple-touch-icon.png` (180px, rendered with `sips`). OG/Twitter image is a relative path; set an absolute URL once the deploy URL is known.
 
+## Visitor counter (Netlify)
+- `netlify/functions/visits.mjs` serves `/api/visits` (GET = total, POST = +1) backed by Netlify Blobs; production uses store `visits`, previews/branch deploys use `visits-preview`. `@netlify/blobs` in `package.json` is the only dependency and is used only by the function (the site itself stays zero-build).
+- `initVisitCount` in `script.js` POSTs once per browser (`localStorage['ay-visited']`), otherwise GETs, and fills `#visit-count` in the footer. It stays hidden if the endpoint fails, so the local python server shows nothing there.
+
 ## Verification Checklist for Agents
 
 Before finishing any edit:

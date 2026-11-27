@@ -1119,6 +1119,10 @@ footer nav { justify-content: center; padding: 0.5rem 2rem; }
 }
 .to-top:hover { color: var(--accent-text); }
 @media (hover: none) { .footer-hint { display: none; } }
+.footer-visits { display: inline-flex; align-items: center; gap: 8px; }
+.footer-visits[hidden] { display: none; }
+.visits-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.footer-visits [data-visits] { color: var(--text); font-variant-numeric: tabular-nums; }
 
 /* =============================================
    PIKO 2.0 — MOCHI DESK PET
