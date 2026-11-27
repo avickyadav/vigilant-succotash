@@ -12,7 +12,7 @@ Personal portfolio website for **Ashish Yadav** (Full-Stack & AI-Driven Software
 - **Tech Stack with Real SVG Logos** — 4 categorized panels (`AI & GenAI`, `Frontend`, `Backend & Databases`, `DevOps & Cloud`) using local SVGs in `assets/tech-logos/` with automatic dark-mode inversion (`.dark-invert`) for monochrome logos.
 - **Work Experience + Focus Chips** — Company cards with logos, scannable colorful focus chips, and impact bullets.
 - **Projects Grid** — Text-focused project cards with tech tags and measurable impact metrics.
-- **Career Journey Timeline** — Animated progress line and milestone chips (highlighting *Emerging Employee of the Year 2026*).
+- **Career Journey Trail** — A scroll-drawn path through eight milestones (education to *Emerging Employee of the Year 2026*), with Piko walking it and stopping at "You are here". A `NEXT_CHAPTER` config in `script.js` drives the next-chapter stop, hero status pill and Experience dates.
 - **LinkedIn-Style Recommendations Carousel** — Decorated quote cards with cropped profile avatars (`assets/rec-avatars/`), verified badges, opening/closing quotes, auto-advance, pause-on-hover, arrows, and pagination dots.
 - **LinkedIn Posts** — Embedded LinkedIn post iframes (`#posts`).
 - **Piko AI Pet Chatbot (`#piko-widget`)** — Cute floating SVG mascot with curated quick-question chips and regex-based intent matching.
@@ -30,7 +30,7 @@ vigilant-succotash/
 ├── AGENTS.md                   # Guide for AI coding agents (Claude Code, Codex, Antigravity, Cursor)
 ├── README.md                   # Project overview & maintenance guide
 └── assets/
-    ├── Ashish_Yadav_EPAM_8557.pdf   # Active CV linked from "Download CV"
+    ├── Ashish_Yadav_CV.pdf   # Active CV linked from "Download CV"
     ├── profile-pic.jpg / about-pic2.jpg
     ├── logos/                  # Company logos (Pratham Software, Metacube)
     ├── tech-logos/             # Local SVG logos for Tech Stack items

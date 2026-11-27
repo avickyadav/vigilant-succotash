@@ -84,13 +84,14 @@
             </div>
         </div>
         <div class="section__text">
+            <p class="status-pill" data-nc="hero-pill"><span class="status-dot" aria-hidden="true"></span><span data-nc="hero-pill-text">Serving notice · next chapter starts 7 Dec</span></p>
             <p class="section_text__p1">Hello, I'm</p>
             <h1 class="title">Ashish Yadav</h1>
             <p class="section__text__p2">
                 <span id="typing-text"></span><span class="cursor">|</span>
             </p>
             <div class="btn-container">
-                <button class="btn btn-color-2" onclick="window.open('./assets/Ashish_Yadav_EPAM_8557.pdf')">Download CV</button>
+                <button class="btn btn-color-2" onclick="window.open('./assets/Ashish_Yadav_CV.pdf')">Download CV</button>
                 <button class="btn btn-color-1" onclick="location.href='#contact'">Contact Info</button>
             </div>
             <div id="socials-container">
@@ -141,9 +142,6 @@
                 </div>
             </div>
         </div>
-        <button class="arrow-btn" onclick="location.href='#skills'" aria-label="Scroll to Tech Stack">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        </button>
     </section>
 
     <!-- ===== TECH STACK ===== -->
@@ -305,9 +303,6 @@
             </div>
 
         </div>
-        <button class="arrow-btn" onclick="location.href='#experience'" aria-label="Scroll to Experience">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        </button>
     </section>
 
     <!-- ===== WORK EXPERIENCE ===== -->
@@ -325,16 +320,16 @@
                     <div class="work-meta">
                         <h2 class="company-name">Pratham Software Pvt. Ltd.</h2>
                         <p class="work-role">Software Engineer <span class="client-badge">Client: Global Top-3 Management Consulting Firm</span></p>
-                        <span class="work-date">Oct 2025 — Present</span>
+                        <span class="work-date" data-nc="exp-pratham-date">Oct 2025 — Present</span>
                     </div>
                 </div>
                 <div class="focus-chips">
-                    <span class="focus-chip chip-violet">🤖 Agentic GenAI</span>
-                    <span class="focus-chip chip-sky">🔍 RAG Pipelines · -35%</span>
-                    <span class="focus-chip chip-indigo">🔌 MCP Integrations</span>
-                    <span class="focus-chip chip-emerald">⚡ 40% Faster Reports</span>
-                    <span class="focus-chip chip-amber">🚀 Enterprise MVPs</span>
-                    <span class="focus-chip chip-rose">📊 LLM Observability</span>
+                    <span class="focus-chip chip-violet">Agentic GenAI</span>
+                    <span class="focus-chip chip-sky">RAG Pipelines · -35%</span>
+                    <span class="focus-chip chip-indigo">MCP Integrations</span>
+                    <span class="focus-chip chip-emerald">40% Faster Reports</span>
+                    <span class="focus-chip chip-amber">Enterprise MVPs</span>
+                    <span class="focus-chip chip-rose">LLM Observability</span>
                 </div>
                 <ul class="work-bullets">
                     <li>Building agentic GenAI applications for a global top-three management consulting firm using Claude and OpenAI models orchestrated through a custom agent framework — delivered multiple MVPs from concept to client demo.</li>
@@ -359,12 +354,12 @@
                     </div>
                 </div>
                 <div class="focus-chips">
-                    <span class="focus-chip chip-violet">🧠 GraphDB + RAG</span>
-                    <span class="focus-chip chip-emerald">⚡ 80% Faster AI</span>
-                    <span class="focus-chip chip-sky">✨ GPT-4.5 &amp; Gemini</span>
-                    <span class="focus-chip chip-amber">📈 RGM · +30% Engagement</span>
-                    <span class="focus-chip chip-indigo">⚙️ Jenkins CI/CD · -50%</span>
-                    <span class="focus-chip chip-rose">🐇 RabbitMQ Async</span>
+                    <span class="focus-chip chip-violet">GraphDB + RAG</span>
+                    <span class="focus-chip chip-emerald">80% Faster AI</span>
+                    <span class="focus-chip chip-sky">GPT-4.5 &amp; Gemini</span>
+                    <span class="focus-chip chip-amber">RGM · +30% Engagement</span>
+                    <span class="focus-chip chip-indigo">Jenkins CI/CD · -50%</span>
+                    <span class="focus-chip chip-rose">RabbitMQ Async</span>
                 </div>
                 <ul class="work-bullets">
                     <li>Built a React-based UI for an agentic document-extraction and RAG framework, integrating GraphDB (Ontotext) for semantic search and knowledge-graph management; implemented streaming / parallel multi-agent responses that improved response time by 80%.</li>
@@ -375,9 +370,6 @@
             </div>
 
         </div>
-        <button class="arrow-btn" onclick="location.href='#projects'" aria-label="Scroll to Projects">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        </button>
     </section>
 
     <!-- ===== PROJECTS ===== -->
@@ -398,7 +390,7 @@
                 </div>
                 <h3 class="project-title">Personal MCP Server for Developer Workflows</h3>
                 <p class="project-desc">Built a custom MCP server exposing personal productivity and codebase-search tools to Claude, letting an agent autonomously look up context, run scripts, and draft code changes. Implemented a lightweight RAG layer (embeddings + vector store) over project documentation to ground agent responses and reduce hallucinated references.</p>
-                <div class="project-impact">⚡ Fully autonomous agentic code lookup &amp; drafting</div>
+                <div class="project-impact">Fully autonomous agentic code lookup &amp; drafting</div>
             </div>
 
             <div class="project-card">
@@ -414,7 +406,7 @@
                 </div>
                 <h3 class="project-title">AI-Powered Revenue Growth Management Tool</h3>
                 <p class="project-desc">Designed and built an AI-powered business intelligence tool for a global consumer-goods client, enabling data-driven revenue optimisation decisions. Improved query performance through indexing strategies and schema refinement on a large-scale PostgreSQL database.</p>
-                <div class="project-impact">📈 +30% user engagement · +40% data retrieval speed</div>
+                <div class="project-impact">+30% user engagement · +40% data retrieval speed</div>
             </div>
 
             <div class="project-card">
@@ -428,7 +420,7 @@
                 </div>
                 <h3 class="project-title">Face Recognition System</h3>
                 <p class="project-desc">Developed a full-stack face recognition system with a Django backend, using OpenCV for real-time video stream processing and a custom ML pipeline for feature extraction and matching.</p>
-                <div class="project-impact">🎯 95% recognition accuracy</div>
+                <div class="project-impact">95% recognition accuracy</div>
             </div>
 
             <div class="project-card">
@@ -442,159 +434,117 @@
                 </div>
                 <h3 class="project-title">IoT Home Automation Web App</h3>
                 <p class="project-desc">Built an IoT-powered web application for remote home-appliance control, featuring a real-time dashboard with device state management and scheduling. Connected hardware sensors to a Python backend over MQTT.</p>
-                <div class="project-impact">🏠 30% reduction in energy consumption</div>
+                <div class="project-impact">30% reduction in energy consumption</div>
             </div>
 
         </div>
-        <button class="arrow-btn" onclick="location.href='#journey'" aria-label="Scroll to Career Journey">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        </button>
     </section>
 
-    <!-- ===== CAREER JOURNEY / STAIRCASE ===== -->
+    <!-- ===== CAREER JOURNEY / THE TRAIL ===== -->
     <section id="journey" class="reveal">
         <p class="section__text__p1">How I Got Here</p>
         <h1 class="title">Career Journey</h1>
 
-        <div class="staircase-wrapper" id="staircase-wrapper">
+        <div class="trail-map" id="trail-map" role="navigation" aria-label="Career timeline"></div>
 
-            <!-- Step 1 (lowest) — College -->
-            <div class="stair-step stair-1" data-index="0">
-                <div class="stair-card">
-                    <div class="stair-card-head">
-                        <span class="stair-emoji" aria-hidden="true">🎓</span>
-                        <span class="node-year">2018 – 2022</span>
-                    </div>
-                    <h3 class="node-title">Jaipur Engineering College</h3>
-                    <p class="node-role">B.Tech — Electronics &amp; Communication</p>
-                    <div class="node-chips">
-                        <span class="node-chip chip-sky">🎓 8.5 GPA</span>
-                        <span class="node-chip chip-emerald">🤖 Face Rec · 95%</span>
-                        <span class="node-chip chip-indigo">🏠 IoT Systems</span>
-                    </div>
-                    <p class="node-detail">Jaipur, Rajasthan · Built IoT and computer-vision projects during coursework that sparked my passion for applied software engineering.</p>
-                </div>
-                <div class="stair-block" aria-hidden="true">
-                    <div class="stair-tread"></div>
-                    <div class="stair-riser"></div>
-                </div>
-            </div>
+        <div class="trail-wrap" id="trail-wrap">
+            <svg class="trail-svg" id="trail-svg" aria-hidden="true" focusable="false">
+                <path class="trail-path-future" id="trail-future" d=""/>
+                <path class="trail-path-past" id="trail-past" d=""/>
+            </svg>
 
-            <!-- Step 2 (middle) — Metacube -->
-            <div class="stair-step stair-2" data-index="1">
-                <div class="stair-card">
-                    <div class="stair-card-head">
-                        <span class="stair-emoji" aria-hidden="true">🏢</span>
-                        <span class="node-year">Oct 2021 – Sep 2025</span>
-                    </div>
-                    <h3 class="node-title">Metacube Software</h3>
-                    <p class="node-role">Software Engineer · 4 Years</p>
-                    <div class="node-chips">
-                        <span class="node-chip chip-indigo">💻 Full-Stack → AI</span>
-                        <span class="node-chip chip-emerald">⚡ 80% Latency Drop</span>
-                        <span class="node-chip chip-violet">🧠 GraphDB + RAG</span>
-                    </div>
-                    <p class="node-detail">Grew from graduate engineer to GenAI builder — React, FastAPI, RAG, GraphDB, GPT-4.5 &amp; Gemini integrations across global enterprise clients.</p>
-                </div>
-                <div class="stair-block" aria-hidden="true">
-                    <div class="stair-tread"></div>
-                    <div class="stair-riser"></div>
-                </div>
-            </div>
+            <ol class="trail" id="trail">
 
-            <!-- Step 3 (highest) — Pratham + sitting person figurine -->
-            <div class="stair-step stair-3" data-index="2">
-                <div class="stair-card stair-card-gold">
-                    <!-- Small person sitting on top of the highest step -->
-                    <div class="stair-figurine" aria-hidden="true">
-                        <svg viewBox="0 0 64 76" width="50" height="60" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Shadow on card edge -->
-                            <ellipse cx="32" cy="72" rx="14" ry="3" fill="currentColor" opacity="0.12"/>
-                            <!-- Legs dangling/sitting comfortably -->
-                            <path d="M24 54 Q21 65 17 69" stroke="#475569" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-                            <path d="M38 54 Q41 65 45 69" stroke="#475569" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-                            <!-- Sneakers -->
-                            <ellipse cx="16" cy="70" rx="4.2" ry="2.4" fill="#1e293b"/>
-                            <ellipse cx="46" cy="70" rx="4.2" ry="2.4" fill="#1e293b"/>
-                            <!-- Torso (casual hoodie/sweater) -->
-                            <rect x="21" y="36" width="22" height="21" rx="7" fill="#6366f1"/>
-                            <path d="M26 38 L32 42 L38 38" stroke="#c7d2fe" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-                            <!-- Mini laptop on lap -->
-                            <rect x="18" y="51" width="28" height="3.5" rx="1.5" fill="#334155"/>
-                            <rect x="20" y="45" width="24" height="6.5" rx="1.5" fill="#0f172a"/>
-                            <rect x="22" y="46.5" width="20" height="3.5" rx="1" fill="#38bdf8" opacity="0.55"/>
-                            <!-- Arms -->
-                            <path d="M21 41 Q14 47 19 52" stroke="#818cf8" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-                            <path d="M43 41 Q50 47 45 52" stroke="#818cf8" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-                            <!-- Neck -->
-                            <rect x="28.5" y="31" width="7" height="6" rx="2.5" fill="#f5c6a0"/>
-                            <!-- Head -->
-                            <ellipse cx="32" cy="23" rx="11.5" ry="12" fill="#f5c6a0"/>
-                            <!-- Hair -->
-                            <path d="M20 20 Q23 8 32 10 Q41 8 44 20 Q40 16 32 17 Q24 16 20 20 Z" fill="#1e293b"/>
-                            <!-- Eyes -->
-                            <circle cx="27.5" cy="24" r="1.7" fill="#1e293b"/>
-                            <circle cx="36.5" cy="24" r="1.7" fill="#1e293b"/>
-                            <circle cx="28" cy="23.5" r="0.6" fill="#ffffff"/>
-                            <circle cx="37" cy="23.5" r="0.6" fill="#ffffff"/>
-                            <!-- Glasses -->
-                            <rect x="23.5" y="21" width="7.5" height="5.5" rx="2.2" fill="none" stroke="#475569" stroke-width="1.1"/>
-                            <rect x="33" y="21" width="7.5" height="5.5" rx="2.2" fill="none" stroke="#475569" stroke-width="1.1"/>
-                            <line x1="31" y1="23.8" x2="33" y2="23.8" stroke="#475569" stroke-width="1"/>
-                            <!-- Smile -->
-                            <path d="M28.5 29 Q32 32 35.5 29" stroke="#b45309" stroke-width="1.4" fill="none" stroke-linecap="round"/>
-                            <!-- Gold star -->
-                            <text x="45" y="12" font-size="10" fill="#fbbf24">★</text>
-                        </svg>
+                <li class="stop" id="stop-1" data-state="past" data-map="2018">
+                    <span class="stop-dot" aria-hidden="true"></span>
+                    <div class="stop-card">
+                        <p class="stop-date">2018 – 2022</p>
+                        <h3 class="stop-title">B.Tech ECE, JECRC Jaipur</h3>
+                        <p class="stop-sum">Electronics &amp; Communication at Jaipur Engineering College, and the first things I built.</p>
+                        <div class="stop-chips"><span class="chip">8.5 GPA</span><span class="chip">Face recognition · 95%</span></div>
+                        <button class="stop-toggle" type="button" aria-expanded="false" aria-controls="stop-1-more"><span>Details</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                        <div class="stop-more" id="stop-1-more" hidden>
+                            <p>Built IoT home automation and a face-recognition system (95% accuracy) during coursework. Those projects pointed me toward applied software engineering.</p>
+                        </div>
                     </div>
+                </li>
 
-                    <div class="stair-card-head">
-                        <span class="stair-emoji" aria-hidden="true">🚀</span>
-                        <span class="node-year">Oct 2025 – Present</span>
+                <li class="stop" id="stop-2" data-state="past" data-map="2021">
+                    <span class="stop-dot" aria-hidden="true"></span>
+                    <div class="stop-card">
+                        <p class="stop-date">Oct 2021</p>
+                        <h3 class="stop-title">Joined Metacube Software</h3>
+                        <p class="stop-sum">Started as a graduate engineer, building full-stack products for global enterprise clients.</p>
+                        <div class="stop-chips"><span class="chip">React · FastAPI</span><span class="chip">Graduate engineer</span></div>
+                        <button class="stop-toggle" type="button" aria-expanded="false" aria-controls="stop-2-more"><span>Details</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                        <div class="stop-more" id="stop-2-more" hidden>
+                            <p>Four years at Metacube, growing from full-stack engineer to GenAI builder across React, FastAPI, PostgreSQL, Jenkins CI/CD and RabbitMQ (deployment time cut 50%).</p>
+                        </div>
                     </div>
-                    <h3 class="node-title">Pratham Software</h3>
-                    <p class="node-role">Software Engineer · AI Focus</p>
-                    <div class="node-chips">
-                        <span class="node-chip chip-gold">🏆 Emerging Employee of the Year 2026</span>
-                        <span class="node-chip chip-violet">🤖 Claude &amp; OpenAI</span>
-                        <span class="node-chip chip-sky">🔌 MCP &amp; Multi-Agent</span>
-                        <span class="node-chip chip-emerald">🏢 Top-3 Consulting</span>
-                    </div>
-                    <p class="node-detail">Building agentic AI systems for a global top-3 management consulting firm — multi-agent orchestration, RAG, and production MVPs.</p>
-                </div>
-                <div class="stair-block" aria-hidden="true">
-                    <div class="stair-tread"></div>
-                    <div class="stair-riser"></div>
-                </div>
-            </div>
+                </li>
 
+                <li class="stop" id="stop-3" data-state="past" data-map="2023">
+                    <span class="stop-dot" aria-hidden="true"></span>
+                    <div class="stop-card">
+                        <p class="stop-date">2023 – 2024</p>
+                        <h3 class="stop-title">Pivot to GenAI</h3>
+                        <p class="stop-sum">An RGM tool that lifted engagement 30%, then a GraphDB RAG interface that cut latency 80%.</p>
+                        <div class="stop-chips"><span class="chip">+30% engagement</span><span class="chip">−80% latency</span></div>
+                        <button class="stop-toggle" type="button" aria-expanded="false" aria-controls="stop-3-more"><span>Details</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                        <div class="stop-more" id="stop-3-more" hidden>
+                            <p>Built an AI-powered Revenue Growth Management tool (React, MUI, Redux, FastAPI, PostgreSQL) for a global consumer-goods client. Then shipped a React UI for an agentic document-extraction and RAG framework on GraphDB, with GPT-4.5 and Gemini behind a GraphQL API.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="stop" id="stop-4" data-state="past" data-map="AI-102">
+                    <span id="certifications"></span>
+                    <span class="stop-dot" aria-hidden="true"></span>
+                    <div class="stop-card">
+                        <p class="stop-date">Certification</p>
+                        <h3 class="stop-title">Microsoft AI-102</h3>
+                        <p class="stop-sum">Azure AI Engineer Associate, Microsoft Certified.</p>
+                        <div class="stop-chips"><span class="chip">AI-102</span><span class="chip">Azure AI</span></div>
+                        <button class="stop-toggle" type="button" aria-expanded="false" aria-controls="stop-4-more"><span>Details</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                        <div class="stop-more" id="stop-4-more" hidden>
+                            <p>Microsoft Certified: Azure AI Engineer Associate. It validates designing and building AI solutions on Azure.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="stop" id="stop-5" data-state="past" data-map="2025">
+                    <span class="stop-dot" aria-hidden="true"></span>
+                    <div class="stop-card">
+                        <p class="stop-date" data-nc="trail-pratham-date">Oct 2025 — Present</p>
+                        <h3 class="stop-title">Pratham Software</h3>
+                        <p class="stop-sum">Agentic GenAI for a top-3 management consulting firm.</p>
+                        <div class="stop-chips"><span class="chip">Claude &amp; OpenAI</span><span class="chip">MCP · multi-agent</span></div>
+                        <button class="stop-toggle" type="button" aria-expanded="false" aria-controls="stop-5-more"><span>Details</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+                        <div class="stop-more" id="stop-5-more" hidden>
+                            <p>Multi-agent workflows (planner, executor, tool-calling) with MCP-style integrations, and RAG pipelines that cut analyst research time by about 35%. Several MVPs taken from concept to client demo.</p>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="stop" id="stop-6" data-state="past" data-map="2026">
+                    <span class="stop-dot" aria-hidden="true"></span>
+                    <div class="stop-card">
+                        <p class="stop-date">2026</p>
+                        <h3 class="stop-title">Emerging Employee of the Year</h3>
+                        <p class="stop-sum">Awarded by Pratham Software Pvt. Ltd.</p>
+                        <div class="stop-chips"><span class="chip">Pratham Software</span></div>
+                    </div>
+                </li>
+
+                <!-- Rendered by renderNextChapter() from NEXT_CHAPTER -->
+                <li class="stop" id="stop-7" data-slot="now" data-state="current" data-map="Now"></li>
+                <li class="stop" id="stop-8" data-slot="next" data-state="next" data-map="Next"></li>
+                <li class="stop" id="stop-9" data-slot="ghost" data-state="next" data-map="Next" hidden></li>
+            </ol>
+
+            <div class="trail-marker" id="trail-marker" aria-hidden="true"></div>
+            <span class="trail-here" id="trail-here" aria-hidden="true">You are here</span>
         </div>
-        <button class="arrow-btn" onclick="location.href='#certifications'" aria-label="Scroll to Certifications">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        </button>
-    </section>
-
-    <!-- ===== CERTIFICATIONS ===== -->
-    <section id="certifications" class="reveal">
-        <p class="section__text__p1">Credentials</p>
-        <h1 class="title">Certifications &amp; Awards</h1>
-        <div class="cert-grid">
-            <div class="cert-card">
-                <div class="cert-icon">🎖️</div>
-                <h3 class="cert-title">Microsoft Certified</h3>
-                <p class="cert-sub">Azure AI Engineer Associate</p>
-                <span class="cert-badge chip-sky">AI-102</span>
-            </div>
-            <div class="cert-card">
-                <div class="cert-icon">🏆</div>
-                <h3 class="cert-title">Emerging Employee of the Year</h3>
-                <p class="cert-sub">Pratham Software Pvt. Ltd.</p>
-                <span class="cert-badge chip-gold">2026</span>
-            </div>
-        </div>
-        <button class="arrow-btn" onclick="location.href='#recommendations'" aria-label="Scroll to Recommendations">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        </button>
     </section>
 
     <!-- ===== LINKEDIN RECOMMENDATIONS ===== -->
@@ -725,9 +675,6 @@
             <span class="rec-dot" onclick="goToRec(2)"></span>
             <span class="rec-dot" onclick="goToRec(3)"></span>
         </div>
-        <button class="arrow-btn" onclick="location.href='#posts'" aria-label="Scroll to LinkedIn Posts">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        </button>
     </section>
 
     <!-- ===== LINKEDIN POSTS ===== -->
@@ -742,9 +689,6 @@
                 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7419021064090906624?collapsed=1" height="500" width="100%" frameborder="0" allowfullscreen title="Embedded post"></iframe>
             </div>
         </div>
-        <button class="arrow-btn" onclick="location.href='#contact'" aria-label="Scroll to Contact">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        </button>
     </section>
 
     <!-- ===== CONTACT ===== -->
@@ -785,157 +729,121 @@
         <p>Copyright &#169; 2026 Ashish Yadav. All Rights Reserved.</p>
     </footer>
 
-    <!-- ===== PIKO AI PET CHATBOT ===== -->
+    <!-- ===== PIKO 2.0 — mochi desk pet ===== -->
+    <template id="piko-tpl">
+        <svg class="piko" data-state="idle" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <defs>
+                <radialGradient id="pb{{u}}" cx="0.34" cy="0.28" r="0.85">
+                    <stop offset="0" style="stop-color:var(--piko-body-hi)"/>
+                    <stop offset="0.5" style="stop-color:var(--piko-body)"/>
+                    <stop offset="1" style="stop-color:var(--piko-body-lo)"/>
+                </radialGradient>
+                <linearGradient id="pe{{u}}" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" style="stop-color:var(--piko-body)"/>
+                    <stop offset="1" style="stop-color:var(--piko-body-lo)"/>
+                </linearGradient>
+                <radialGradient id="pf{{u}}" cx="0.4" cy="0.25" r="0.9">
+                    <stop offset="0" style="stop-color:var(--piko-body)"/>
+                    <stop offset="1" style="stop-color:var(--piko-body-lo)"/>
+                </radialGradient>
+                <filter id="ps{{u}}" x="-20%" y="-100%" width="140%" height="300%"><feGaussianBlur stdDeviation="1.6"/></filter>
+                <filter id="pk{{u}}" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="0.35"/></filter>
+                <filter id="pa{{u}}" x="-30%" y="-60%" width="160%" height="220%"><feGaussianBlur stdDeviation="2.2"/></filter>
+                <clipPath id="pc{{u}}"><path d="M50 25C73 25 89 41 89 60C89 77 73 88 50 88C27 88 11 77 11 60C11 41 27 25 50 25Z"/></clipPath>
+            </defs>
+            <ellipse class="piko-shadow" cx="50" cy="94.5" rx="30" ry="3.6" filter="url(#ps{{u}})"/>
+            <g class="piko-rig">
+                <g class="piko-ear l">
+                    <path d="M14 46C9 30 13 14 22 15C30 16.5 40 26 44 36Z" fill="url(#pe{{u}})"/>
+                    <path class="piko-inner" d="M20 38C17 29 19 21 22.5 21.5C27 22.5 32 28 34 34Z"/>
+                </g>
+                <g class="piko-ear r">
+                    <path d="M86 46C91 30 87 14 78 15C70 16.5 60 26 56 36Z" fill="url(#pe{{u}})"/>
+                    <path class="piko-inner" d="M80 38C83 29 81 21 77.5 21.5C73 22.5 68 28 66 34Z"/>
+                </g>
+                <g class="piko-feet">
+                    <ellipse cx="35" cy="88.6" rx="8.6" ry="4.8" fill="url(#pf{{u}})"/>
+                    <ellipse cx="65" cy="88.6" rx="8.6" ry="4.8" fill="url(#pf{{u}})"/>
+                    <ellipse class="piko-toe" cx="32" cy="90.2" rx="1.1" ry="1.3"/><ellipse class="piko-toe" cx="35" cy="90.9" rx="1.1" ry="1.3"/><ellipse class="piko-toe" cx="38" cy="90.2" rx="1.1" ry="1.3"/>
+                    <ellipse class="piko-toe" cx="62" cy="90.2" rx="1.1" ry="1.3"/><ellipse class="piko-toe" cx="65" cy="90.9" rx="1.1" ry="1.3"/><ellipse class="piko-toe" cx="68" cy="90.2" rx="1.1" ry="1.3"/>
+                </g>
+                <path class="piko-body" d="M50 25C73 25 89 41 89 60C89 77 73 88 50 88C27 88 11 77 11 60C11 41 27 25 50 25Z" fill="url(#pb{{u}})"/>
+                <g clip-path="url(#pc{{u}})">
+                    <g class="piko-ao" filter="url(#pa{{u}})">
+                        <ellipse class="ear-ao" cx="30" cy="31" rx="9" ry="3.6"/><ellipse class="ear-ao" cx="70" cy="31" rx="9" ry="3.6"/>
+                        <ellipse cx="35" cy="87" rx="12" ry="3.4"/><ellipse cx="65" cy="87" rx="12" ry="3.4"/>
+                    </g>
+                </g>
+                <path class="piko-rim" d="M85 66C83.5 77 72 85.6 56 87.4" fill="none"/>
+                <ellipse class="piko-spec" cx="29" cy="40" rx="8.5" ry="3.8" transform="rotate(-40 29 40)" filter="url(#pk{{u}})"/>
+                <circle class="piko-spec" cx="22.5" cy="49" r="1.3" filter="url(#pk{{u}})"/>
+                <g class="piko-face">
+                    <ellipse class="piko-blush l" cx="22" cy="71" rx="5.6" ry="3.3"/>
+                    <ellipse class="piko-blush r" cx="78" cy="71" rx="5.6" ry="3.3"/>
+                    <g class="piko-eyes">
+                        <g class="piko-eye l"><ellipse class="pupil" cx="33" cy="61" rx="6.4" ry="7.8"/><circle class="glint" cx="35.2" cy="57.6" r="2.6"/><circle class="glint sm" cx="30.6" cy="64.6" r="1.2"/></g>
+                        <g class="piko-eye r"><ellipse class="pupil" cx="67" cy="61" rx="6.4" ry="7.8"/><circle class="glint" cx="69.2" cy="57.6" r="2.6"/><circle class="glint sm" cx="64.6" cy="64.6" r="1.2"/></g>
+                        <g class="piko-eye-happy"><path d="M27.5 63.5Q33 55 38.5 63.5"/><path d="M61.5 63.5Q67 55 72.5 63.5"/></g>
+                        <g class="piko-eye-sleepy"><path d="M27.5 62Q33 65.6 38.5 62"/><path d="M61.5 62Q67 65.6 72.5 62"/></g>
+                    </g>
+                    <path class="piko-mouth" d="M46.4 71Q48.2 74 50 71.2Q51.8 74 53.6 71"/>
+                </g>
+                <g class="piko-sprout">
+                    <path class="stem" d="M50 26C50 20 51 16.5 53 13.5"/>
+                    <path class="leaf" d="M52.5 14.5C46 6 38 7 36 10.5C38 16.5 46 18.5 52.5 14.5Z"/>
+                    <path class="leaf" d="M52.8 13.5C55 5 63 3 66.5 5C66.5 11.5 60 15.5 52.8 13.5Z"/>
+                    <path class="vein" d="M50 14.5C45 11.5 41 11 38.5 11.5"/><path class="vein" d="M54.5 12C58 8.5 61 6.8 64 6.2"/>
+                </g>
+            </g>
+            <g class="piko-z"><text x="76" y="26">z</text><text x="84" y="15">z</text></g>
+        </svg>
+    </template>
+
     <div class="piko-widget" id="piko-widget">
-        <div class="piko-window" id="piko-window" aria-hidden="true">
+        <div class="piko-backdrop" id="piko-backdrop"></div>
+        <div class="piko-window" id="piko-window" role="dialog" aria-label="Chat with Piko" aria-hidden="true">
+            <span class="piko-grab" aria-hidden="true"></span>
             <div class="piko-header">
                 <div class="piko-header-left">
-                    <div class="piko-avatar-sm" aria-hidden="true">
-                        <!-- Piko mini 3D robot header avatar -->
-                        <svg viewBox="0 0 48 48" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <radialGradient id="ph" cx="45%" cy="35%" r="58%">
-                                    <stop offset="0%" stop-color="#c7d2fe"/>
-                                    <stop offset="100%" stop-color="#6366f1"/>
-                                </radialGradient>
-                                <radialGradient id="pv" cx="40%" cy="35%" r="60%">
-                                    <stop offset="0%" stop-color="#7dd3fc"/>
-                                    <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0.7"/>
-                                </radialGradient>
-                            </defs>
-                            <!-- Antenna -->
-                            <line x1="24" y1="3" x2="24" y2="9" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round"/>
-                            <circle cx="24" cy="3" r="2" fill="#38bdf8"/>
-                            <!-- Head -->
-                            <rect x="9" y="9" width="30" height="22" rx="10" fill="url(#ph)"/>
-                            <!-- Highlight -->
-                            <ellipse cx="19" cy="13" rx="8" ry="3.5" fill="#ffffff" opacity="0.22"/>
-                            <!-- Ear nubs -->
-                            <rect x="5" y="16" width="5" height="8" rx="2.5" fill="#6366f1"/>
-                            <rect x="38" y="16" width="5" height="8" rx="2.5" fill="#6366f1"/>
-                            <!-- Visor -->
-                            <rect x="11" y="17" width="26" height="10" rx="5" fill="url(#pv)" opacity="0.88"/>
-                            <!-- Eyes -->
-                            <ellipse cx="19" cy="22" rx="4" ry="3.5" fill="#ffffff" opacity="0.9"/>
-                            <ellipse cx="29" cy="22" rx="4" ry="3.5" fill="#ffffff" opacity="0.9"/>
-                            <circle cx="19.5" cy="22.5" r="2" fill="#1d4ed8"/>
-                            <circle cx="29.5" cy="22.5" r="2" fill="#1d4ed8"/>
-                            <!-- Cheeks -->
-                            <circle cx="12" cy="27" r="2.5" fill="#fb7185" opacity="0.5"/>
-                            <circle cx="36" cy="27" r="2.5" fill="#fb7185" opacity="0.5"/>
-                            <!-- Smile -->
-                            <path d="M20 30 Q24 34 28 30" stroke="#6366f1" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-                            <!-- Body stub -->
-                            <rect x="15" y="34" width="18" height="11" rx="6" fill="#818cf8" opacity="0.8"/>
-                            <!-- Chest dot -->
-                            <circle cx="24" cy="40" r="2" fill="#38bdf8" opacity="0.9"/>
-                        </svg>
-                    </div>
+                    <div class="piko-avatar-sm" id="piko-avatar" aria-hidden="true"></div>
                     <div>
-                        <div class="piko-title">Piko <span class="piko-badge">AI Buddy</span></div>
-                        <div class="piko-status"><span class="piko-dot"></span> Online · Ask about Ashish</div>
+                        <div class="piko-title">Piko</div>
+                        <div class="piko-status">Ashish's desk pet · knows his CV</div>
                     </div>
                 </div>
-                <button class="piko-close" id="piko-close" aria-label="Close chat">✕</button>
+                <button class="piko-close" id="piko-close" type="button" aria-label="Close chat">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+                </button>
             </div>
 
-            <div class="piko-messages" id="piko-messages"></div>
+            <div class="piko-messages" id="piko-messages" role="log" aria-live="polite" aria-label="Conversation with Piko"></div>
 
             <div class="piko-quick-chips" id="piko-quick-chips">
-                <button class="piko-qchip" data-q="Who is Ashish?">👋 Who is Ashish?</button>
-                <button class="piko-qchip" data-q="What is his AI &amp; GenAI stack?">🤖 AI Stack</button>
-                <button class="piko-qchip" data-q="Tell me about Pratham &amp; BCGX">🏢 Pratham &amp; BCGX</button>
-                <button class="piko-qchip" data-q="What awards and certifications does he have?">🏆 Awards &amp; Certs</button>
-                <button class="piko-qchip" data-q="How can I contact Ashish?">📬 Contact</button>
+                <button class="piko-qchip" type="button" data-q="Who is Ashish?">Who is Ashish?</button>
+                <button class="piko-qchip" type="button" data-q="What's next for him?">What's next for him?</button>
+                <button class="piko-qchip" type="button" data-q="What's his AI &amp; GenAI stack?">AI stack</button>
+                <button class="piko-qchip" type="button" data-q="What's his best project?">Best project</button>
+                <button class="piko-qchip" type="button" data-q="How can I hire or contact Ashish?">Hire / contact</button>
             </div>
 
             <form class="piko-input-row" id="piko-form">
-                <input type="text" id="piko-input" placeholder="Say hi or ask about Ashish..." autocomplete="off" />
+                <input type="text" id="piko-input" placeholder="Ask about Ashish…" autocomplete="off" aria-label="Message Piko" />
                 <button type="submit" class="piko-send" aria-label="Send message">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="16" height="16"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
                 </button>
             </form>
         </div>
 
-        <button class="piko-fab" id="piko-fab" aria-label="Chat with Piko, Ashish's AI pet">
-            <span class="piko-tooltip">Hi! I'm Piko 🤖</span>
-            <!-- Piko 3D humanoid robot FAB -->
-            <svg class="piko-pet-svg" viewBox="0 0 60 72" width="44" height="52" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <radialGradient id="fabHead" cx="45%" cy="32%" r="58%">
-                        <stop offset="0%" stop-color="#e0e7ff"/>
-                        <stop offset="100%" stop-color="#818cf8"/>
-                    </radialGradient>
-                    <radialGradient id="fabBody" cx="50%" cy="38%" r="55%">
-                        <stop offset="0%" stop-color="#c7d2fe"/>
-                        <stop offset="100%" stop-color="#6366f1"/>
-                    </radialGradient>
-                    <radialGradient id="fabVisor" cx="40%" cy="35%" r="58%">
-                        <stop offset="0%" stop-color="#7dd3fc"/>
-                        <stop offset="100%" stop-color="#0284c7" stop-opacity="0.75"/>
-                    </radialGradient>
-                    <filter id="fabGlow">
-                        <feGaussianBlur stdDeviation="1.8" result="blur"/>
-                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                    </filter>
-                </defs>
+        <div class="piko-bubble" id="piko-bubble" role="status" hidden>
+            <p>Psst — want the 30-second version of Ashish?</p>
+            <div class="piko-bubble-actions">
+                <button type="button" class="piko-act primary" id="piko-bubble-yes">Sure</button>
+                <button type="button" class="piko-act" id="piko-bubble-no">Later</button>
+            </div>
+        </div>
 
-                <!-- Antenna -->
-                <line x1="30" y1="1" x2="30" y2="8" stroke="#818cf8" stroke-width="1.8" stroke-linecap="round"/>
-                <circle cx="30" cy="1.5" r="2.5" fill="#38bdf8" filter="url(#fabGlow)"/>
-
-                <!-- Head -->
-                <rect x="9" y="8" width="42" height="30" rx="14" fill="url(#fabHead)"/>
-                <!-- 3D highlight on head -->
-                <ellipse cx="23" cy="14" rx="11" ry="4.5" fill="#ffffff" opacity="0.28"/>
-
-                <!-- Ear nubs -->
-                <rect x="3" y="17" width="7" height="12" rx="3.5" fill="#6366f1"/>
-                <circle cx="6.5" cy="16" r="3" fill="#38bdf8" filter="url(#fabGlow)"/>
-                <rect x="50" y="17" width="7" height="12" rx="3.5" fill="#6366f1"/>
-                <circle cx="53.5" cy="16" r="3" fill="#38bdf8" filter="url(#fabGlow)"/>
-
-                <!-- Visor band -->
-                <rect x="12" y="21" width="36" height="13" rx="6.5" fill="url(#fabVisor)" opacity="0.9"/>
-                <!-- Visor sheen -->
-                <rect x="14" y="23" width="18" height="4" rx="2" fill="#ffffff" opacity="0.28"/>
-
-                <!-- Eyes (glowing) -->
-                <ellipse cx="23" cy="27.5" rx="5.5" ry="4.5" fill="#ffffff" opacity="0.95"/>
-                <ellipse cx="37" cy="27.5" rx="5.5" ry="4.5" fill="#ffffff" opacity="0.95"/>
-                <circle cx="23.8" cy="28" r="2.8" fill="#1d4ed8"/>
-                <circle cx="37.8" cy="28" r="2.8" fill="#1d4ed8"/>
-                <circle cx="24.6" cy="27.2" r="1" fill="#ffffff"/>
-                <circle cx="38.6" cy="27.2" r="1" fill="#ffffff"/>
-
-                <!-- Cheek blush -->
-                <circle cx="13" cy="34" r="4" fill="#fb7185" opacity="0.4"/>
-                <circle cx="47" cy="34" r="4" fill="#fb7185" opacity="0.4"/>
-
-                <!-- Smile -->
-                <path d="M23 37 Q30 43 37 37" stroke="#6366f1" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-
-                <!-- Neck -->
-                <rect x="22" y="40" width="16" height="7" rx="4" fill="#818cf8"/>
-
-                <!-- Body -->
-                <rect x="10" y="47" width="40" height="22" rx="10" fill="url(#fabBody)"/>
-                <!-- Chest panel -->
-                <rect x="17" y="52" width="26" height="12" rx="5" fill="#e0e7ff" opacity="0.3"/>
-                <circle cx="24" cy="58" r="2.5" fill="#38bdf8" filter="url(#fabGlow)"/>
-                <circle cx="30" cy="58" r="2.5" fill="#a78bfa" filter="url(#fabGlow)"/>
-                <circle cx="36" cy="58" r="2.5" fill="#34d399" filter="url(#fabGlow)"/>
-
-                <!-- Arms (little stubs) -->
-                <rect x="2" y="50" width="10" height="6" rx="3" fill="#818cf8"/>
-                <circle cx="4" cy="58" r="4.5" fill="#6366f1"/>
-                <rect x="48" y="50" width="10" height="6" rx="3" fill="#818cf8"/>
-                <circle cx="56" cy="58" r="4.5" fill="#6366f1"/>
-
-                <!-- Legs stubs -->
-                <rect x="17" y="68" width="10" height="4" rx="2" fill="#6366f1" opacity="0.9"/>
-                <rect x="33" y="68" width="10" height="4" rx="2" fill="#6366f1" opacity="0.9"/>
-            </svg>
+        <button class="piko-fab" id="piko-fab" type="button" aria-label="Chat with Piko" aria-expanded="false" aria-controls="piko-window">
+            <span class="piko-tooltip" aria-hidden="true">Ask Piko</span>
         </button>
     </div>
 
