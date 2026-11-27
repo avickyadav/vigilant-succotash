@@ -455,13 +455,19 @@
 
             <ol class="trail" id="trail">
 
-                <li class="stop" id="stop-1" data-state="past" data-map="2018">
-                    <span class="stop-dot" aria-hidden="true"></span>
+                <li class="stop stop--edu" id="stop-1" data-state="past" data-map="2018" data-type="edu">
+                    <span class="stop-dot" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></span>
                     <div class="stop-card">
-                        <p class="stop-date">2018 – 2022</p>
-                        <h3 class="stop-title">B.Tech ECE, JECRC Jaipur</h3>
-                        <p class="stop-sum">Electronics &amp; Communication at Jaipur Engineering College, and the first things I built.</p>
-                        <div class="stop-chips"><span class="chip">8.5 GPA</span><span class="chip">Face recognition · 95%</span></div>
+                        <div class="edu-head">
+                            <span class="icon-tile" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/><path d="M22 10v5"/></svg></span>
+                            <div class="role-id">
+                                <p class="stop-date">2018 – 2022</p>
+                                <h3 class="stop-title">B.Tech ECE, JECRC Jaipur</h3>
+                                <p class="role-line">Electronics &amp; Communication Engineering</p>
+                            </div>
+                            <div class="metric metric--solo"><span class="metric-num" data-count="8.5" data-dec="1">8.5</span><span class="metric-label">GPA</span></div>
+                        </div>
+                        <div class="stop-chips"><span class="chip">Face recognition · 95%</span><span class="chip">IoT home automation</span></div>
                         <button class="stop-toggle" type="button" aria-expanded="false" aria-controls="stop-1-more"><span>Details</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
                         <div class="stop-more" id="stop-1-more" hidden>
                             <p>Built IoT home automation and a face-recognition system (95% accuracy) during coursework. Those projects pointed me toward applied software engineering.</p>
@@ -469,77 +475,136 @@
                     </div>
                 </li>
 
-                <li class="stop" id="stop-2" data-state="past" data-map="2021">
-                    <span class="stop-dot" aria-hidden="true"></span>
+                <li class="stop stop--role" id="stop-2" data-state="past" data-map="2021 Metacube" data-type="role">
+                    <span class="stop-dot" aria-hidden="true"><img src="./assets/logos/metacube_logo.jpeg" alt=""></span>
                     <div class="stop-card">
-                        <p class="stop-date">Oct 2021</p>
-                        <h3 class="stop-title">Joined Metacube Software</h3>
-                        <p class="stop-sum">Started as a graduate engineer, building full-stack products for global enterprise clients.</p>
-                        <div class="stop-chips"><span class="chip">React · FastAPI</span><span class="chip">Graduate engineer</span></div>
+                        <div class="role-head">
+                            <span class="logo-tile"><img src="./assets/logos/metacube_logo.jpeg" alt="Metacube Software logo"></span>
+                            <div class="role-id">
+                                <h3 class="stop-title">Metacube Software</h3>
+                                <p class="role-line">Software Engineer · Full-stack → GenAI</p>
+                            </div>
+                        </div>
+                        <p class="stop-date role-meta"><span>Oct 2021 – Sep 2025</span><span class="pill">4 yrs</span></p>
+                        <div class="stop-metrics">
+                            <div class="metric"><span class="metric-num" data-count="80" data-prefix="−" data-suffix="%">−80%</span><span class="metric-label">response time</span></div>
+                            <div class="metric"><span class="metric-num" data-count="30" data-prefix="+" data-suffix="%">+30%</span><span class="metric-label">user engagement</span></div>
+                            <div class="metric"><span class="metric-num" data-count="50" data-prefix="−" data-suffix="%">−50%</span><span class="metric-label">deploy time</span></div>
+                        </div>
+                        <ul class="key-work">
+                            <li>Streaming multi-agent RAG UI on GraphDB, 80% faster responses.</li>
+                            <li>GPT-4.5 and Gemini served through GraphQL microservices.</li>
+                            <li>RGM tool in React, FastAPI and PostgreSQL for a consumer-goods client.</li>
+                        </ul>
+                        <ol class="growth" aria-label="Growth chapters at Metacube">
+                            <li><b>2021</b><span>Graduate engineer</span></li>
+                            <li><b>2023</b><span>RGM tool</span></li>
+                            <li><b>2024</b><span>GenAI / GraphDB RAG</span></li>
+                            <li><b>2025</b><span>GPT-4.5 &amp; Gemini services</span></li>
+                        </ol>
+                        <div class="stop-tech" aria-label="Tech used">
+                            <img src="./assets/tech-logos/react.svg" alt="React" title="React">
+                            <img src="./assets/tech-logos/fastapi.svg" alt="FastAPI" title="FastAPI">
+                            <img src="./assets/tech-logos/postgresql.svg" alt="PostgreSQL" title="PostgreSQL">
+                            <img src="./assets/tech-logos/graphql.svg" alt="GraphQL" title="GraphQL">
+                            <img src="./assets/tech-logos/openai.svg" alt="OpenAI" title="OpenAI" class="dark-invert">
+                            <img src="./assets/tech-logos/jenkins.svg" alt="Jenkins" title="Jenkins">
+                        </div>
                         <button class="stop-toggle" type="button" aria-expanded="false" aria-controls="stop-2-more"><span>Details</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
                         <div class="stop-more" id="stop-2-more" hidden>
-                            <p>Four years at Metacube, growing from full-stack engineer to GenAI builder across React, FastAPI, PostgreSQL, Jenkins CI/CD and RabbitMQ (deployment time cut 50%).</p>
+                            <ul class="more-list">
+                                <li>Built a React UI for an agentic document-extraction and RAG framework, integrating GraphDB (Ontotext) for semantic search; streaming, parallel multi-agent responses improved response time by 80%.</li>
+                                <li>Deployed OpenAI GPT-4.5 and Google Gemini within a scalable microservices inference framework, exposed via a GraphQL API.</li>
+                                <li>Developed an AI-powered Revenue Growth Management tool (React, MUI, Redux, FastAPI, PostgreSQL), boosting engagement by 30% and data-retrieval speed by 40%.</li>
+                                <li>Set up Jenkins CI/CD pipelines and RabbitMQ async messaging, cutting deployment time by 50% and downtime by 20%.</li>
+                            </ul>
                         </div>
                     </div>
                 </li>
 
-                <li class="stop" id="stop-3" data-state="past" data-map="2023">
-                    <span class="stop-dot" aria-hidden="true"></span>
-                    <div class="stop-card">
-                        <p class="stop-date">2023 – 2024</p>
-                        <h3 class="stop-title">Pivot to GenAI</h3>
-                        <p class="stop-sum">An RGM tool that lifted engagement 30%, then a GraphDB RAG interface that cut latency 80%.</p>
-                        <div class="stop-chips"><span class="chip">+30% engagement</span><span class="chip">−80% latency</span></div>
-                        <button class="stop-toggle" type="button" aria-expanded="false" aria-controls="stop-3-more"><span>Details</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-                        <div class="stop-more" id="stop-3-more" hidden>
-                            <p>Built an AI-powered Revenue Growth Management tool (React, MUI, Redux, FastAPI, PostgreSQL) for a global consumer-goods client. Then shipped a React UI for an agentic document-extraction and RAG framework on GraphDB, with GPT-4.5 and Gemini behind a GraphQL API.</p>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="stop" id="stop-4" data-state="past" data-map="AI-102">
+                <li class="stop stop--award stop--cert" id="stop-3" data-state="past" data-map="AI-102" data-type="cert">
                     <span id="certifications"></span>
-                    <span class="stop-dot" aria-hidden="true"></span>
+                    <span class="stop-dot" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l2.3 1.7 2.8-.2.9 2.7 2.4 1.6-.9 2.7.9 2.7-2.4 1.6-.9 2.7-2.8-.2L12 21.5l-2.3-1.7-2.8.2-.9-2.7-2.4-1.6.9-2.7-.9-2.7 2.4-1.6.9-2.7 2.8.2L12 2.5Z" transform="translate(0 -.5)"/><path d="m9 11.5 2.2 2.2L15.5 9.5"/></svg></span>
                     <div class="stop-card">
-                        <p class="stop-date">Certification</p>
-                        <h3 class="stop-title">Microsoft AI-102</h3>
-                        <p class="stop-sum">Azure AI Engineer Associate, Microsoft Certified.</p>
-                        <div class="stop-chips"><span class="chip">AI-102</span><span class="chip">Azure AI</span></div>
+                        <div class="award-row">
+                            <span class="stop-badge stop-badge--cert" aria-hidden="true">
+                                <img src="./assets/tech-logos/azure.svg" alt="" width="26" height="26">
+                                <svg class="badge-check" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="11" fill="currentColor"/><path d="m7.5 12.5 3 3 6-6.5" fill="none" stroke="var(--card-bg)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                            <div class="award-body">
+                                <p class="stop-date">Certification</p>
+                                <h3 class="stop-title">Microsoft AI-102</h3>
+                                <p class="role-line">Azure AI Engineer Associate · Microsoft Certified</p>
+                                <p class="stop-sum">Validates designing and building AI solutions on Azure.</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="stop stop--role" id="stop-4" data-state="past" data-map="2025 Pratham" data-type="role">
+                    <span class="stop-dot" aria-hidden="true"><img src="./assets/logos/pratham_software_inc_logo.jpeg" alt=""></span>
+                    <div class="stop-card">
+                        <div class="role-head">
+                            <span class="logo-tile"><img src="./assets/logos/pratham_software_inc_logo.jpeg" alt="Pratham Software logo"></span>
+                            <div class="role-id">
+                                <h3 class="stop-title">Pratham Software</h3>
+                                <p class="role-line">Software Engineer · Agentic GenAI</p>
+                            </div>
+                        </div>
+                        <p class="stop-date role-meta"><span data-nc="trail-pratham-date">Oct 2025 — Present</span><span class="pill">1 yr+</span></p>
+                        <p class="role-client">Client: a top-3 management consulting firm</p>
+                        <div class="stop-metrics">
+                            <div class="metric"><span class="metric-num" data-count="35" data-prefix="−" data-suffix="%">−35%</span><span class="metric-label">analyst research time</span></div>
+                            <div class="metric"><span class="metric-num" data-count="40" data-prefix="−" data-suffix="%">−40%</span><span class="metric-label">analyst turnaround</span></div>
+                            <div class="metric"><span class="metric-num">MVPs</span><span class="metric-label">concept to client demo</span></div>
+                        </div>
+                        <ul class="key-work">
+                            <li>Agentic apps on Claude and OpenAI, taken from concept to client demo.</li>
+                            <li>RAG pipelines over client data and internal knowledge bases.</li>
+                            <li>Multi-agent workflows with MCP-style tools that draft client-ready reports.</li>
+                        </ul>
+                        <div class="stop-tech" aria-label="Tech used">
+                            <img src="./assets/tech-logos/claude.svg" alt="Claude" title="Claude">
+                            <img src="./assets/tech-logos/openai.svg" alt="OpenAI" title="OpenAI" class="dark-invert">
+                            <img src="./assets/tech-logos/mcp.svg" alt="MCP" title="MCP">
+                            <img src="./assets/tech-logos/python.svg" alt="Python" title="Python">
+                            <img src="./assets/tech-logos/fastapi.svg" alt="FastAPI" title="FastAPI">
+                            <img src="./assets/tech-logos/react.svg" alt="React" title="React">
+                        </div>
                         <button class="stop-toggle" type="button" aria-expanded="false" aria-controls="stop-4-more"><span>Details</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
                         <div class="stop-more" id="stop-4-more" hidden>
-                            <p>Microsoft Certified: Azure AI Engineer Associate. It validates designing and building AI solutions on Azure.</p>
+                            <ul class="more-list">
+                                <li>Built agentic GenAI applications using Claude and OpenAI models orchestrated through a custom agent framework, delivering multiple MVPs from concept to client demo.</li>
+                                <li>Designed RAG pipelines over internal knowledge bases and structured client data, cutting analyst research time by about 35%.</li>
+                                <li>Architected multi-agent workflows (planner, executor, tool-calling) with MCP-style integrations so agents query internal tools, synthesise findings and generate client-ready reports.</li>
+                                <li>Integrated Claude, ChatGPT and Gemini into a FastAPI backend with a React frontend, reducing manual analyst turnaround by about 40%.</li>
+                                <li>Worked directly with client stakeholders in fast feedback loops: discovery, prototyping, production handoff.</li>
+                                <li>Built lightweight evaluation and observability tooling (prompt versioning, response quality checks) to catch regressions before demos.</li>
+                            </ul>
                         </div>
                     </div>
                 </li>
 
-                <li class="stop" id="stop-5" data-state="past" data-map="2025">
-                    <span class="stop-dot" aria-hidden="true"></span>
+                <li class="stop stop--award" id="stop-5" data-state="past" data-map="2026 Award" data-type="award">
+                    <span class="stop-dot" aria-hidden="true"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9L12 3Z"/></svg></span>
                     <div class="stop-card">
-                        <p class="stop-date" data-nc="trail-pratham-date">Oct 2025 — Present</p>
-                        <h3 class="stop-title">Pratham Software</h3>
-                        <p class="stop-sum">Agentic GenAI for a top-3 management consulting firm.</p>
-                        <div class="stop-chips"><span class="chip">Claude &amp; OpenAI</span><span class="chip">MCP · multi-agent</span></div>
-                        <button class="stop-toggle" type="button" aria-expanded="false" aria-controls="stop-5-more"><span>Details</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-                        <div class="stop-more" id="stop-5-more" hidden>
-                            <p>Multi-agent workflows (planner, executor, tool-calling) with MCP-style integrations, and RAG pipelines that cut analyst research time by about 35%. Several MVPs taken from concept to client demo.</p>
+                        <div class="award-row">
+                            <span class="stop-badge stop-badge--gold" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>
+                            </span>
+                            <div class="award-body">
+                                <p class="stop-date">2026 · Award</p>
+                                <h3 class="stop-title">Emerging Employee of the Year</h3>
+                                <p class="role-line">Pratham Software Pvt. Ltd.</p>
+                            </div>
                         </div>
-                    </div>
-                </li>
-
-                <li class="stop" id="stop-6" data-state="past" data-map="2026">
-                    <span class="stop-dot" aria-hidden="true"></span>
-                    <div class="stop-card">
-                        <p class="stop-date">2026</p>
-                        <h3 class="stop-title">Emerging Employee of the Year</h3>
-                        <p class="stop-sum">Awarded by Pratham Software Pvt. Ltd.</p>
-                        <div class="stop-chips"><span class="chip">Pratham Software</span></div>
                     </div>
                 </li>
 
                 <!-- Rendered by renderNextChapter() from NEXT_CHAPTER -->
-                <li class="stop" id="stop-7" data-slot="now" data-state="current" data-map="Now"></li>
-                <li class="stop" id="stop-8" data-slot="next" data-state="next" data-map="Next"></li>
-                <li class="stop" id="stop-9" data-slot="ghost" data-state="next" data-map="Next" hidden></li>
+                <li class="stop" id="stop-6" data-slot="now" data-state="current" data-map="Now"></li>
+                <li class="stop" id="stop-7" data-slot="next" data-state="next" data-map="Next"></li>
+                <li class="stop" id="stop-8" data-slot="ghost" data-state="next" data-map="Next" hidden></li>
             </ol>
 
             <div class="trail-marker" id="trail-marker" aria-hidden="true"></div>

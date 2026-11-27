@@ -27,10 +27,10 @@ Rules:
 - Accent is one variable; swapping it re-themes the site.
 
 ## 2. Typography
-- Display: **Instrument Serif** (`--font-display`) for `.title`, `h1`, the logo; italic for one or two emphasised words.
+- Display: **Poppins** 600–700 (`--font-display`) for `.title`, `h1`, the logo and trail stop titles (owner preference — the serif felt stretched).
 - UI/body: **Geist** (`--font-body`). Meta/labels/dates/metrics: **Geist Mono** (`--font-mono`), uppercase, `letter-spacing: .06em`, `.75rem`.
 - Scale: `--fs-xs .75rem`, `--fs-sm .875rem`, `--fs-base 1rem`, `--fs-lg 1.125rem`, `--fs-xl clamp(1.25rem,2vw,1.5rem)`, `--fs-2xl clamp(1.75rem,3.5vw,2.5rem)`, `--fs-hero clamp(2.5rem,7vw,5rem)`.
-- Section header pattern: mono numbered label (`01 — ABOUT`) above a serif statement heading.
+- Section header pattern: mono numbered label (`01 — ABOUT`) above a Poppins statement heading.
 
 ## 3. Spacing, radius, elevation
 - 4-pt scale `--sp-1 … --sp-16`; section padding `--section-y` (`clamp(4rem,10vw,8rem)`); content `--max-w 72rem`, reading `--read-w 40rem`.

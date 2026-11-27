@@ -55,7 +55,7 @@ Rules:
 > If the user prefers to keep the indigo identity, swap `--accent` to `#4F46E5`/`#818CF8` — everything else in this plan still applies. Accent is one variable.
 
 ### 1.2 Typography
-- Display: **Instrument Serif** (italic for one or two emphasised words per heading, e.g. *"Building **agentic** products"*).
+- Display: **Poppins** 600–700 for headings (owner kept the original heading font; Instrument Serif was tried and rejected as looking stretched).
 - UI/body: **Geist** (fallback Inter, system-ui).
 - Meta/labels/dates/metrics: **Geist Mono**, uppercase, `letter-spacing: .06em`, `font-size: .75rem`.
 - Replace Poppins. Load all three in one Google Fonts request with `display=swap`.
@@ -66,7 +66,7 @@ Type scale (fluid with `clamp`):
 Section header pattern (replaces "Get To Know More / About Me"):
 ```
 01 — ABOUT          ← mono, muted, numbered
-A full-stack engineer who ships *AI that people actually use*.   ← serif, statement, not a label
+A full-stack engineer who ships *AI that people actually use*.   ← Poppins (--font-display), statement, not a label
 ```
 
 ### 1.3 Spacing, radius, elevation
@@ -125,7 +125,7 @@ Layout (desktop): left = text, right = small portrait (not a pulsing ring; a 4:5
 
 ```
 [● Serving notice · Joining {Company} in {Month YYYY}]       ← status pill, driven by NEXT_CHAPTER config
-Ashish Yadav                                                  ← serif, --fs-hero
+Ashish Yadav                                                  ← Poppins, --fs-hero
 Full-stack engineer building *agentic AI* products            ← one static line, no typing effect
 for enterprise teams — from React to RAG to MCP.
 
@@ -221,7 +221,7 @@ Renders:
 7. **Now** · `current` — "Serving notice · wrapping up handovers" + Piko sits here
 8. **Next** · `next` — driven by `NEXT_CHAPTER`
 
-Each stop is compact by default (mono date, serif title, one line, ≤2 neutral chips). Clicking/tapping a stop expands details inline (`<details>`/`<button aria-expanded>`), only one open at a time.
+Each stop is compact by default (mono date, Poppins title, one line, ≤2 neutral chips). Clicking/tapping a stop expands details inline (`<details>`/`<button aria-expanded>`), only one open at a time.
 
 **Layout:**
 - Desktop (≥1024): path is an SVG drawn behind the list; stops alternate left/right of a gently curving S-line. JS computes the path through each stop's dot (`getBoundingClientRect` relative to the wrapper), using cubic Béziers; recompute on `ResizeObserver`.
@@ -237,7 +237,7 @@ Each stop is compact by default (mono date, serif title, one line, ≤2 neutral 
 ### 3.4 Navigation & wayfinding
 
 Desktop:
-1. **Top bar**: name (serif) left; links centre; right = theme toggle + `⌘K` button. Active link = accent text + 2px underline that **slides** between links (one absolutely positioned indicator element, moved by `initActiveNav`). Bar gets a border-bottom only after scrolling 8px.
+1. **Top bar**: name (Poppins) left; links centre; right = theme toggle + `⌘K` button. Active link = accent text + 2px underline that **slides** between links (one absolutely positioned indicator element, moved by `initActiveNav`). Bar gets a border-bottom only after scrolling 8px.
 2. **Section rail**: fixed at right edge (≥1200px), vertical list of 8 small ticks with section numbers; active tick extends + shows label; hover shows label; click scrolls. Replaces all the between-section down-arrow buttons (delete `.arrow-btn` everywhere).
 3. **Command palette (⌘K / Ctrl+K, also `/`)** — the "developer portfolio" signature:
    - Modal with search input + list: *Go to …* (each section), *Download CV*, *Copy email*, *Open LinkedIn*, *Open GitHub*, *Toggle theme*, *Ask Piko …* (pipes the query into Piko), *What's next for Ashish?*.
@@ -247,7 +247,7 @@ Desktop:
 
 Mobile (≤768):
 1. **Bottom tab bar** (thumb zone), fixed, 64px + `env(safe-area-inset-bottom)`, blurred bg: `Home · Journey · Work · Reviews · Contact` with 20px icons + 11px labels, active = accent. Hides on scroll-down, shows on scroll-up.
-2. Top bar shrinks to name + theme toggle + "menu" (opens a **full-screen sheet** with the full list, big 24px serif links, and the CV/email/social actions). Replace the current dropdown hamburger.
+2. Top bar shrinks to name + theme toggle + "menu" (opens a **full-screen sheet** with the full list, big 24px Poppins links, and the CV/email/social actions). Replace the current dropdown hamburger.
 3. Piko FAB sits **above** the tab bar (bottom: `calc(64px + 16px + safe-area)`), 52px.
 4. Section headers: the mono "02 — JOURNEY" label is `position: sticky` under the top bar while inside its section (cheap contextual wayfinding).
 
@@ -260,7 +260,7 @@ Keep the 3 nav lists in sync per AGENTS.md (desktop, mobile sheet, footer) — p
 - **Projects**: bento grid (first/featured project spans 2 cols with its impact metric large). Cards: mono year, title, 2-line desc, neutral tags, metric. Mobile: horizontal **scroll-snap** carousel with peeking next card (`scroll-snap-type: x mandatory`, card width 85vw).
 - **Tech stack**: filter tabs `All · AI · Frontend · Backend · Cloud` above a single logo grid (one grid, not four panels). Logos monochrome (`filter: grayscale(1)`), colour on hover. Mobile: tabs scroll horizontally, grid 3 columns.
 - **Recommendations**: one card visible + swipe on touch (pointer events, 40px threshold), arrows on desktop only, dots become real `<button>`s. Show the short "pull quote" (1 bold sentence) by default with "Read full recommendation". Pause auto-advance on hover, focus, and when tab hidden; disable autoplay under reduced motion.
-- **Contact**: large serif "Let's build something *useful*." + status pill (from `NEXT_CHAPTER`) + three actions (Email with copy, LinkedIn, Download CV) + "Writing" row with the 2 LinkedIn posts as compact link cards (lazy-load iframes only on click — iframes are heavy on mobile).
+- **Contact**: large Poppins "Let's build something *useful*." + status pill (from `NEXT_CHAPTER`) + three actions (Email with copy, LinkedIn, Download CV) + "Writing" row with the 2 LinkedIn posts as compact link cards (lazy-load iframes only on click — iframes are heavy on mobile).
 - **Footer**: mono, minimal: © year · "Built by hand, no framework" · "Press ⌘K" · back to top.
 
 ---
@@ -296,4 +296,4 @@ Suggested prompt for each implementation session:
 3. **Client = anonymous everywhere:** "a top-3 management consulting firm" in Experience, Journey, Piko and meta tags. Remove "BCG/BCGX" from Piko's replies and quick chips (e.g. chip "Pratham & BCGX" → "Current work"). The LinkedIn recommendation text stays verbatim (it's the recommender's words).
 4. **Piko = mochi creature** (cat ears + sprout), as specced in §3.2.
 5. *Still to confirm (use these defaults until then):* AI-102 date → show the stop as "Microsoft AI-102" with no month; GenAI pivot → "2023–24".
-6. Fonts → **Instrument Serif + Geist + Geist Mono** (default, not objected to).
+6. Fonts → **Poppins (headings) + Geist (body) + Geist Mono (labels)**. Instrument Serif was tried in P0 and dropped.

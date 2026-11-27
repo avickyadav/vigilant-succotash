@@ -401,8 +401,8 @@ function toggleMenu() {
         if (here && now) {
             const flip = desktop.matches && stops[curIdx].dataset.side === 'r';
             here.classList.toggle('flip', flip);
-            here.style.left = (now.x + (flip ? -26 : 26)) + 'px';
-            here.style.top = (now.y - (desktop.matches ? 36 : 46)) + 'px';
+            here.style.left = (now.x + (flip ? -16 : 26)) + 'px';
+            here.style.top = (now.y + (desktop.matches ? 12 : -46)) + 'px';
         }
         const atNow = L >= pastLen - 1;
         if (atNow && !arrived) {
@@ -468,6 +468,49 @@ function toggleMenu() {
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
     document.addEventListener('trail:update', () => { if (map) map.innerHTML = ''; schedule(); });
     build();
+})();
+
+
+// ===== TRAIL FX — card spotlight + one-time metric count-up (pointer / motion permitting) =====
+(function initTrailFx() {
+    const ol = document.getElementById('trail');
+    if (!ol) return;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const hover = window.matchMedia('(hover: hover)');
+
+    ol.addEventListener('pointermove', (e) => {
+        if (!hover.matches || reduced.matches || e.pointerType === 'touch') return;
+        const card = e.target.closest && e.target.closest('.stop-card');
+        if (!card) return;
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left).toFixed(0) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top).toFixed(0) + 'px');
+    }, { passive: true });
+
+    // Final numbers live in the HTML; JS only replays them from 0 once, when allowed.
+    const nums = Array.from(ol.querySelectorAll('.metric-num[data-count]'));
+    if (!nums.length || reduced.matches || !('IntersectionObserver' in window)) return;
+    const fmt = (el, v) => {
+        const dec = +(el.dataset.dec || 0);
+        return (el.dataset.prefix || '') + v.toFixed(dec) + (el.dataset.suffix || '');
+    };
+    nums.forEach(el => { el.textContent = fmt(el, 0); });
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+            if (!en.isIntersecting) return;
+            const card = en.target;
+            io.unobserve(card);
+            card.querySelectorAll('.metric-num[data-count]').forEach((el) => {
+                const to = parseFloat(el.dataset.count), t0 = performance.now(), dur = 900;
+                (function tick(now) {
+                    const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+                    el.textContent = fmt(el, to * e);
+                    if (k < 1) requestAnimationFrame(tick); else el.textContent = fmt(el, to);
+                })(t0);
+            });
+        });
+    }, { threshold: 0.35 });
+    new Set(nums.map(n => n.closest('.stop-card'))).forEach(c => c && io.observe(c));
 })();
 
 
@@ -822,7 +865,8 @@ function renderNextChapter() {
     } else {
         now.hidden = false; ghost.hidden = true; ghost.innerHTML = '';
         now.innerHTML = `${dot}<div class="stop-card"><p class="stop-date">Now</p>
-            <h3 class="stop-title">Serving notice</h3><p class="stop-sum">Wrapping up handovers</p></div>`;
+            <h3 class="stop-title">Serving notice</h3><p class="stop-sum">Wrapping up handovers</p>
+            <div class="now-bar" aria-hidden="true"><span>Handover in progress</span><i></i></div></div>`;
         next.dataset.state = 'next'; next.dataset.map = 'Next';
         next.innerHTML = hasCo
             ? `${dot}<div class="stop-card"><p class="stop-date">Next · from ${esc(n.start)}</p>

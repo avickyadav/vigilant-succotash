@@ -141,3 +141,21 @@
     .contact-info-container { max-width: 100%; min-width: 0; }
     .contact-info-container p { overflow-wrap: anywhere; }
 }
+
+/* ===== TRAIL CARDS (≤ 480px) ===== */
+@media screen and (max-width: 480px) {
+    .stop-card { padding: var(--sp-4) var(--sp-3); }
+    .stop-metrics { gap: var(--sp-1); }
+    .metric + .metric { padding-left: var(--sp-2); }
+    .metric-num { font-size: 1.2rem; }
+    .metric-label { font-size: 0.625rem; letter-spacing: 0.02em; }
+    .growth { grid-template-columns: 1fr; gap: 0; padding-top: var(--sp-3); }
+    .growth::before { left: 3px; right: auto; top: calc(var(--sp-3) + 6px); bottom: 14px; width: 1px; height: auto; }
+    .growth li { flex-direction: row; align-items: baseline; gap: var(--sp-3); padding: 0 0 var(--sp-2) var(--sp-4); }
+    .growth li::before { top: 0.4em; }
+    .growth b { min-width: 2.4rem; }
+    .edu-head { flex-wrap: wrap; }
+    .edu-head .role-id { flex: 1 1 calc(100% - 56px); }
+    .metric--solo { margin-left: calc(40px + var(--sp-3)); text-align: left; border-left: 0; padding-left: 0; flex-direction: row; align-items: baseline; gap: var(--sp-2); }
+    .award-row { gap: var(--sp-3); }
+}
