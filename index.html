@@ -73,69 +73,75 @@
 
     <!-- ===== HERO / PROFILE ===== -->
     <section id="profile">
-        <div class="section__pic-container">
-            <div class="profile-ring">
-                <img src="./assets/profile-pic.jpg" alt="Ashish Yadav Profile Picture">
-            </div>
-        </div>
-        <div class="section__text">
+        <div class="hero-text">
             <p class="status-pill" data-nc="hero-pill"><span class="status-dot" aria-hidden="true"></span><span data-nc="hero-pill-text">Serving notice · next chapter starts 7 Dec</span></p>
-            <p class="section_text__p1">Hello, I'm</p>
             <h1 class="title">Ashish Yadav</h1>
-            <p class="section__text__p2">
-                <span id="typing-text"></span><span class="cursor">|</span>
-            </p>
-            <div class="btn-container">
-                <button class="btn btn-color-2" onclick="window.open('./assets/Ashish_Yadav_CV.pdf')">Download CV</button>
-                <button class="btn btn-color-1" onclick="location.href='#contact'">Contact Info</button>
-            </div>
-            <div id="socials-container">
-                <button class="social-icon-btn" aria-label="LinkedIn Profile" onclick="window.open('https://linkedin.com/in/avickyadav', '_blank')">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+            <p class="hero-statement">Full-stack engineer building <strong class="accent">agentic AI</strong> products for enterprise teams — from React to RAG to MCP.</p>
+            <div class="hero-actions">
+                <a class="btn btn-color-1" href="./assets/Ashish_Yadav_CV.pdf" download>
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M5 21h14"/></svg>
+                    Download CV
+                </a>
+                <button class="btn btn-color-2" id="hero-copy-email" type="button">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>
+                    Copy email
                 </button>
-                <button class="social-icon-btn" aria-label="GitHub Profile" onclick="window.open('https://github.com/avickyadav', '_blank')">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-                </button>
+                <div class="hero-social">
+                    <a class="social-icon-btn" href="https://linkedin.com/in/avickyadav" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                    </a>
+                    <a class="social-icon-btn" href="https://github.com/avickyadav" target="_blank" rel="noopener" aria-label="GitHub profile">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22" aria-hidden="true"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                    </a>
+                </div>
             </div>
+            <ul class="proof-strip" aria-label="Highlights">
+                <li>5+ yrs</li>
+                <li>Emerging Employee of the Year '26</li>
+                <li>Microsoft AI-102</li>
+                <li>4 LinkedIn recommendations</li>
+            </ul>
             <p class="cmdk-hint">Press <kbd data-cmdk-key>&#8984;K</kbd> to navigate</p>
         </div>
+        <figure class="hero-portrait">
+            <img src="./assets/profile-pic.jpg" alt="Portrait of Ashish Yadav" width="600" height="750">
+        </figure>
     </section>
 
     <!-- ===== ABOUT ===== -->
     <section id="about" class="reveal">
         <p class="section__text__p1">Get To Know More</p>
         <h1 class="title">About Me</h1>
-        <div class="section-container">
-            <div class="section__pic-container">
-                <img src="./assets/about-pic2.jpg" class="about-pic" alt="Ashish Yadav">
-            </div>
-            <div class="about-details-container">
-                <div class="about-containers">
-                    <div class="details-container">
-                        <div class="about-card-icon chip-indigo">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        <div class="about-grid">
+            <figure class="about-photo">
+                <img src="./assets/about-pic2.jpg" class="about-pic" alt="Ashish Yadav" width="640" height="800" loading="lazy">
+            </figure>
+            <div class="about-body">
+                <p class="about-lead">Full-stack engineer with 5+ years building production web apps and, lately, GenAI-native systems: agentic workflows, RAG pipelines and LLM products on Claude, OpenAI and Gemini. I move across the stack, from React and FastAPI to multi-agent designs with MCP-style tools, and I work directly with enterprise clients to take AI-first MVPs from prototype to demo.</p>
+                <h2 class="about-sub">How I work</h2>
+                <ul class="principles">
+                    <li class="principle">
+                        <span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/></svg></span>
+                        <div>
+                            <h3>Architecture before code</h3>
+                            <p>Process flow and design choices get thought through before development gets deep.</p>
                         </div>
-                        <h3>Experience</h3>
-                        <p>5+ years<br>Full-Stack &amp; AI Engineering</p>
-                    </div>
-                    <div class="details-container">
-                        <div class="about-card-icon chip-sky">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    </li>
+                    <li class="principle">
+                        <span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span>
+                        <div>
+                            <h3>Security from day one</h3>
+                            <p>Security is part of the first architecture conversation, never a fix added later.</p>
                         </div>
-                        <h3>Education</h3>
-                        <p>B.Tech — Electronics &amp;<br>Communication Engineering</p>
-                    </div>
-                    <div class="details-container">
-                        <div class="about-card-icon chip-emerald">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 15l-2 5 2-1 2 1-2-5z"/><circle cx="12" cy="9" r="6"/></svg>
+                    </li>
+                    <li class="principle">
+                        <span class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4"/><path d="M3 7h18"/><path d="M7 21l-4-4 4-4"/><path d="M21 17H3"/></svg></span>
+                        <div>
+                            <h3>Front-to-back ownership</h3>
+                            <p>Backend logic, APIs and a clean, usable interface, all owned end to end.</p>
                         </div>
-                        <h3>Certified</h3>
-                        <p>Microsoft AI-102<br>Azure AI Engineer Associate</p>
-                    </div>
-                </div>
-                <div class="text-container">
-                    <p>Full-Stack / AI-driven Software Engineer with 5+ years building production web applications and, most recently, GenAI-native systems — agentic workflows, RAG pipelines, and LLM-powered products using Claude, OpenAI, and Google Gemini. Comfortable moving across the stack, from React &amp; FastAPI services to designing multi-agent architectures with MCP-style tool integrations. Experienced working directly with enterprise clients globally to develop, prototype, and ship AI-first MVPs.</p>
-                </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
@@ -316,65 +322,73 @@
     <section id="experience" class="reveal">
         <p class="section__text__p1">Where I've Worked</p>
         <h1 class="title">Experience</h1>
-        <div class="work-timeline">
+        <div class="xp-list">
 
             <!-- Pratham -->
-            <div class="work-card">
-                <div class="work-card-header">
-                    <div class="work-logo-wrap">
-                        <img src="./assets/logos/pratham_software_inc_logo.jpeg" alt="Pratham Software" class="company-logo">
+            <article class="xp-card">
+                <header class="xp-head">
+                    <span class="logo-tile"><img src="./assets/logos/pratham_software_inc_logo.jpeg" alt="Pratham Software logo"></span>
+                    <div class="xp-id">
+                        <h2 class="xp-company">Pratham Software Pvt. Ltd.</h2>
+                        <p class="xp-role">Software Engineer · Agentic GenAI</p>
                     </div>
-                    <div class="work-meta">
-                        <h2 class="company-name">Pratham Software Pvt. Ltd.</h2>
-                        <p class="work-role">Software Engineer <span class="client-badge">Client: Global Top-3 Management Consulting Firm</span></p>
-                        <span class="work-date" data-nc="exp-pratham-date">Oct 2025 — Present</span>
-                    </div>
+                    <p class="xp-date" data-nc="exp-pratham-date">Oct 2025 — Present</p>
+                </header>
+                <p class="xp-sum">Agentic apps on Claude and OpenAI for a top-3 management consulting firm, from concept to client demo.</p>
+                <div class="stop-metrics xp-metrics">
+                    <div class="metric"><span class="metric-num">−35%</span><span class="metric-label">analyst research time</span></div>
+                    <div class="metric"><span class="metric-num">−40%</span><span class="metric-label">analyst turnaround</span></div>
+                    <div class="metric"><span class="metric-num">MVPs</span><span class="metric-label">concept to client demo</span></div>
                 </div>
-                <div class="focus-chips">
-                    <span class="focus-chip chip-violet">Agentic GenAI</span>
-                    <span class="focus-chip chip-sky">RAG Pipelines · -35%</span>
-                    <span class="focus-chip chip-indigo">MCP Integrations</span>
-                    <span class="focus-chip chip-emerald">40% Faster Reports</span>
-                    <span class="focus-chip chip-amber">Enterprise MVPs</span>
-                    <span class="focus-chip chip-rose">LLM Observability</span>
+                <div class="xp-foot">
+                    <ul class="xp-tech" aria-label="Core tech">
+                        <li class="chip">Claude</li><li class="chip">MCP</li><li class="chip">FastAPI</li><li class="chip">React</li>
+                    </ul>
+                    <button class="xp-toggle" type="button" aria-expanded="false" aria-controls="xp-pratham-more"><span>Show details</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
                 </div>
-                <ul class="work-bullets">
-                    <li>Building agentic GenAI applications for a global top-three management consulting firm using Claude and OpenAI models orchestrated through a custom agent framework — delivered multiple MVPs from concept to client demo.</li>
-                    <li>Designed and implemented RAG pipelines over internal knowledge bases and structured client data, improving retrieval accuracy and cutting analyst research time by ~35%.</li>
-                    <li>Architected multi-agent workflows (planner / executor / tool-calling agents) with MCP-style tool integrations and function calling, enabling agents to autonomously query internal tools, synthesise findings, and generate client-ready reports.</li>
-                    <li>Integrated LLM APIs (Claude, ChatGPT, Gemini) into a FastAPI backend with a React frontend, reducing manual analyst turnaround time by ~40% on recurring research and reporting workflows.</li>
-                    <li>Partnered directly with enterprise client stakeholders to gather requirements and iterate on prototypes in fast feedback loops — Forward-Deploy-Engineering style: discovery → prototyping → production handoff.</li>
-                    <li>Built lightweight evaluation and observability tooling around LLM outputs (prompt versioning, response quality checks) to catch regressions before client demos.</li>
-                </ul>
-            </div>
+                <div class="xp-more" id="xp-pratham-more" hidden>
+                    <ul class="more-list">
+                        <li>Building agentic GenAI applications for a top-3 management consulting firm using Claude and OpenAI models orchestrated through a custom agent framework, delivering multiple MVPs from concept to client demo.</li>
+                        <li>Designed and implemented RAG pipelines over internal knowledge bases and structured client data, improving retrieval accuracy and cutting analyst research time by ~35%.</li>
+                        <li>Architected multi-agent workflows (planner / executor / tool-calling agents) with MCP-style tool integrations and function calling, enabling agents to autonomously query internal tools, synthesise findings, and generate client-ready reports.</li>
+                        <li>Integrated LLM APIs (Claude, ChatGPT, Gemini) into a FastAPI backend with a React frontend, reducing manual analyst turnaround time by ~40% on recurring research and reporting workflows.</li>
+                        <li>Partnered directly with enterprise client stakeholders to gather requirements and iterate on prototypes in fast feedback loops — Forward-Deploy-Engineering style: discovery → prototyping → production handoff.</li>
+                        <li>Built lightweight evaluation and observability tooling around LLM outputs (prompt versioning, response quality checks) to catch regressions before client demos.</li>
+                    </ul>
+                </div>
+            </article>
 
             <!-- Metacube -->
-            <div class="work-card">
-                <div class="work-card-header">
-                    <div class="work-logo-wrap">
-                        <img src="./assets/logos/metacube_logo.jpeg" alt="Metacube Software" class="company-logo">
+            <article class="xp-card">
+                <header class="xp-head">
+                    <span class="logo-tile"><img src="./assets/logos/metacube_logo.jpeg" alt="Metacube Software logo"></span>
+                    <div class="xp-id">
+                        <h2 class="xp-company">Metacube Software Pvt. Ltd.</h2>
+                        <p class="xp-role">Software Engineer · Full-stack to GenAI</p>
                     </div>
-                    <div class="work-meta">
-                        <h2 class="company-name">Metacube Software Pvt. Ltd.</h2>
-                        <p class="work-role">Software Engineer</p>
-                        <span class="work-date">Oct 2021 — Sep 2025</span>
-                    </div>
+                    <p class="xp-date">Oct 2021 — Sep 2025</p>
+                </header>
+                <p class="xp-sum">Full-stack work that grew into GenAI: a streaming multi-agent RAG UI, LLM microservices and CI/CD.</p>
+                <div class="stop-metrics xp-metrics">
+                    <div class="metric"><span class="metric-num">−80%</span><span class="metric-label">response time</span></div>
+                    <div class="metric"><span class="metric-num">+30%</span><span class="metric-label">user engagement</span></div>
+                    <div class="metric"><span class="metric-num">−50%</span><span class="metric-label">deploy time</span></div>
                 </div>
-                <div class="focus-chips">
-                    <span class="focus-chip chip-violet">GraphDB + RAG</span>
-                    <span class="focus-chip chip-emerald">80% Faster AI</span>
-                    <span class="focus-chip chip-sky">GPT-4.5 &amp; Gemini</span>
-                    <span class="focus-chip chip-amber">RGM · +30% Engagement</span>
-                    <span class="focus-chip chip-indigo">Jenkins CI/CD · -50%</span>
-                    <span class="focus-chip chip-rose">RabbitMQ Async</span>
+                <div class="xp-foot">
+                    <ul class="xp-tech" aria-label="Core tech">
+                        <li class="chip">React</li><li class="chip">FastAPI</li><li class="chip">GraphQL</li><li class="chip">PostgreSQL</li>
+                    </ul>
+                    <button class="xp-toggle" type="button" aria-expanded="false" aria-controls="xp-metacube-more"><span>Show details</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
                 </div>
-                <ul class="work-bullets">
-                    <li>Built a React-based UI for an agentic document-extraction and RAG framework, integrating GraphDB (Ontotext) for semantic search and knowledge-graph management; implemented streaming / parallel multi-agent responses that improved response time by 80%.</li>
-                    <li>Deployed OpenAI GPT-4.5 and Google Gemini within a scalable microservices inference framework exposed via a GraphQL API for cross-service and graph-data interaction.</li>
-                    <li>Developed an AI-powered Revenue Growth Management (RGM) tool (React, MUI, Redux, FastAPI, PostgreSQL) for a global consumer-goods client — boosting user engagement by 30% and data-retrieval speed by 40% through indexing and schema refinement.</li>
-                    <li>Set up Jenkins CI/CD pipelines and RabbitMQ-based async messaging, cutting deployment time by 50% and reducing downtime by 20%.</li>
-                </ul>
-            </div>
+                <div class="xp-more" id="xp-metacube-more" hidden>
+                    <ul class="more-list">
+                        <li>Built a React-based UI for an agentic document-extraction and RAG framework, integrating GraphDB (Ontotext) for semantic search and knowledge-graph management; implemented streaming / parallel multi-agent responses that improved response time by 80%.</li>
+                        <li>Deployed OpenAI GPT-4.5 and Google Gemini within a scalable microservices inference framework exposed via a GraphQL API for cross-service and graph-data interaction.</li>
+                        <li>Developed an AI-powered Revenue Growth Management (RGM) tool (React, MUI, Redux, FastAPI, PostgreSQL) for a global consumer-goods client, boosting user engagement by 30% and data-retrieval speed by 40% through indexing and schema refinement.</li>
+                        <li>Set up Jenkins CI/CD pipelines and RabbitMQ-based async messaging, cutting deployment time by 50% and reducing downtime by 20%.</li>
+                    </ul>
+                </div>
+            </article>
 
         </div>
     </section>
@@ -383,67 +397,58 @@
     <section id="projects" class="reveal">
         <p class="section__text__p1">Things I've Built</p>
         <h1 class="title">Projects</h1>
-        <div class="projects-grid">
+        <div class="projects-grid" id="projects-track" role="list" aria-label="Projects">
 
-            <div class="project-card">
-                <div class="project-header">
-                    <span class="project-year">2026</span>
-                    <div class="project-tags">
-                        <span class="ptag chip-violet">Claude</span>
-                        <span class="ptag chip-sky">Python</span>
-                        <span class="ptag chip-indigo">MCP</span>
-                        <span class="ptag chip-emerald">Vector DB</span>
-                    </div>
-                </div>
+            <article id="proj-mcp" class="project-card project-card--feature" role="listitem">
+                <span class="project-year">2026</span>
                 <h3 class="project-title">Personal MCP Server for Developer Workflows</h3>
-                <p class="project-desc">Built a custom MCP server exposing personal productivity and codebase-search tools to Claude, letting an agent autonomously look up context, run scripts, and draft code changes. Implemented a lightweight RAG layer (embeddings + vector store) over project documentation to ground agent responses and reduce hallucinated references.</p>
-                <div class="project-impact">Fully autonomous agentic code lookup &amp; drafting</div>
-            </div>
+                <p class="project-desc" id="pd-1">Built a custom MCP server exposing personal productivity and codebase-search tools to Claude, letting an agent autonomously look up context, run scripts, and draft code changes. Implemented a lightweight RAG layer (embeddings + vector store) over project documentation to ground agent responses and reduce hallucinated references.</p>
+                <button class="project-more" type="button" aria-expanded="false" aria-controls="pd-1" hidden>More</button>
+                <ul class="project-tags" aria-label="Tech">
+                        <li class="ptag">Claude</li><li class="ptag">Python</li><li class="ptag">MCP</li><li class="ptag">Vector DB</li>
+                    </ul>
+                <p class="project-impact"><span class="project-impact-label">Impact</span><span class="project-impact-text">Fully autonomous agentic code lookup &amp; drafting</span></p>
+            </article>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <span class="project-year">2023–24</span>
-                    <div class="project-tags">
-                        <span class="ptag chip-sky">React</span>
-                        <span class="ptag chip-emerald">FastAPI</span>
-                        <span class="ptag chip-indigo">MUI</span>
-                        <span class="ptag chip-violet">Redux</span>
-                        <span class="ptag chip-amber">PostgreSQL</span>
-                    </div>
-                </div>
+            <article id="proj-rgm" class="project-card" role="listitem">
+                <span class="project-year">2023–24</span>
                 <h3 class="project-title">AI-Powered Revenue Growth Management Tool</h3>
-                <p class="project-desc">Designed and built an AI-powered business intelligence tool for a global consumer-goods client, enabling data-driven revenue optimisation decisions. Improved query performance through indexing strategies and schema refinement on a large-scale PostgreSQL database.</p>
-                <div class="project-impact">+30% user engagement · +40% data retrieval speed</div>
-            </div>
+                <p class="project-desc" id="pd-2">Designed and built an AI-powered business intelligence tool for a global consumer-goods client, enabling data-driven revenue optimisation decisions. Improved query performance through indexing strategies and schema refinement on a large-scale PostgreSQL database.</p>
+                <button class="project-more" type="button" aria-expanded="false" aria-controls="pd-2" hidden>More</button>
+                <ul class="project-tags" aria-label="Tech">
+                        <li class="ptag">React</li><li class="ptag">FastAPI</li><li class="ptag">MUI</li><li class="ptag">Redux</li><li class="ptag">PostgreSQL</li>
+                    </ul>
+                <p class="project-impact"><span class="project-impact-label">Impact</span><span class="project-impact-text">+30% user engagement · +40% data retrieval speed</span></p>
+            </article>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <span class="project-year">2021</span>
-                    <div class="project-tags">
-                        <span class="ptag chip-sky">Python</span>
-                        <span class="ptag chip-emerald">OpenCV</span>
-                        <span class="ptag chip-amber">Django</span>
-                    </div>
-                </div>
+            <article id="proj-face" class="project-card" role="listitem">
+                <span class="project-year">2021</span>
                 <h3 class="project-title">Face Recognition System</h3>
-                <p class="project-desc">Developed a full-stack face recognition system with a Django backend, using OpenCV for real-time video stream processing and a custom ML pipeline for feature extraction and matching.</p>
-                <div class="project-impact">95% recognition accuracy</div>
-            </div>
+                <p class="project-desc" id="pd-3">Developed a full-stack face recognition system with a Django backend, using OpenCV for real-time video stream processing and a custom ML pipeline for feature extraction and matching.</p>
+                <button class="project-more" type="button" aria-expanded="false" aria-controls="pd-3" hidden>More</button>
+                <ul class="project-tags" aria-label="Tech">
+                        <li class="ptag">Python</li><li class="ptag">OpenCV</li><li class="ptag">Django</li>
+                    </ul>
+                <p class="project-impact"><span class="project-impact-label">Impact</span><span class="project-impact-text">95% recognition accuracy</span></p>
+            </article>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <span class="project-year">2021</span>
-                    <div class="project-tags">
-                        <span class="ptag chip-sky">Python</span>
-                        <span class="ptag chip-rose">IoT</span>
-                        <span class="ptag chip-indigo">Web</span>
-                    </div>
-                </div>
+            <article id="proj-iot" class="project-card" role="listitem">
+                <span class="project-year">2021</span>
                 <h3 class="project-title">IoT Home Automation Web App</h3>
-                <p class="project-desc">Built an IoT-powered web application for remote home-appliance control, featuring a real-time dashboard with device state management and scheduling. Connected hardware sensors to a Python backend over MQTT.</p>
-                <div class="project-impact">30% reduction in energy consumption</div>
-            </div>
+                <p class="project-desc" id="pd-4">Built an IoT-powered web application for remote home-appliance control, featuring a real-time dashboard with device state management and scheduling. Connected hardware sensors to a Python backend over MQTT.</p>
+                <button class="project-more" type="button" aria-expanded="false" aria-controls="pd-4" hidden>More</button>
+                <ul class="project-tags" aria-label="Tech">
+                        <li class="ptag">Python</li><li class="ptag">IoT</li><li class="ptag">Web</li>
+                    </ul>
+                <p class="project-impact"><span class="project-impact-label">Impact</span><span class="project-impact-text">30% reduction in energy consumption</span></p>
+            </article>
 
+        </div>
+        <div class="project-dots" id="project-dots" role="group" aria-label="Project pager">
+            <button type="button" class="project-dot active" aria-label="Show project 1 of 4" aria-current="true"></button>
+            <button type="button" class="project-dot" aria-label="Show project 2 of 4"></button>
+            <button type="button" class="project-dot" aria-label="Show project 3 of 4"></button>
+            <button type="button" class="project-dot" aria-label="Show project 4 of 4"></button>
         </div>
     </section>
 
@@ -451,160 +456,50 @@
     <section id="skills" class="reveal">
         <p class="section__text__p1">Explore My</p>
         <h1 class="title">Tech Stack</h1>
-        <div class="skills-grid">
-
-            <!-- AI / GenAI -->
-            <div class="skill-panel highlight-panel">
-                <div class="skill-panel-header">
-                    <span class="panel-badge chip-violet">Core Focus</span>
-                    <h2 class="skill-panel-title">AI &amp; GenAI</h2>
-                </div>
-                <div class="tech-items-grid">
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/claude.svg" alt="Claude" class="tech-logo">
-                        <span>Claude</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/openai.svg" alt="OpenAI" class="tech-logo dark-invert">
-                        <span>OpenAI GPT</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/gemini.svg" alt="Gemini" class="tech-logo">
-                        <span>Google Gemini</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/mcp.svg" alt="MCP" class="tech-logo">
-                        <span>MCP &amp; Agents</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/langchain.svg" alt="LangChain" class="tech-logo dark-invert">
-                        <span>LangChain</span>
-                    </div>
-                    <div class="tech-item">
-                        <svg class="tech-logo" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
-                        <span>RAG Pipelines</span>
-                    </div>
-                    <div class="tech-item">
-                        <svg class="tech-logo" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-                        <span>Vector DBs</span>
-                    </div>
-                </div>
+        <div class="stack-filter" id="stack-filter" role="group" aria-label="Filter tech stack by area">
+            <button type="button" class="stack-tab" data-filter="all" aria-pressed="true">All <span class="stack-count">28</span></button>
+            <button type="button" class="stack-tab" data-filter="ai" aria-pressed="false">AI <span class="stack-count">7</span></button>
+            <button type="button" class="stack-tab" data-filter="frontend" aria-pressed="false">Frontend <span class="stack-count">7</span></button>
+            <button type="button" class="stack-tab" data-filter="backend" aria-pressed="false">Backend <span class="stack-count">7</span></button>
+            <button type="button" class="stack-tab" data-filter="cloud" aria-pressed="false">Cloud <span class="stack-count">7</span></button>
+        </div>
+        <p class="stack-hint">Hover, focus or tap a tile to see where I used it.</p>
+        <div class="stack-body" id="stack-body">
+            <div class="stack-core-wrap" id="stack-core-wrap">
+                <p class="stack-label">Core</p>
+                <ul class="stack-core" aria-label="Core AI tools">
+                <li class="tech-item tech-item--core" data-cat="ai" data-tech="claude"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/claude.svg" alt="" class="tech-logo"><span class="tech-label">Claude</span></button></li>
+                <li class="tech-item tech-item--core" data-cat="ai" data-tech="openai"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/openai.svg" alt="" class="tech-logo dark-invert"><span class="tech-label">OpenAI GPT</span></button></li>
+                <li class="tech-item tech-item--core" data-cat="ai" data-tech="mcp"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/mcp.svg" alt="" class="tech-logo"><span class="tech-label">MCP &amp; Agents</span></button></li>
+                <li class="tech-item tech-item--core" data-cat="ai" data-tech="rag"><button class="tech-btn" type="button" aria-describedby="tech-pop"><svg class="tech-logo" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg><span class="tech-label">RAG Pipelines</span></button></li>
+                </ul>
             </div>
-
-            <!-- Frontend -->
-            <div class="skill-panel">
-                <div class="skill-panel-header">
-                    <span class="panel-badge chip-sky">UI &amp; Web</span>
-                    <h2 class="skill-panel-title">Frontend</h2>
-                </div>
-                <div class="tech-items-grid">
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/react.svg" alt="React" class="tech-logo">
-                        <span>React.js</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/typescript.svg" alt="TypeScript" class="tech-logo">
-                        <span>TypeScript</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/javascript.svg" alt="JavaScript" class="tech-logo">
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/redux.svg" alt="Redux" class="tech-logo">
-                        <span>Redux</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/mui.svg" alt="Material UI" class="tech-logo">
-                        <span>Material UI</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/html5.svg" alt="HTML5" class="tech-logo">
-                        <span>HTML5</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/css3.svg" alt="CSS3" class="tech-logo">
-                        <span>CSS3</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Backend & Databases -->
-            <div class="skill-panel">
-                <div class="skill-panel-header">
-                    <span class="panel-badge chip-emerald">APIs &amp; Data</span>
-                    <h2 class="skill-panel-title">Backend &amp; Databases</h2>
-                </div>
-                <div class="tech-items-grid">
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/python.svg" alt="Python" class="tech-logo">
-                        <span>Python</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/fastapi.svg" alt="FastAPI" class="tech-logo">
-                        <span>FastAPI</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/django.svg" alt="Django" class="tech-logo dark-invert">
-                        <span>Django</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/express.svg" alt="Express" class="tech-logo dark-invert">
-                        <span>Express.js</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/postgresql.svg" alt="PostgreSQL" class="tech-logo">
-                        <span>PostgreSQL</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/mongodb.svg" alt="MongoDB" class="tech-logo">
-                        <span>MongoDB</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/graphql.svg" alt="GraphQL" class="tech-logo">
-                        <span>GraphQL</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DevOps & Cloud -->
-            <div class="skill-panel">
-                <div class="skill-panel-header">
-                    <span class="panel-badge chip-amber">Infra &amp; Scale</span>
-                    <h2 class="skill-panel-title">DevOps &amp; Cloud</h2>
-                </div>
-                <div class="tech-items-grid">
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/docker.svg" alt="Docker" class="tech-logo">
-                        <span>Docker</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/kubernetes.svg" alt="Kubernetes" class="tech-logo">
-                        <span>Kubernetes</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/jenkins.svg" alt="Jenkins" class="tech-logo">
-                        <span>Jenkins CI/CD</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/aws.svg" alt="AWS" class="tech-logo">
-                        <span>AWS</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/azure.svg" alt="Azure" class="tech-logo">
-                        <span>Azure</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/gcp.svg" alt="GCP" class="tech-logo">
-                        <span>GCP</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="./assets/tech-logos/rabbitmq.svg" alt="RabbitMQ" class="tech-logo">
-                        <span>RabbitMQ</span>
-                    </div>
-                </div>
-            </div>
-
+            <ul class="stack-grid" id="stack-grid" aria-label="Technologies">
+                <li class="tech-item" data-cat="ai" data-tech="gemini"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/gemini.svg" alt="" class="tech-logo"><span class="tech-label">Google Gemini</span></button></li>
+                <li class="tech-item" data-cat="ai" data-tech="langchain"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/langchain.svg" alt="" class="tech-logo dark-invert"><span class="tech-label">LangChain</span></button></li>
+                <li class="tech-item" data-cat="ai" data-tech="vector"><button class="tech-btn" type="button" aria-describedby="tech-pop"><svg class="tech-logo" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg><span class="tech-label">Vector DBs</span></button></li>
+                <li class="tech-item" data-cat="frontend" data-tech="react"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/react.svg" alt="" class="tech-logo"><span class="tech-label">React.js</span></button></li>
+                <li class="tech-item" data-cat="frontend" data-tech="typescript"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/typescript.svg" alt="" class="tech-logo"><span class="tech-label">TypeScript</span></button></li>
+                <li class="tech-item" data-cat="frontend" data-tech="javascript"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/javascript.svg" alt="" class="tech-logo"><span class="tech-label">JavaScript</span></button></li>
+                <li class="tech-item" data-cat="frontend" data-tech="redux"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/redux.svg" alt="" class="tech-logo"><span class="tech-label">Redux</span></button></li>
+                <li class="tech-item" data-cat="frontend" data-tech="mui"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/mui.svg" alt="" class="tech-logo"><span class="tech-label">Material UI</span></button></li>
+                <li class="tech-item" data-cat="frontend" data-tech="html5"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/html5.svg" alt="" class="tech-logo"><span class="tech-label">HTML5</span></button></li>
+                <li class="tech-item" data-cat="frontend" data-tech="css3"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/css3.svg" alt="" class="tech-logo"><span class="tech-label">CSS3</span></button></li>
+                <li class="tech-item" data-cat="backend" data-tech="python"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/python.svg" alt="" class="tech-logo"><span class="tech-label">Python</span></button></li>
+                <li class="tech-item" data-cat="backend" data-tech="fastapi"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/fastapi.svg" alt="" class="tech-logo"><span class="tech-label">FastAPI</span></button></li>
+                <li class="tech-item" data-cat="backend" data-tech="django"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/django.svg" alt="" class="tech-logo dark-invert"><span class="tech-label">Django</span></button></li>
+                <li class="tech-item" data-cat="backend" data-tech="express"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/express.svg" alt="" class="tech-logo dark-invert"><span class="tech-label">Express.js</span></button></li>
+                <li class="tech-item" data-cat="backend" data-tech="postgresql"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/postgresql.svg" alt="" class="tech-logo"><span class="tech-label">PostgreSQL</span></button></li>
+                <li class="tech-item" data-cat="backend" data-tech="mongodb"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/mongodb.svg" alt="" class="tech-logo"><span class="tech-label">MongoDB</span></button></li>
+                <li class="tech-item" data-cat="backend" data-tech="graphql"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/graphql.svg" alt="" class="tech-logo"><span class="tech-label">GraphQL</span></button></li>
+                <li class="tech-item" data-cat="cloud" data-tech="docker"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/docker.svg" alt="" class="tech-logo"><span class="tech-label">Docker</span></button></li>
+                <li class="tech-item" data-cat="cloud" data-tech="kubernetes"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/kubernetes.svg" alt="" class="tech-logo"><span class="tech-label">Kubernetes</span></button></li>
+                <li class="tech-item" data-cat="cloud" data-tech="jenkins"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/jenkins.svg" alt="" class="tech-logo"><span class="tech-label">Jenkins CI/CD</span></button></li>
+                <li class="tech-item" data-cat="cloud" data-tech="aws"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/aws.svg" alt="" class="tech-logo"><span class="tech-label">AWS</span></button></li>
+                <li class="tech-item" data-cat="cloud" data-tech="azure"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/azure.svg" alt="" class="tech-logo"><span class="tech-label">Azure</span></button></li>
+                <li class="tech-item" data-cat="cloud" data-tech="gcp"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/gcp.svg" alt="" class="tech-logo"><span class="tech-label">GCP</span></button></li>
+                <li class="tech-item" data-cat="cloud" data-tech="rabbitmq"><button class="tech-btn" type="button" aria-describedby="tech-pop"><img loading="lazy" width="32" height="32" src="./assets/tech-logos/rabbitmq.svg" alt="" class="tech-logo"><span class="tech-label">RabbitMQ</span></button></li>
+            </ul>
         </div>
     </section>
 
@@ -612,148 +507,162 @@
     <section id="recommendations" class="reveal">
         <p class="section__text__p1">What People Say</p>
         <h1 class="title">LinkedIn Recommendations</h1>
-        <div class="rec-carousel-wrapper">
-            <button class="rec-arrow rec-arrow-left" onclick="moveRec(-1)" aria-label="Previous recommendation">&#8249;</button>
-            <div class="rec-carousel">
-
-                <!-- Slide 1: Shahnaz Chaudhary -->
-                <div class="rec-slide active">
-                    <div class="li-rec-card">
-                        <div class="li-rec-header">
-                            <img src="./assets/rec-avatars/shahnaz.png" alt="Shahnaz Chaudhary" class="li-avatar">
-                            <div class="li-person">
-                                <div class="li-name-row">
-                                    <span class="li-name">Shahnaz Chaudhary</span>
-                                    <span class="li-verified" title="Verified LinkedIn Profile">✓</span>
-                                    <span class="li-degree">· 1st</span>
-                                </div>
-                                <p class="li-headline">AI Delivery Senior Manager | Boston Consulting Group (BCGX)</p>
-                                <p class="li-date">November 22, 2026 · Shahnaz managed Ashish directly</p>
-                            </div>
-                            <span class="li-in-badge" title="LinkedIn Recommendation">in</span>
-                        </div>
-                        <div class="li-rec-body">
-                            <span class="li-quote-mark">“</span>
-                            <p>I worked with Ashish on two major products at BCG, and he's someone I'd pick again for any build. He pays real attention to detail and he's dedicated, but what stood out to me was how he starts a project. Before we got deep into development, he'd already thought through the process flow and the architecture, and security was part of that conversation from the beginning. It was never something we had to go back and fix later.</p>
-                            <p>He's strong on both the front end and the back end. He can build the logic and the plumbing behind a product, then turn around and make the interface clean and easy to use. He also has a knack for finding creative ways to present things, so even complex material ends up looking clear and engaging to the people using it.</p>
-                            <p>Both products went over well with the key stakeholders, and they're already being used across several client case deliveries. A lot of that comes down to how solid Ashish's groundwork was and how well he presented the end result.</p>
-                            <span class="li-quote-mark-end">”</span>
-                        </div>
-                        <div class="li-rec-footer">
-                            <span class="li-tag chip-indigo">BCGX · Product Architecture &amp; Full-Stack</span>
-                        </div>
+        <p class="rec-summary" id="rec-summary">4 recommendations · 3 managed Ashish directly</p>
+        <div class="rec-wall" id="rec-wall" role="list" aria-label="LinkedIn recommendations">
+            <article class="rec-card" role="listitem" data-rel="managed">
+                <div class="li-rec-header">
+                    <img src="./assets/rec-avatars/shahnaz.png" alt="Shahnaz Chaudhary" class="li-avatar" width="48" height="48" loading="lazy">
+                    <div class="li-person">
+                        <div class="li-name-row"><span class="li-name">Shahnaz Chaudhary</span><span class="li-verified" title="Verified LinkedIn Profile">✓</span><span class="li-degree">· 1st</span></div>
+                        <p class="li-headline">AI Delivery Senior Manager | Boston Consulting Group (BCGX)</p>
+                        <p class="li-rel">Managed Ashish directly · Nov 2026</p>
                     </div>
                 </div>
-
-                <!-- Slide 2: Aurelije Zovko -->
-                <div class="rec-slide">
-                    <div class="li-rec-card">
-                        <div class="li-rec-header">
-                            <img src="./assets/rec-avatars/aurelije.png" alt="Aurelije Zovko" class="li-avatar">
-                            <div class="li-person">
-                                <div class="li-name-row">
-                                    <span class="li-name">Aurelije Zovko</span>
-                                    <span class="li-degree">· 1st</span>
-                                </div>
-                                <p class="li-headline">CTO | Chief Architect | Knowledge Graphs | GenAI | ML | IPA Automation</p>
-                                <p class="li-date">November 19, 2026 · Aurelije managed Ashish directly</p>
-                            </div>
-                            <span class="li-in-badge" title="LinkedIn Recommendation">in</span>
-                        </div>
-                        <div class="li-rec-body">
-                            <span class="li-quote-mark">“</span>
-                            <p>I had the pleasure of working with Ashish on the Zenia Graph projects, and I cannot recommend him highly enough.</p>
-                            <p>Over our project engagement, Ashish proved to be an exceptional Full Stack Engineer. As the sole UI developer on the team, he took complete ownership of our frontend experience while seamlessly contributing across backend development, APIs, and the WSO2 Choreo platform. His work on our early prototypes was especially impactful, directly helping shape our presentations and pitches to Bessemer. Ashish is proactive, versatile, and a great collaborator. Any engineering team would be lucky to have him.</p>
-                            <span class="li-quote-mark-end">”</span>
-                        </div>
-                        <div class="li-rec-footer">
-                            <span class="li-tag chip-violet">Zenia Graph · Knowledge Graphs &amp; GenAI</span>
-                        </div>
+                <blockquote class="rec-pull"><p>Before we got deep into development, he'd already thought through the process flow and the architecture, and <mark class="hl">security was part of that conversation from the beginning</mark>.</p></blockquote>
+                <div class="rec-full" hidden>
+                        <p>I worked with Ashish on two major products at BCG, and he's someone I'd pick again for any build. He pays real attention to detail and he's dedicated, but what stood out to me was how he starts a project. Before we got deep into development, he'd already thought through the process flow and the architecture, and security was part of that conversation from the beginning. It was never something we had to go back and fix later.</p>
+                        <p>He's strong on both the front end and the back end. He can build the logic and the plumbing behind a product, then turn around and make the interface clean and easy to use. He also has a knack for finding creative ways to present things, so even complex material ends up looking clear and engaging to the people using it.</p>
+                        <p>Both products went over well with the key stakeholders, and they're already being used across several client case deliveries. A lot of that comes down to how solid Ashish's groundwork was and how well he presented the end result.</p>
+                </div>
+                <div class="rec-card-foot">
+                    <button class="rec-more" type="button" data-rec="0" aria-haspopup="dialog"><span>Read full</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></button>
+                </div>
+            </article>
+            <article class="rec-card" role="listitem" data-rel="managed">
+                <div class="li-rec-header">
+                    <img src="./assets/rec-avatars/aurelije.png" alt="Aurelije Zovko" class="li-avatar" width="48" height="48" loading="lazy">
+                    <div class="li-person">
+                        <div class="li-name-row"><span class="li-name">Aurelije Zovko</span><span class="li-degree">· 1st</span></div>
+                        <p class="li-headline">CTO | Chief Architect | Knowledge Graphs | GenAI | ML | IPA Automation</p>
+                        <p class="li-rel">Managed Ashish directly · Nov 2026</p>
                     </div>
                 </div>
-
-                <!-- Slide 3: Manish Jain -->
-                <div class="rec-slide">
-                    <div class="li-rec-card">
-                        <div class="li-rec-header">
-                            <img src="./assets/rec-avatars/manish.png" alt="Manish Jain" class="li-avatar">
-                            <div class="li-person">
-                                <div class="li-name-row">
-                                    <span class="li-name">Manish Jain</span>
-                                    <span class="li-degree">· 1st</span>
-                                </div>
-                                <p class="li-headline">Delivery Manager at MetaCube Software</p>
-                                <p class="li-date">October 14, 2026 · Manish managed Ashish directly</p>
-                            </div>
-                            <span class="li-in-badge" title="LinkedIn Recommendation">in</span>
-                        </div>
-                        <div class="li-rec-body">
-                            <span class="li-quote-mark">“</span>
-                            <p>I had the opportunity to work with Ashish during his time at Metacube, where he grew from a graduate engineer into a capable software developer.</p>
-                            <p>He demonstrated good technical skills, a willingness to learn, and the ability to adapt to different technologies and project requirements. Over time, he took on greater responsibilities and contributed positively to his teams and client engagements.</p>
-                            <p>I appreciate his commitment to his work and wish him continued success in his career.</p>
-                            <span class="li-quote-mark-end">”</span>
-                        </div>
-                        <div class="li-rec-footer">
-                            <span class="li-tag chip-emerald">Metacube · Ownership &amp; Growth</span>
-                        </div>
+                <blockquote class="rec-pull"><p>Over our project engagement, Ashish proved to be <mark class="hl">an exceptional Full Stack Engineer</mark>.</p></blockquote>
+                <div class="rec-full" hidden>
+                        <p>I had the pleasure of working with Ashish on the Zenia Graph projects, and I cannot recommend him highly enough.</p>
+                        <p>Over our project engagement, Ashish proved to be an exceptional Full Stack Engineer. As the sole UI developer on the team, he took complete ownership of our frontend experience while seamlessly contributing across backend development, APIs, and the WSO2 Choreo platform. His work on our early prototypes was especially impactful, directly helping shape our presentations and pitches to Bessemer. Ashish is proactive, versatile, and a great collaborator. Any engineering team would be lucky to have him.</p>
+                </div>
+                <div class="rec-card-foot">
+                    <button class="rec-more" type="button" data-rec="1" aria-haspopup="dialog"><span>Read full</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></button>
+                </div>
+            </article>
+            <article class="rec-card" role="listitem" data-rel="managed">
+                <div class="li-rec-header">
+                    <img src="./assets/rec-avatars/manish.png" alt="Manish Jain" class="li-avatar" width="48" height="48" loading="lazy">
+                    <div class="li-person">
+                        <div class="li-name-row"><span class="li-name">Manish Jain</span><span class="li-degree">· 1st</span></div>
+                        <p class="li-headline">Delivery Manager at MetaCube Software</p>
+                        <p class="li-rel">Managed Ashish directly · Oct 2026</p>
                     </div>
                 </div>
-
-                <!-- Slide 4: Pulkit Mehta -->
-                <div class="rec-slide">
-                    <div class="li-rec-card">
-                        <div class="li-rec-header">
-                            <img src="./assets/rec-avatars/pulkit.png" alt="Pulkit Mehta" class="li-avatar">
-                            <div class="li-person">
-                                <div class="li-name-row">
-                                    <span class="li-name">Pulkit Mehta</span>
-                                    <span class="li-verified" title="Verified LinkedIn Profile">✓</span>
-                                    <span class="li-degree">· 1st</span>
-                                </div>
-                                <p class="li-headline">Senior ML Engineer | ML, NLP &amp; Generative AI Specialist | LLM &amp; RAG Expert | Ex-Oracle</p>
-                                <p class="li-date">May 19, 2025 · Pulkit was senior to Ashish</p>
-                            </div>
-                            <span class="li-in-badge" title="LinkedIn Recommendation">in</span>
-                        </div>
-                        <div class="li-rec-body">
-                            <span class="li-quote-mark">“</span>
-                            <p>Ashish is a dream resource for any company, any project. He is a full stack engineer with experience in backend, front end and also ML deployment. Of late, he is working on Gen AI use cases like graph RAG and prompt engineering as well. Not only is he very technically sound and a great problem solver, but he thinks through his design choices and contributes in each and every stage of the project. He is very sincere, has great work ethics and has clarity in all his communications. Highly recommended.</p>
-                            <span class="li-quote-mark-end">”</span>
-                        </div>
-                        <div class="li-rec-footer">
-                            <span class="li-tag chip-sky">Graph RAG &amp; ML Deployment</span>
-                        </div>
+                <blockquote class="rec-pull"><p>I had the opportunity to work with Ashish during his time at Metacube, where he <mark class="hl">grew from a graduate engineer into a capable software developer</mark>.</p></blockquote>
+                <div class="rec-full" hidden>
+                        <p>I had the opportunity to work with Ashish during his time at Metacube, where he grew from a graduate engineer into a capable software developer.</p>
+                        <p>He demonstrated good technical skills, a willingness to learn, and the ability to adapt to different technologies and project requirements. Over time, he took on greater responsibilities and contributed positively to his teams and client engagements.</p>
+                        <p>I appreciate his commitment to his work and wish him continued success in his career.</p>
+                </div>
+                <div class="rec-card-foot">
+                    <button class="rec-more" type="button" data-rec="2" aria-haspopup="dialog"><span>Read full</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></button>
+                </div>
+            </article>
+            <article class="rec-card" role="listitem" data-rel="senior">
+                <div class="li-rec-header">
+                    <img src="./assets/rec-avatars/pulkit.png" alt="Pulkit Mehta" class="li-avatar" width="48" height="48" loading="lazy">
+                    <div class="li-person">
+                        <div class="li-name-row"><span class="li-name">Pulkit Mehta</span><span class="li-verified" title="Verified LinkedIn Profile">✓</span><span class="li-degree">· 1st</span></div>
+                        <p class="li-headline">Senior ML Engineer | ML, NLP &amp; Generative AI Specialist | LLM &amp; RAG Expert | Ex-Oracle</p>
+                        <p class="li-rel">Senior to Ashish · May 2025</p>
                     </div>
                 </div>
-
-            </div>
-            <button class="rec-arrow rec-arrow-right" onclick="moveRec(1)" aria-label="Next recommendation">&#8250;</button>
+                <blockquote class="rec-pull"><p>Not only is he very technically sound and a great problem solver, but he <mark class="hl">thinks through his design choices</mark> and contributes in each and every stage of the project.</p></blockquote>
+                <div class="rec-full" hidden>
+                        <p>Ashish is a dream resource for any company, any project. He is a full stack engineer with experience in backend, front end and also ML deployment. Of late, he is working on Gen AI use cases like graph RAG and prompt engineering as well. Not only is he very technically sound and a great problem solver, but he thinks through his design choices and contributes in each and every stage of the project. He is very sincere, has great work ethics and has clarity in all his communications. Highly recommended.</p>
+                </div>
+                <div class="rec-card-foot">
+                    <button class="rec-more" type="button" data-rec="3" aria-haspopup="dialog"><span>Read full</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></button>
+                </div>
+            </article>
         </div>
-        <div class="rec-dots" id="rec-dots">
-            <span class="rec-dot active" onclick="goToRec(0)"></span>
-            <span class="rec-dot" onclick="goToRec(1)"></span>
-            <span class="rec-dot" onclick="goToRec(2)"></span>
-            <span class="rec-dot" onclick="goToRec(3)"></span>
+        <div class="rec-dots" id="rec-dots" role="group" aria-label="Recommendation pager">
+            <button type="button" class="rec-dot active" aria-label="Show recommendation 1 of 4, Shahnaz Chaudhary" aria-current="true"></button>
+            <button type="button" class="rec-dot" aria-label="Show recommendation 2 of 4, Aurelije Zovko"></button>
+            <button type="button" class="rec-dot" aria-label="Show recommendation 3 of 4, Manish Jain"></button>
+            <button type="button" class="rec-dot" aria-label="Show recommendation 4 of 4, Pulkit Mehta"></button>
         </div>
     </section>
 
     <!-- ===== CONTACT ===== -->
     <section id="contact" class="reveal">
         <p class="section__text__p1">Get in Touch</p>
-        <h1 class="title">Contact Me</h1>
-        <div class="contact-info-upper-container">
-            <div class="contact-info-container">
-                <span class="contact-svg-icon chip-indigo">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
-                </span>
-                <p><a href="mailto:ashishvickyadav@gmail.com">ashishvickyadav@gmail.com</a></p>
-            </div>
-            <div class="contact-info-container">
-                <span class="contact-svg-icon chip-sky">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-                </span>
-                <p><a href="https://linkedin.com/in/avickyadav" target="_blank">linkedin.com/in/avickyadav</a></p>
+        <div class="contact-head">
+            <p class="status-pill" data-nc="contact-pill"><span class="status-dot" aria-hidden="true"></span><span data-nc="contact-pill-text">Serving notice · next chapter starts 7 Dec</span></p>
+            <h1 class="title contact-title">Let's build something <span class="accent">useful</span>.</h1>
+        </div>
+        <div class="contact-grid">
+            <form class="compose" id="compose" novalidate>
+                <fieldset class="compose-reasons">
+                    <legend>What is this about?</legend>
+                    <div class="reason-row">
+                        <label class="reason"><input type="radio" name="reason" value="Hiring / roles" checked><span>Hiring / roles</span></label>
+                        <label class="reason"><input type="radio" name="reason" value="Project or collaboration"><span>Project or collaboration</span></label>
+                        <label class="reason"><input type="radio" name="reason" value="Just saying hi"><span>Just saying hi</span></label>
+                    </div>
+                </fieldset>
+                <div class="compose-field">
+                    <label for="compose-msg">Message <span class="opt">(optional)</span></label>
+                    <textarea id="compose-msg" name="message" rows="5" placeholder="A line or two is plenty."></textarea>
+                </div>
+                <div class="compose-actions">
+                    <button class="btn btn-color-1" id="compose-send" type="button">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+                        Write email
+                    </button>
+                    <button class="btn btn-color-2" id="contact-copy-email" type="button">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>
+                        Copy email
+                    </button>
+                </div>
+                <p class="compose-note">Opens your own mail app. Nothing is sent from this page.</p>
+            </form>
+
+            <div class="channels">
+                <a class="channel channel--li" href="https://linkedin.com/in/avickyadav" target="_blank" rel="noopener" aria-label="LinkedIn: Ashish Yadav, linkedin.com/in/avickyadav">
+                    <svg class="channel-mark" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                    <span class="channel-body li-preview">
+                        <span class="li-preview-row">
+                            <img class="li-preview-avatar" src="./assets/profile-pic.jpg" alt="" width="44" height="44" loading="lazy">
+                            <span class="li-preview-text">
+                                <span class="channel-title">Ashish Yadav</span>
+                                <span class="channel-sub">Full-stack engineer building agentic AI products for enterprise teams</span>
+                            </span>
+                        </span>
+                        <span class="channel-detail">linkedin.com/in/avickyadav</span>
+                    </span>
+                    <span class="channel-cta" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Connect</span>
+                </a>
+                <a class="channel channel--gh" href="https://github.com/avickyadav" target="_blank" rel="noopener">
+                    <svg class="channel-mark" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                    <span class="channel-body">
+                        <span class="channel-title">GitHub</span>
+                        <span class="channel-detail">github.com/avickyadav</span>
+                        <span class="channel-sub">Code &amp; experiments</span>
+                    </span>
+                </a>
+                <div class="channel channel--mail">
+                    <span class="channel-mark channel-mark--icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg></span>
+                    <span class="channel-body">
+                        <span class="channel-title">Email</span>
+                        <a class="channel-detail channel-link" href="mailto:ashishvickyadav@gmail.com" rel="noopener">ashishvickyadav@gmail.com</a>
+                    </span>
+                    <button class="channel-copy" id="channel-copy-email" type="button">Copy</button>
+                </div>
+                <a class="channel channel--cv" href="./assets/Ashish_Yadav_CV.pdf" download rel="noopener">
+                    <span class="channel-mark channel-mark--icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M5 21h14"/></svg></span>
+                    <span class="channel-body">
+                        <span class="channel-title">Download CV</span>
+                        <span class="channel-detail">PDF</span>
+                    </span>
+                </a>
             </div>
         </div>
 
@@ -762,7 +671,7 @@
             <h2 class="writing-label">Writing</h2>
             <div class="writing-grid">
                 <article class="post-card" data-embed="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7497647211963621377">
-                    <p class="post-meta">LinkedIn &middot; Post 01</p>
+                    <p class="post-meta"><svg class="li-mark" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>LinkedIn &middot; Post 01</p>
                     <h3 class="post-title">A post from my feed</h3>
                     <div class="post-actions">
                         <button class="btn btn-color-2 post-load" type="button">Load post</button>
@@ -770,7 +679,7 @@
                     </div>
                 </article>
                 <article class="post-card" data-embed="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7419021064090906624?collapsed=1">
-                    <p class="post-meta">LinkedIn &middot; Post 02</p>
+                    <p class="post-meta"><svg class="li-mark" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>LinkedIn &middot; Post 02</p>
                     <h3 class="post-title">A post from my feed</h3>
                     <div class="post-actions">
                         <button class="btn btn-color-2 post-load" type="button">Load post</button>
@@ -796,7 +705,14 @@
                 </ul>
             </div>
         </nav>
-        <p>Copyright &#169; 2026 Ashish Yadav. All Rights Reserved.</p>
+        <div class="footer-meta">
+            <p>&copy; 2026 Ashish Yadav</p>
+            <p>Built by hand, no framework</p>
+            <p class="footer-hint">Press <kbd data-cmdk-key>&#8984;K</kbd></p>
+            <button class="to-top" id="back-to-top" type="button">Back to top
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+            </button>
+        </div>
     </footer>
 
     <!-- ===== NAV CHROME (rail, tab bar, menu sheet, palette, toast) — items rendered from SECTIONS in script.js ===== -->
@@ -841,6 +757,29 @@
             <div class="palette-foot" aria-hidden="true"><span><kbd>&uarr;</kbd><kbd>&darr;</kbd> move</span><span><kbd>&crarr;</kbd> select</span><span><kbd>Esc</kbd> close</span></div>
         </div>
     </div>
+
+    <div class="reader" id="rec-reader" aria-hidden="true">
+        <div class="reader-backdrop" id="reader-backdrop"></div>
+        <div class="reader-box" id="reader-box" role="dialog" aria-modal="true" aria-label="Recommendation" tabindex="-1">
+            <div class="reader-head">
+                <div class="li-rec-header" id="reader-person"></div>
+                <button class="reader-close" id="reader-close" type="button" aria-label="Close recommendation">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+                </button>
+            </div>
+            <div class="reader-body" id="reader-body"></div>
+            <div class="reader-foot">
+                <div class="reader-nav">
+                    <button class="reader-arrow" id="reader-prev" type="button" aria-label="Previous recommendation"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+                    <span class="reader-pos" id="reader-pos" aria-live="polite">1 of 4</span>
+                    <button class="reader-arrow" id="reader-next" type="button" aria-label="Next recommendation"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+                </div>
+                <a class="reader-li" href="https://www.linkedin.com/in/avickyadav/details/recommendations/" target="_blank" rel="noopener">View on LinkedIn</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="tech-pop" id="tech-pop" role="tooltip" hidden></div>
 
     <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 

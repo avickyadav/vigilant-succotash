@@ -131,45 +131,6 @@ if (mobileToggle) mobileToggle.addEventListener('click', toggleTheme);
 })();
 
 
-// ===== TYPING ANIMATION =====
-(function initTyping() {
-    const el = document.getElementById('typing-text');
-    if (!el) return;
-
-    const phrases = [
-        'Full-Stack Engineer',
-        'AI / GenAI Engineer',
-        'RAG & Agentic Systems',
-        'React + FastAPI Builder',
-    ];
-    let phraseIdx = 0;
-    let charIdx   = 0;
-    let deleting  = false;
-    let pauseTicks = 0;
-
-    function tick() {
-        const phrase = phrases[phraseIdx];
-        if (!deleting && charIdx <= phrase.length) {
-            el.textContent = phrase.slice(0, charIdx++);
-            if (charIdx > phrase.length) { pauseTicks = 28; deleting = true; }
-            setTimeout(tick, 70);
-        } else if (deleting && charIdx >= 0) {
-            if (pauseTicks > 0) { pauseTicks--; setTimeout(tick, 60); return; }
-            el.textContent = phrase.slice(0, charIdx--);
-            if (charIdx < 0) {
-                deleting = false;
-                phraseIdx = (phraseIdx + 1) % phrases.length;
-                charIdx = 0;
-                setTimeout(tick, 400);
-            } else {
-                setTimeout(tick, 40);
-            }
-        }
-    }
-    tick();
-})();
-
-
 // ===== SCROLL REVEAL (sections) =====
 (function initReveal() {
     const els = document.querySelectorAll('.reveal');
@@ -183,83 +144,6 @@ if (mobileToggle) mobileToggle.addEventListener('click', toggleTheme);
         });
     }, { threshold: 0.08 });
     els.forEach(el => observer.observe(el));
-})();
-
-
-// ===== RECOMMENDATIONS CAROUSEL =====
-(function initCarousel() {
-    const slides    = document.querySelectorAll('.rec-slide');
-    const dots      = document.querySelectorAll('.rec-dot');
-    if (!slides.length) return;
-
-    let current   = 0;
-    let autoTimer = null;
-    let animating = false;
-    const INTERVAL = 4500;
-
-    // Ensure only the first slide is shown on init
-    slides.forEach((s, i) => {
-        s.style.display = i === 0 ? 'block' : 'none';
-        s.classList.toggle('active', i === 0);
-    });
-
-    function showSlide(idx) {
-        if (animating) return;
-        const next = (idx + slides.length) % slides.length;
-        if (next === current) return;
-        animating = true;
-
-        // Fade out current
-        const outSlide = slides[current];
-        outSlide.style.opacity = '0';
-        outSlide.style.transform = 'translateX(-24px)';
-
-        setTimeout(() => {
-            outSlide.style.display = 'none';
-            outSlide.classList.remove('active');
-            dots[current] && dots[current].classList.remove('active');
-
-            current = next;
-
-            // Prepare next
-            const inSlide = slides[current];
-            inSlide.style.display = 'block';
-            inSlide.style.opacity = '0';
-            inSlide.style.transform = 'translateX(24px)';
-
-            // Force reflow
-            void inSlide.offsetWidth;
-
-            inSlide.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-            inSlide.style.opacity = '1';
-            inSlide.style.transform = 'translateX(0)';
-            inSlide.classList.add('active');
-            dots[current] && dots[current].classList.add('active');
-
-            setTimeout(() => { animating = false; }, 420);
-        }, 380);
-    }
-
-    function startAuto() {
-        stopAuto();
-        autoTimer = setInterval(() => showSlide(current + 1), INTERVAL);
-    }
-
-    function stopAuto() {
-        if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
-    }
-
-    window.moveRec = function(dir) { showSlide(current + dir); startAuto(); };
-    window.goToRec = function(idx)  { showSlide(idx);           startAuto(); };
-
-    // Pause on hover over the whole carousel wrapper
-    const wrapper = document.querySelector('.rec-carousel-wrapper');
-    if (wrapper) {
-        wrapper.addEventListener('mouseenter', stopAuto);
-        wrapper.addEventListener('mouseleave', startAuto);
-    }
-
-    startAuto();
 })();
 
 
@@ -1261,6 +1145,357 @@ const navSpy = {
 })();
 
 
+// ===== SECTION POLISH (P4) =====
+
+// Hero + contact: copy email, back to top
+(function initQuickActions() {
+    ['hero-copy-email', 'contact-copy-email', 'channel-copy-email'].forEach((id) => {
+        const b = document.getElementById(id);
+        if (b) b.addEventListener('click', () => copyEmail());
+    });
+    const top = document.getElementById('back-to-top');
+    if (top) top.addEventListener('click', () => scrollToSection('profile'));
+})();
+
+// Cursor spotlight on cards (pointer devices only)
+(function initCardFx() {
+    const hover = window.matchMedia('(hover: hover)');
+    document.addEventListener('pointermove', (e) => {
+        if (!hover.matches || prefersReducedMotion() || e.pointerType === 'touch') return;
+        const card = e.target.closest && e.target.closest('.xp-card, .project-card, .rec-card');
+        if (!card) return;
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left).toFixed(0) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top).toFixed(0) + 'px');
+    }, { passive: true });
+})();
+
+// Experience: show / hide details
+(function initExperience() {
+    document.querySelectorAll('.xp-toggle').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const open = btn.getAttribute('aria-expanded') === 'true';
+            btn.setAttribute('aria-expanded', String(!open));
+            btn.firstElementChild.textContent = open ? 'Show details' : 'Hide details';
+            const panel = document.getElementById(btn.getAttribute('aria-controls'));
+            if (panel) panel.hidden = open;
+        });
+    });
+})();
+
+// Shared: dots synced to a horizontal scroll-snap track
+function bindSnapDots(track, dotsWrap, itemSel) {
+    if (!track || !dotsWrap) return;
+    const items = Array.from(track.querySelectorAll(itemSel));
+    const dots = Array.from(dotsWrap.querySelectorAll('button'));
+    let raf = 0;
+    const pad = () => parseFloat(getComputedStyle(track).scrollPaddingLeft) || 0;
+    function mark(i) {
+        dots.forEach((d, k) => {
+            d.classList.toggle('active', k === i);
+            if (k === i) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
+        });
+    }
+    function sync() {
+        raf = 0;
+        if (track.scrollWidth <= track.clientWidth + 1) return;
+        const max = track.scrollWidth - track.clientWidth;
+        if (track.scrollLeft >= max - 4) return mark(items.length - 1);
+        let best = 0, bd = Infinity;
+        items.forEach((it, i) => { const d = Math.abs(it.offsetLeft - pad() - track.scrollLeft); if (d < bd) { bd = d; best = i; } });
+        mark(best);
+    }
+    track.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(sync); }, { passive: true });
+    dots.forEach((d, i) => d.addEventListener('click', () => {
+        track.scrollTo({ left: items[i].offsetLeft - pad(), behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+    }));
+    window.addEventListener('resize', sync);
+    sync();
+}
+
+// Projects: 2-line clamp with "More", snap dots on mobile
+(function initProjects() {
+    const track = document.getElementById('projects-track');
+    if (!track) return;
+    const descs = Array.from(track.querySelectorAll('.project-desc'));
+    function measure() {
+        descs.forEach((p) => {
+            const btn = track.querySelector('.project-more[aria-controls="' + p.id + '"]');
+            if (!btn) return;
+            if (p.classList.contains('is-open')) { btn.hidden = false; return; }
+            btn.hidden = !(p.scrollHeight > p.clientHeight + 1);
+        });
+    }
+    track.addEventListener('click', (e) => {
+        const btn = e.target.closest('.project-more');
+        if (!btn) return;
+        const p = document.getElementById(btn.getAttribute('aria-controls'));
+        const open = p.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', String(open));
+        btn.textContent = open ? 'Less' : 'More';
+    });
+    window.addEventListener('resize', measure);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+    measure();
+    bindSnapDots(track, document.getElementById('project-dots'), '.project-card');
+})();
+
+// ===== TECH STACK — filters + "where I used it" popover =====
+const STACK_CONTEXTS = {
+    pratham:  { label: 'Pratham',                  target: 'stop-4' },
+    metacube: { label: 'Metacube',                 target: 'stop-2' },
+    mcp:      { label: 'MCP Server project',       target: 'proj-mcp' },
+    rgm:      { label: 'RGM tool',                 target: 'proj-rgm' },
+    face:     { label: 'Face Recognition project', target: 'proj-face' },
+    iot:      { label: 'IoT project',              target: 'proj-iot' },
+    ai102:    { label: 'AI-102 certification',     target: 'stop-3' }
+};
+// Only techs with evidence on this page (Experience bullets, trail cards, project tags, certification).
+const STACK_USAGE = {
+    claude:     ['pratham', 'mcp'],
+    openai:     ['pratham', 'metacube'],
+    gemini:     ['pratham', 'metacube'],
+    mcp:        ['pratham', 'mcp'],
+    rag:        ['pratham', 'metacube', 'mcp'],
+    vector:     ['mcp'],
+    react:      ['pratham', 'metacube', 'rgm'],
+    redux:      ['metacube', 'rgm'],
+    mui:        ['metacube', 'rgm'],
+    python:     ['pratham', 'mcp', 'face', 'iot'],
+    fastapi:    ['pratham', 'metacube', 'rgm'],
+    django:     ['face'],
+    postgresql: ['metacube', 'rgm'],
+    graphql:    ['metacube'],
+    jenkins:    ['metacube'],
+    rabbitmq:   ['metacube'],
+    azure:      ['ai102']
+};
+const STACK_CATS = { ai: 'AI & GenAI', frontend: 'Frontend & UI', backend: 'Backend & databases', cloud: 'DevOps & cloud' };
+
+// Scroll to a trail stop / project card and pulse it briefly
+function goToContext(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const card = el.querySelector('.stop-card') || el;
+    const reduced = prefersReducedMotion();
+    el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center', inline: 'center' });
+    if (reduced) return;
+    setTimeout(() => {
+        card.classList.remove('is-pulse');
+        void card.offsetWidth;
+        card.classList.add('is-pulse');
+        setTimeout(() => card.classList.remove('is-pulse'), 1250);
+    }, 450);
+}
+
+(function initStack() {
+    const body = document.getElementById('stack-body');
+    const pop = document.getElementById('tech-pop');
+    const tabs = Array.from(document.querySelectorAll('.stack-tab'));
+    if (!body || !pop) return;
+    const cells = Array.from(body.querySelectorAll('.tech-item'));
+    const coreWrap = document.getElementById('stack-core-wrap');
+    const sheetMq = window.matchMedia('(max-width: 768px), (hover: none)');
+    const isSheet = () => sheetMq.matches;
+
+    // Counts + filter
+    tabs.forEach((t) => {
+        const f = t.dataset.filter;
+        const n = f === 'all' ? cells.length : cells.filter(c => c.dataset.cat === f).length;
+        const out = t.querySelector('.stack-count');
+        if (out) out.textContent = n;
+    });
+    function applyFilter(f) {
+        closePop(false);
+        const swap = () => {
+            cells.forEach((c) => { c.hidden = f !== 'all' && c.dataset.cat !== f; });
+            if (coreWrap) coreWrap.hidden = !cells.some(c => c.closest('.stack-core') && !c.hidden);
+            body.classList.remove('is-filtering');
+        };
+        if (prefersReducedMotion()) return swap();
+        body.classList.add('is-filtering');
+        setTimeout(swap, 140);
+    }
+    tabs.forEach((t) => t.addEventListener('click', () => {
+        tabs.forEach(o => o.setAttribute('aria-pressed', String(o === t)));
+        applyFilter(t.dataset.filter);
+    }));
+
+    // Popover
+    let active = null, pinned = false, closeT = 0, quiet = false;
+    const esc = (v) => String(v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    function render(cell) {
+        const key = cell.dataset.tech;
+        const name = cell.querySelector('.tech-label').textContent;
+        const used = STACK_USAGE[key] || [];
+        pop.innerHTML =
+            `<h3 class="pop-name">${esc(name)}</h3><p class="pop-cat">${esc(STACK_CATS[cell.dataset.cat] || '')}</p>` +
+            (used.length
+                ? `<p class="pop-label">Used at</p><ul class="pop-chips">${used.map(k =>
+                    `<li><a class="pop-chip" href="#${STACK_CONTEXTS[k].target}" data-target="${STACK_CONTEXTS[k].target}">${esc(STACK_CONTEXTS[k].label)}</a></li>`).join('')}</ul>`
+                : '<p class="pop-none">Not tied to a role or project on this page.</p>') +
+            '<button class="pop-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>';
+        return name;
+    }
+    function place(cell) {
+        const sheet = pop.classList.contains('is-sheet');
+        if (sheet) { pop.style.left = pop.style.top = ''; return; }
+        const r = cell.getBoundingClientRect();
+        const w = pop.offsetWidth, h = pop.offsetHeight;
+        let left = r.left + r.width / 2 - w / 2;
+        left = Math.max(12, Math.min(left, document.documentElement.clientWidth - w - 12));
+        let top = r.bottom + 8;
+        if (r.bottom + h + 16 > window.innerHeight && r.top > h + 16) top = r.top - h - 8;
+        pop.style.left = (left + window.scrollX) + 'px';
+        pop.style.top = (top + window.scrollY) + 'px';
+    }
+    function related(cell) {
+        const mine = STACK_USAGE[cell.dataset.tech] || [];
+        return new Set(cells.filter(c => c !== cell && !c.hidden && (STACK_USAGE[c.dataset.tech] || []).some(k => mine.includes(k))));
+    }
+    function openPop(cell, pin) {
+        clearTimeout(closeT);
+        if (active && active !== cell) active.classList.remove('is-active');
+        active = cell;
+        pinned = !!pin || isSheet();
+        const name = render(cell);
+        const sheet = isSheet();
+        pop.classList.toggle('is-sheet', sheet);
+        pop.hidden = false;
+        pop.setAttribute('role', pinned ? 'dialog' : 'tooltip');
+        if (pinned) pop.setAttribute('aria-label', name); else pop.removeAttribute('aria-label');
+        place(cell);
+        const rel = related(cell);
+        cells.forEach((c) => { c.classList.toggle('is-active', c === cell); c.classList.toggle('is-related', rel.has(c)); });
+        body.classList.toggle('has-focus', (STACK_USAGE[cell.dataset.tech] || []).length > 0);
+    }
+    function closePop(restoreFocus) {
+        clearTimeout(closeT);
+        const was = active;
+        active = null; pinned = false;
+        pop.hidden = true;
+        body.classList.remove('has-focus');
+        cells.forEach(c => c.classList.remove('is-active', 'is-related'));
+        if (restoreFocus && was) { quiet = true; was.querySelector('.tech-btn').focus(); quiet = false; }
+    }
+    const softClose = () => { clearTimeout(closeT); closeT = setTimeout(() => { if (!pinned) closePop(false); }, 140); };
+
+    cells.forEach((cell) => {
+        const btn = cell.querySelector('.tech-btn');
+        cell.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse' && !isSheet() && !pinned) openPop(cell, false); });
+        cell.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse' && !pinned) softClose(); });
+        btn.addEventListener('focus', () => { if (!quiet && !isSheet() && !pinned && btn.matches(':focus-visible')) openPop(cell, false); });
+        btn.addEventListener('blur', () => setTimeout(() => {
+            if (!pinned && active === cell && !pop.contains(document.activeElement)) closePop(false);
+        }, 0));
+        btn.addEventListener('click', (e) => {
+            if (active === cell && pinned) return closePop(true);
+            openPop(cell, true);
+            if (e.detail === 0) { const first = pop.querySelector('.pop-chip') || pop.querySelector('.pop-close'); if (first) first.focus(); }
+        });
+    });
+    pop.addEventListener('pointerenter', () => clearTimeout(closeT));
+    pop.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse' && !pinned) softClose(); });
+    pop.addEventListener('click', (e) => {
+        if (e.target.closest('.pop-close')) return closePop(true);
+        const chip = e.target.closest('.pop-chip');
+        if (!chip) return;
+        e.preventDefault();
+        const target = chip.dataset.target;
+        closePop(false);
+        goToContext(target);
+    });
+    pop.addEventListener('focusout', (e) => {
+        if (pinned && !pop.contains(e.relatedTarget) && !(active && active.contains(e.relatedTarget))) closePop(false);
+    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && active) { e.stopPropagation(); closePop(true); } }, true);
+    document.addEventListener('pointerdown', (e) => {
+        if (active && pinned && !pop.contains(e.target) && !active.contains(e.target)) closePop(false);
+    });
+    window.addEventListener('resize', () => { if (active) closePop(false); });
+})();
+
+// ===== RECOMMENDATIONS — wall + reader (no auto-advance) =====
+(function initRecommendations() {
+    const wall = document.getElementById('rec-wall');
+    const root = document.getElementById('rec-reader');
+    if (!wall || !root) return;
+    const cards = Array.from(wall.querySelectorAll('.rec-card'));
+    const box = document.getElementById('reader-box');
+    const person = document.getElementById('reader-person');
+    const bodyEl = document.getElementById('reader-body');
+    const pos = document.getElementById('reader-pos');
+    let idx = 0, trigger = null;
+
+    // Summary from the real relationship lines
+    const sum = document.getElementById('rec-summary');
+    const managed = cards.filter(c => c.dataset.rel === 'managed').length;
+    if (sum) sum.textContent = `${cards.length} recommendations · ${managed} managed Ashish directly`;
+
+    function show(i) {
+        idx = (i + cards.length) % cards.length;
+        const c = cards[idx];
+        person.innerHTML = c.querySelector('.li-rec-header').innerHTML;
+        const img = person.querySelector('img'); if (img) img.removeAttribute('loading');
+        bodyEl.innerHTML = c.querySelector('.rec-full').innerHTML;
+        bodyEl.scrollTop = 0;
+        pos.textContent = `${idx + 1} of ${cards.length}`;
+        const nm = c.querySelector('.li-name');
+        box.setAttribute('aria-label', 'Recommendation from ' + (nm ? nm.textContent : ''));
+    }
+    function open(i, from) {
+        trigger = from || null;
+        show(i);
+        root.classList.add('open');
+        root.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('reader-open');
+        box.focus();
+    }
+    function close() {
+        root.classList.remove('open');
+        root.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('reader-open');
+        if (trigger) trigger.focus();
+        trigger = null;
+    }
+    wall.addEventListener('click', (e) => {
+        const b = e.target.closest('.rec-more');
+        if (b) open(+b.dataset.rec, b);
+    });
+    document.getElementById('reader-close').addEventListener('click', close);
+    document.getElementById('reader-backdrop').addEventListener('click', close);
+    document.getElementById('reader-prev').addEventListener('click', () => show(idx - 1));
+    document.getElementById('reader-next').addEventListener('click', () => show(idx + 1));
+    document.addEventListener('keydown', (e) => {
+        if (!root.classList.contains('open')) return;
+        if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); close(); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); show(idx - 1); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); show(idx + 1); }
+        else if (e.key === 'Tab') trapTab(e, box);
+    }, true);
+
+    bindSnapDots(wall, document.getElementById('rec-dots'), '.rec-card');
+})();
+
+// ===== CONTACT — compose a mailto (nothing leaves the page except through the user's mail app) =====
+(function initCompose() {
+    const send = document.getElementById('compose-send');
+    const msg = document.getElementById('compose-msg');
+    if (!send || !msg) return;
+    function composeMailto() {
+        const sel = document.querySelector('#compose input[name="reason"]:checked');
+        const reason = sel ? sel.value : 'Hello';
+        const subject = 'Hello Ashish: ' + reason;
+        const text = msg.value.trim();
+        const body = (text ? text : 'Hi Ashish,') + '\n';
+        return 'mailto:' + CONTACT_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    }
+    window.__composeMailto = composeMailto;
+    send.addEventListener('click', () => { window.location.href = composeMailto(); });
+})();
+
+
 // ===== NEXT CHAPTER — one config drives hero pill, Trail, Experience (and Piko replies) =====
 function renderNextChapter() {
     const n = NEXT_CHAPTER;
@@ -1278,12 +1513,10 @@ function renderNextChapter() {
     const logo = n.logo ? `<img class="stop-logo" src="${esc(n.logo)}" alt="${esc(n.company)} logo">` : '';
 
     // Hero pill
-    const pill = $('[data-nc="hero-pill-text"]');
-    if (pill) {
-        pill.textContent = joined ? `Now at ${n.company}`
+    const pillText = joined ? `Now at ${n.company}`
             : hasCo ? `Serving notice · joining ${n.company} ${shortDate}`
             : `Serving notice · next chapter starts ${shortDate}`;
-    }
+    document.querySelectorAll('[data-nc="hero-pill-text"], [data-nc="contact-pill-text"]').forEach(el => { el.textContent = pillText; });
 
     // Pratham dates (Experience + Trail)
     const range = joined && endMon ? `Oct 2025 — ${endMon}` : null;

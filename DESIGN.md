@@ -15,6 +15,7 @@ Source of truth for visual decisions. Rationale and roadmap live in `docs/UX_PLA
 | `--border` | `#E4E2DC` | `#3A3935` | hairlines |
 | `--accent` | `#E8590C` | `#FF8A3D` | the only brand colour: links, active states, "now" markers, primary buttons |
 | `--accent-inv` | `#FFFFFF` | `#1F1E1D` | text on an accent fill |
+| `--accent-fill` | `#C2410C` | `#FF8A3D` | solid button fills (keeps `--accent-inv` text at AA contrast) |
 | `--accent-soft` | `#FFF1E8` | `rgba(255,138,61,.12)` | accent *backgrounds* only |
 | `--success` | `#2F9E44` | `#51CF66` | status dot only |
 

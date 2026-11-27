@@ -9,12 +9,13 @@ Personal portfolio website for **Ashish Yadav** (Full-Stack & AI-Driven Software
 - **Light & Dark Theme Switch** — Animated day/night pill toggle in the navbar with `localStorage` persistence (`ay-theme`) and `prefers-color-scheme` fallback.
 - **Navigation & wayfinding** — Sliding-underline scrollspy top bar, desktop section rail (>=1200px), `Cmd/Ctrl+K` (or `/`) command palette with fuzzy search, actions and "Ask Piko", mobile bottom tab bar, full-screen menu sheet and sticky section labels. All driven by the `SECTIONS` array in `script.js`.
 - **Scroll Progress Bar** — Fixed top reading-progress indicator (`#scroll-progress`).
-- **Hero & Typing Effect** — Animated role subtitle cycling and pulsing profile ring.
-- **Tech Stack with Real SVG Logos** — 4 categorized panels (`AI & GenAI`, `Frontend`, `Backend & Databases`, `DevOps & Cloud`) using local SVGs in `assets/tech-logos/` with automatic dark-mode inversion (`.dark-invert`) for monochrome logos.
-- **Work Experience + Focus Chips** — Company cards with logos, scannable colorful focus chips, and impact bullets.
-- **Projects Grid** — Text-focused project cards with tech tags and measurable impact metrics.
+- **Hero** — Static statement line, Download CV / Copy email, social links, mono proof strip, status pill driven by `NEXT_CHAPTER`, portrait card.
+- **Tech Stack explorer** — Filter tabs with counts, a Core row, grayscale logo tiles and a "where I used it" popover (`STACK_USAGE` in `script.js`) that links to trail stops and projects and dims unrelated tiles.
+- **Experience** — Scannable role cards with metric callouts and a Show details disclosure.
+- **Projects** — Bento grid on desktop, scroll-snap carousel with dots on mobile.
 - **Career Journey Trail** — A scroll-drawn path through eight milestones (education to *Emerging Employee of the Year 2026*), with Piko walking it and stopping at "You are here". A `NEXT_CHAPTER` config in `script.js` drives the next-chapter stop, hero status pill and Experience dates.
-- **LinkedIn-Style Recommendations Carousel** — Decorated quote cards with cropped profile avatars (`assets/rec-avatars/`), verified badges, opening/closing quotes, auto-advance, pause-on-hover, arrows, and pagination dots.
+- **Recommendations wall** — Compact cards with verbatim pull quotes (no auto-advance), plus a keyboard-friendly reader dialog / mobile bottom sheet.
+- **Contact** — Compose panel that opens a prefilled `mailto:` (nothing is sent from the page) and brand-aware channel cards.
 - **Writing row** — LinkedIn posts at the end of Contact (`#posts`); each loads its iframe only on click.
 - **Piko AI Pet Chatbot (`#piko-widget`)** — Cute floating SVG mascot with curated quick-question chips and regex-based intent matching.
 
@@ -27,7 +28,7 @@ vigilant-succotash/
 ├── index.html                  # Semantic single-page structure (all 9 sections + Piko widget)
 ├── style.css                   # Design tokens (--bg, --text, --chip-*, etc.), layout & animations
 ├── mediaqueries.css            # Responsive breakpoints (≤1200px, ≤1024px, ≤768px, ≤480px)
-├── script.js                   # Theme switch, typing effect, scroll reveal, progress bar, carousel, Piko bot
+├── script.js                   # Theme switch, nav chrome, scroll reveal, section interactions, Piko bot
 ├── AGENTS.md                   # Guide for AI coding agents (Claude Code, Codex, Antigravity, Cursor)
 ├── README.md                   # Project overview & maintenance guide
 └── assets/
@@ -57,10 +58,10 @@ Then open [http://localhost:7788](http://localhost:7788).
 
 ## 🛠️ Common Content Updates
 
-- **Add a Tech Skill:** Place an `.svg` in `assets/tech-logos/` and add a `.tech-item` block inside `#skills` in `index.html`. Add class `dark-invert` to `<img>` if the SVG is pure black/monochrome.
-- **Add a Recommendation:** Crop a square avatar into `assets/rec-avatars/`, duplicate a `.rec-slide` in `index.html`, and add a matching `<span class="rec-dot" onclick="goToRec(N)"></span>` in `#rec-dots`.
+- **Add a Tech Skill:** Place an `.svg` in `assets/tech-logos/` and add a `<li class="tech-item" data-cat data-tech><button class="tech-btn">` tile inside `#skills` (and, if the page evidences it, an entry in `STACK_USAGE`). Add class `dark-invert` to `<img>` if the SVG is pure black/monochrome.
+- **Add a Recommendation:** Crop a square avatar into `assets/rec-avatars/`, duplicate a `.rec-card` in `#rec-wall` in `index.html` (set `data-rec` on its Read full button) and add a matching `<button class="rec-dot">` in `#rec-dots`.
 - **Add a Chatbot Intent:** Add a `{ pattern: /.../i, reply: "..." }` entry to `INTENTS` inside `initPikoChatbot()` in `script.js`.
-- **Update Resume PDF:** Replace the file in `assets/` and update the `window.open(...)` path in `#profile` in `index.html`.
+- **Update Resume PDF:** Replace the file in `assets/` and update the `href` of the CV links (hero, contact, menu sheet, palette action).
 
 ---
 

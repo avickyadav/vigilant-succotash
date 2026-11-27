@@ -297,3 +297,12 @@ Suggested prompt for each implementation session:
 4. **Piko = mochi creature** (cat ears + sprout), as specced in §3.2.
 5. *Still to confirm (use these defaults until then):* AI-102 date → show the stop as "Microsoft AI-102" with no month; GenAI pivot → "2023–24".
 6. Fonts → **Poppins (headings) + Geist (body) + Geist Mono (labels)**. Instrument Serif was tried in P0 and dropped.
+
+---
+
+## 6. Revisions after owner review (27 Nov 2026)
+
+- **Tech stack → "where I used it":** tiles open a popover listing where each tech was used (Pratham, Metacube, projects), with links that jump there. Tiles used in the same context stay lit and the rest dim. A "Core" AI row comes first. Usage data lives in `STACK_USAGE` and is derived only from on-page facts.
+- **Recommendations → no autoplay, ever.** Desktop shows a 2×2 wall of compact cards with highlighted pull quotes. "Read full" opens a reader (a dialog on desktop, a bottom sheet on mobile) with user-controlled prev/next and a "View on LinkedIn" link. Mobile uses a swipe-only scroll-snap row.
+- **Contact → compose + channels:** a mailto composer with reason chips (no backend), plus channel cards for LinkedIn (official "in" mark and a mini profile preview), GitHub, Email (copy) and CV. Each card's border turns that channel's colour on hover.
+- Headings use Poppins; the serif was dropped (see §5.6).
